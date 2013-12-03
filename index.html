@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Last plays by BGG user</title>
+        <meta name="description" content="Last plays is a great tool to see what plays have you log on BGG and how long has been since your last play." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Della+Respira' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="/css/normalize.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+
+        <script src="/js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="/js/vendor/jquery.cookie.js"></script>
+        <script src="/js/vendor/underscore.js"></script>
+        <script src="/js/vendor/backbone.js"></script>
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+        <script src="/js/init.js"></script>
+        
+        <script src="/js/backbone/models/gameItem.js"></script>
+        <script src="/js/backbone/collections/gamePlays.js"></script>
+        <script src="/js/backbone/routers/main.js"></script>
+        <script src="/js/backbone/views/inputForm.js"></script>
+        <script src="/js/backbone/views/plays.js"></script>
+        <script src="/js/backbone/views/orderFilter.js"></script>
+
+        <link rel="icon" type="image/png" href="/img/logo.png" />
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header>
+            <div id="appHeader">
+                <figure id="logo">
+                    <img src="/img/logo.png" alt="Last played logo" />
+                </figure>
+                <div id="titulo_nav">
+                    <h1>Last plays by BGG user</h1>
+                </div>
+            </div>
+        </header>
+        <section id="contenido">
+
+        </section>
+
+        <script id="inputForm_tpl" type="text/template">
+            <div id="inputForm">
+                <input class="inputRow" type="text" id="bggUser" placeholder="BGG username" />
+                <div class="selectRow">
+                    <select id="orderBy">
+                        <option value="Days">Order by days</option>
+                        <option value="Name">Order by name</option>
+                        <option value="Plays">Order by plays</option>
+                    </select>    
+                </div>
+                <div class="selectRow">
+                    <select id="orderType">
+                        <option value="Desending">Desending order</option>
+                        <option value="Asending">Asending order</option>
+                    </select>
+                </div>
+                <label class="inputRow" for="onlyOwned">
+                    <input id="onlyOwned" type="checkbox" checked="checked" name="onlyOwned" />
+                    Show only owned games
+                </label>
+                <label class="inputRow" for="excludeExpansions">
+                    <input id="excludeExpansions" type="checkbox" checked="checked" name="excludeExpansions" />
+                    Exclude expansions
+                </label>
+                <label class="inputRow" for="onlyPlayed">
+                    <input id="onlyPlayed" type="checkbox" checked="checked" name="onlyPlayed" />
+                    Only games played
+                </label>
+                <button id="search">Search Games</button>
+            </div>
+        </script>
+
+        <script id="PlaysView_tpl" type="text/template">
+            <div class="gameItem">
+                <figure>
+                    <img class="gameImg" src="<%= data.image %>" alt="<%= data.title %> thumb">
+                </figure>
+                <h2 class="gameTitle"><%= data.title %></h2>
+                <p class="gameTimeLast">Time since: <%= data.time %></p>
+                <p class="gameLastDate">Last play: <%= data.lastPlay %></p>
+                <p class="gameTotalPlays">Total plays: <%= data.totalPlays %></p>
+                <a href="http://www.boardgamegeek.com/boardgame/<%= data.id %>"><p class="bggLink">Go to BGG</p></a>
+            </div>
+        </script>
+
+        <script id="OrderFilter_tpl" type="text/template">
+            <div id="filterForm" class="filterFormHidden">
+                <div class="selectRow">
+                    <select id="filterOrderBy">
+                        <option value="Days">Order by days</option>
+                        <option value="Name">Order by name</option>
+                        <option value="Plays">Order by plays</option>
+                    </select>    
+                </div>
+                <div class="selectRow">
+                    <select id="filterOrderType">
+                        <option value="Desending">Desending order</option>
+                        <option value="Asending">Asending order</option>
+                    </select>
+                </div>
+                <button id="reOrder">Order Games</button>
+            </div>
+            <div id="filterToggle">
+                <img src="/img/menu-icon.png" />
+            </div>
+        </script>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Last_plays_by_BGG_user",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~*",
+    "grunt-bb-generate": "~*",
+    "grunt-contrib-uglify": "~*"
+  }
+}
