@@ -4,10 +4,9 @@
   "devDependencies": {
     "grunt": "~*",
     "grunt-bb-generate": "~*",
-    "grunt-contrib-uglify": "~*",
-    "express": "~*",
-    "url": "~*",
-    "http": "~*",
-    "fs": "~*"
+    "grunt-contrib-uglify": "~*"
+  },
+  "dependencies": {
+    "express": "~*"
   }
 }
