@@ -45,4 +45,4 @@ app.get('/', home);
 app.get('/plays/:bggUser', home);
 app.get('/bggData/:parameters', getXML);
 
-app.listen(3000); //the port you want to use
+app.listen(process.env.PORT || 3000); //the port you want to use
