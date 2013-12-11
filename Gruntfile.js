@@ -27,12 +27,12 @@ module.exports = function(grunt) {
 					'public/js/app.min.js' : [
 						'public/js/init.js',
 						'public/js/main.js',
-						'/js/backbone/models/gameItem.js',
-						'/js/backbone/collections/gamePlays.js',
-						'/js/backbone/routers/main.js',
-						'/js/backbone/views/inputForm.js',
-						'/js/backbone/views/plays.js',
-						'/js/backbone/views/orderFilter.js'
+						'public//js/backbone/models/gameItem.js',
+						'public//js/backbone/collections/gamePlays.js',
+						'public//js/backbone/routers/main.js',
+						'public//js/backbone/views/inputForm.js',
+						'public//js/backbone/views/plays.js',
+						'public//js/backbone/views/orderFilter.js'
 					]
 				}
 			}
