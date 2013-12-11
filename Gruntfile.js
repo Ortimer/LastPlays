@@ -24,14 +24,15 @@ module.exports = function(grunt) {
 			},
 			app : {
 				files: {
-					'public/app.min.js' : [
+					'public/js/app.min.js' : [
 						'public/js/init.js',
-						'public/js/backbone/models/article.js',
-						'public/js/backbone/collections/articles.js',
-						'public/js/backbone/routers/main.js',
-						'public/js/backbone/views/article.js',
-						'public/js/backbone/views/articleNew.js',
-						'public/js/main.js'
+						'public/js/main.js',
+						'/js/backbone/models/gameItem.js',
+						'/js/backbone/collections/gamePlays.js',
+						'/js/backbone/routers/main.js',
+						'/js/backbone/views/inputForm.js',
+						'/js/backbone/views/plays.js',
+						'/js/backbone/views/orderFilter.js'
 					]
 				}
 			}

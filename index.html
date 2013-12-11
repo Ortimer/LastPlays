@@ -18,15 +18,8 @@
         <script src="/js/vendor/underscore.js"></script>
         <script src="/js/vendor/backbone.js"></script>
         <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
-        <script src="/js/init.js"></script>
         
-        <script src="/js/backbone/models/gameItem.js"></script>
-        <script src="/js/backbone/collections/gamePlays.js"></script>
-        <script src="/js/backbone/routers/main.js"></script>
-        <script src="/js/backbone/views/inputForm.js"></script>
-        <script src="/js/backbone/views/plays.js"></script>
-        <script src="/js/backbone/views/orderFilter.js"></script>
+        <script src="/js/app.min.js"></script>
 
         <link rel="icon" type="image/png" href="/img/logo.png" />
 
@@ -116,7 +109,14 @@
                 <img src="/img/menu-icon.png" />
             </div>
         </script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        <script src="/js/main.js"></script>
+            ga('create', 'UA-46375690-1', 'lastplays.herokuapp.com');
+            ga('send', 'pageview');
+        </script>
     </body>
 </html>
