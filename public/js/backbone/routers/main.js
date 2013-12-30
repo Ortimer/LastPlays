@@ -101,16 +101,29 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 								if(gameData[tempId].lastPlay == 'No play has been recorded' || gameData[tempId].lastPlay < $(this).attr('date')){
 									gameData[tempId].lastPlay = $(this).attr('date');
 
-									var today = new Date().getTime();
-									var gameDate = new Date(gameData[tempId].lastPlay.substring(0,4), (gameData[tempId].lastPlay.substring(5,7) - 1), gameData[tempId].lastPlay.substring(8,10)).getTime();
-									gameData[tempId].timeMilis = (today - gameDate);
-									var difference = gameData[tempId].timeMilis / (1000 * 60 * 60 * 24);
+									var today = new Date();
+									var gameDate = new Date(gameData[tempId].lastPlay.substring(0,4), (gameData[tempId].lastPlay.substring(5,7) - 1), gameData[tempId].lastPlay.substring(8,10));
+									var diffDays = new Date(gameData[tempId].lastPlay.substring(0,4), (gameData[tempId].lastPlay.substring(5,7) - 1), 1);
+									var diffMonths = (today.getFullYear() - gameDate.getFullYear()) * 12;
+									diffMonths -= gameDate.getMonth();
+									diffMonths += today.getMonth();
 
-									var years = parseInt(difference / 365);
-									difference = difference % 365;
-									var month = parseInt(difference / 30);
-									difference = difference % 30;
-									var days = parseInt(difference);
+									if(gameDate.getDate() > today.getDate()){
+										diffMonths -= 1;
+									}
+
+									if(diffMonths <= 0){
+										diffMonths = 0;
+									}
+
+									gameData[tempId].timeMilis = today.getTime() - gameDate.getTime();
+
+									var years = parseInt(diffMonths / 12);
+									var month = diffMonths % 12;
+
+									diffDays.setMonth(diffDays.getMonth() + month + years * 12);
+									diffDays.setDate(gameDate.getDate());
+									var days = parseInt((today.getTime() - diffDays.getTime()) / (1000 * 60 * 60 * 24));
 
 									gameData[tempId].time = years + " year(s) " + month + " month(s) " + days + " day(s)";
 								}
