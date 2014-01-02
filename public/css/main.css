@@ -38,8 +38,9 @@ body section .gameItem figure,body section .extendedGameItem figure{float:left;p
 body section .gameItem figure .gameImg,body section .extendedGameItem figure .gameImg{max-height:75px;max-width:120px}
 body section .gameItem .gameTitle,body section .extendedGameItem .gameTitle{text-align:left}
 body section .gameItem .gameLastDate,body section .extendedGameItem .gameLastDate,body section .gameItem .gameTotalPlays,body section .extendedGameItem .gameTotalPlays,body section .gameItem .bggLink,body section .extendedGameItem .bggLink{display:block}
-body section .gameItem .gameTotalPlays,body section .extendedGameItem .gameTotalPlays,body section .gameItem .bggLink,body section .extendedGameItem .bggLink{background:#333;border-radius:.5em .5em .5em .5em;box-shadow:.2em .2em .2em rgba(0,0,0,0.4);float:right;margin-right:1em;padding:.25em}
-body section .gameItem .gameTotalPlays,body section .extendedGameItem .gameTotalPlays{margin-top:-3.8em;position:relative}
+body section .gameItem .gameTotalPlays,body section .extendedGameItem .gameTotalPlays,body section .gameItem .bggLink,body section .extendedGameItem .bggLink{border-radius:.5em .5em .5em .5em;box-shadow:.2em .2em .2em rgba(0,0,0,0.4);float:right;margin-right:1em;padding:.25em}
+body section .gameItem .gameTotalPlays,body section .extendedGameItem .gameTotalPlays{background:#333;margin-top:-3.8em;position:relative}
+body section .gameItem .gameTotalPlays:hover,body section .extendedGameItem .gameTotalPlays:hover{background:#030303;margin-top:-3.8em;position:relative}
 body section .gameItem .bggLink,body section .extendedGameItem .bggLink{background:#bf1d2c;clear:right;margin-top:-1.5em;position:relative}
 body section .gameItem .bggLink:hover,body section .extendedGameItem .bggLink:hover{background:#7f0000}
 body section .gameItem a:link,body section .extendedGameItem a:link{color:#ccc}

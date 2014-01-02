@@ -18,7 +18,7 @@ LastPlaysGamesByBGGUser.Views.OrderFilterView = Backbone.View.extend({
 			searchData = {
 				bggUser: bggUser,
 				orderBy: "Days",
-				orderType: "Desending",
+				orderType: "Descending",
 				onlyOwned: true,
 				excludeExp: true,
 				onlyPlayed: true

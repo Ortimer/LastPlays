@@ -55,8 +55,8 @@
                 </div>
                 <div class="selectRow">
                     <select id="orderType">
-                        <option value="Desending">Desending order</option>
-                        <option value="Asending">Asending order</option>
+                        <option value="Descending">Descending order</option>
+                        <option value="Ascending">Ascending order</option>
                     </select>
                 </div>
                 <label class="inputRow" for="onlyOwned">
@@ -83,8 +83,8 @@
                 <h2 class="gameTitle"><%= data.title %></h2>
                 <p class="gameTimeLast">Time since: <%= data.time %></p>
                 <p class="gameLastDate">Last play: <%= data.lastPlay %></p>
-                <p class="gameTotalPlays">Total plays: <%= data.totalPlays %></p>
-                <a href="http://www.boardgamegeek.com/boardgame/<%= data.id %>"><p class="bggLink">Go to BGG</p></a>
+                <a href="http://www.boardgamegeek.com/plays/thing/<%= data.id %>?userid=<%= data.userId %>" target="_blank"><p class="gameTotalPlays">Total plays: <%= data.totalPlays %></p></a>
+                <a href="http://www.boardgamegeek.com/boardgame/<%= data.id %>" target="_blank"><p class="bggLink">Go to BGG</p></a>
             </div>
         </script>
 
@@ -99,8 +99,8 @@
                 </div>
                 <div class="selectRow">
                     <select id="filterOrderType">
-                        <option value="Desending">Desending order</option>
-                        <option value="Asending">Asending order</option>
+                        <option value="Descending">Descending order</option>
+                        <option value="Ascending">Ascending order</option>
                     </select>
                 </div>
                 <button id="reOrder">Order Games</button>

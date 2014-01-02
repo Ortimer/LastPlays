@@ -21,7 +21,7 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 		var hasMoreData = true;
 		var page = 1;
 
-		$("#contenido").html("<figure id='loadingIcon'><img src='/img/ajax-loader.gif' /></figure>");
+		$("#contenido").empty().append("<figure id='loadingIcon'><img src='/img/ajax-loader.gif' /></figure>");
 
 		var requestURL = "/bggData/collection?username=" + bggUser;
 
@@ -33,7 +33,7 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 			searchData = {
 				bggUser: bggUser,
 				orderBy: "Days",
-				orderType: "Desending",
+				orderType: "Descending",
 				onlyOwned: true,
 				excludeExp: true,
 				onlyPlayed: true
@@ -94,11 +94,14 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 					var tempId = null;
 
 					if(xmlReader.find("plays").children().length > 0){
+						var tempUserId = xmlReader.find("plays").attr('userid');
+
 						xmlReader.find("plays").find("play").each(function(){
 							tempId = $(this).find('item').attr('objectid');
 
 							if($.inArray(tempId, ownedGames) != -1){
 								if(gameData[tempId].lastPlay == 'No play has been recorded' || gameData[tempId].lastPlay < $(this).attr('date')){
+									gameData[tempId].userId = tempUserId;
 									gameData[tempId].lastPlay = $(this).attr('date');
 
 									var today = new Date();

@@ -44,7 +44,7 @@ LastPlaysGamesByBGGUser.Collections.GamePlaysCollection = Backbone.Collection.ex
         }
 
        return function(item1, item2){
-            if(orderType === "Asending"){
+            if(orderType === "Ascending"){
                 if(orderBy === "Name"){
                     return item1.get(orderVariable).localeCompare(item2.get(orderVariable));
                 }else{
