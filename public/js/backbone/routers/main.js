@@ -82,6 +82,15 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 			requestURL += "&played=1";
 		}
 
+		ga('send', 'pageview', {
+			'BGG user': searchData.bggUser,
+			'Order filter': searchData.orderBy,
+			'Order type': searchData.orderType,
+			'Show only owned games': searchData.onlyOwned,
+			'Exclude expansions': searchData.excludeExp,
+			'Show only played games': searchData.onlyPlayed
+		});
+
 		window.collections.gamePlays.comparator = window.collections.gamePlays.getComparator(searchData.orderBy, searchData.orderType);
 		window.collections.gamePlays.reset();
 
