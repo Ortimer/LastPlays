@@ -42,9 +42,6 @@ var getXML = function(req, res){
 
 // Routes
 app.get('/', home);
-app.get('/loading.html', function (req, res) {
-	res.sendfile('loading.html');
-});
 app.get('/plays/:bggUser', home);
 app.get('/bggData/:parameters', getXML);
 
