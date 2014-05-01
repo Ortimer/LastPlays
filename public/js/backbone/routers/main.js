@@ -1,7 +1,7 @@
 LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 	routes: {
 		"" :  "root",
-		"plays/:bggUser" : "showPlays",
+		"plays/:bggUser" : "showPlays"
 	},
 	initialize : function(){
 		var self = this;
