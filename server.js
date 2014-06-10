@@ -18,6 +18,7 @@ var getXML = function(req, res){
 		var options = {
 			host: 'boardgamegeek.com',
 			path: '/xmlapi2/' + req.params.parameters + url.parse(req.url, true).search,
+			timeout: 60000,
 			headers: {
 				'Content-Type': 'text/xml'
 			}
