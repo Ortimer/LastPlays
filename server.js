@@ -13,31 +13,39 @@ var home = function (req, res) {
 };
 
 var getXML = function(req, res){
-	var str = '';
-	var options = {
-		host: 'boardgamegeek.com',
-		path: '/xmlapi2/' + req.params.parameters + url.parse(req.url, true).search,
-		headers: {
-			'Content-Type': 'text/xml'
+	try {
+		var str = '';
+		var options = {
+			host: 'boardgamegeek.com',
+			path: '/xmlapi2/' + req.params.parameters + url.parse(req.url, true).search,
+			headers: {
+				'Content-Type': 'text/xml'
+			}
+		};
+
+		var callback = function(response) {
+			str = '';
+
+			//another chunk of data has been recieved, so append it to `str`
+			response.on('data', function (chunk) {
+				str += chunk;
+			});
+
+			response.on('error', function (err) {
+				console.log('err');
+			});
+
+			response.on('end', function () {
+				res.writeHead(200, { 'Content-Type': 'text/xml'});
+				res.write(str);
+				res.send();
+			});
 		}
-	};
 
-	var callback = function(response) {
-		str = '';
-
-		//another chunk of data has been recieved, so append it to `str`
-		response.on('data', function (chunk) {
-			str += chunk;
-		});
-
-		response.on('end', function () {
-			res.writeHead(200, { 'Content-Type': 'text/xml'});
-			res.write(str);
-			res.send();
-		});
+		http.request(options, callback).end();
+	} catch (ex) {
+		console.log(ex);
 	}
-
-	http.request(options, callback).end();
 }
 
 // Routes
