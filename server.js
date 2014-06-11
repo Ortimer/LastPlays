@@ -49,6 +49,9 @@ var getXML = function(req, res){
 			});
 		}
 
+		console.log('------------------');
+		console.log('Request for: ' + req.params.parameters + url.parse(req.url, true).search);
+
 		http.request(options, callback).end();
 	} catch (ex) {
 		console.log(ex);
