@@ -33,7 +33,11 @@ var getXML = function(req, res){
 			});
 
 			response.on('error', function (err) {
-				console.log('err');
+				console.log(err);
+			});
+
+			response.on('timeout', function () {
+				console.log('There was a timeout problem');
 			});
 
 			response.on('end', function () {
