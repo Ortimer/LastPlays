@@ -97,24 +97,28 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 	ajaxCollection: function (self, bggUser, requestURL) {
 		$.ajax({
 			url: requestURL,
-			dataType: "xml",
+			dataType: "json",
 			type: 'GET',
 			success: function (data) {
 				var ownedGames = [];
 				var gameData = [];
-				var xmlReader = $(data);
 
-				xmlReader.find("items").find("item").each(function(){
-					ownedGames.push($(this).attr('objectid'));
-					gameData[$(this).attr('objectid')] = {
-						id: $(this).attr('objectid'),
-						title: $(this).find('name').text(),
-						image: $(this).find('thumbnail').text(),
+				console.log('Ajax information');
+				console.log(data);
+
+				$(data.items.item).each(function(index, itemData){
+					ownedGames.push(itemData.objectid);
+					gameData[itemData.objectid] = {
+						id: itemData.objectid,
+						title: itemData.name.$t,
+						image: itemData.thumbnail,
 						lastPlay: 'No play has been recorded',
 						time: 'N/A',
 						timeMilis: -1,
-						totalPlays: $(this).find('numplays').text()
+						totalPlays: itemData.numplays
 					}
+
+					console.log(gameData[itemData.objectid]);
 				});
 
 				self.ajaxPlays(self, bggUser, 1, ownedGames, gameData);
@@ -130,22 +134,21 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 
 		$.ajax({
 			url: requestURL,
-			dataType: "xml",
+			dataType: "json",
 			type: 'GET',
 			success: function (data) {
-				var xmlReader = $(data);
 				var tempId = null;
 
-				if(xmlReader.find("plays").children().length > 0){
-					var tempUserId = xmlReader.find("plays").attr('userid');
+				if(data.plays.play != null){
+					var tempUserId = data.plays.userid;
 
-					xmlReader.find("plays").find("play").each(function(){
-						tempId = $(this).find('item').attr('objectid');
+					$(data.plays.play).each(function(index, playData){
+						tempId = playData.item.objectid;
 
 						if($.inArray(tempId, ownedGames) != -1){
-							if(gameData[tempId].lastPlay == 'No play has been recorded' || gameData[tempId].lastPlay < $(this).attr('date')){
+							if(gameData[tempId].lastPlay == 'No play has been recorded' || gameData[tempId].lastPlay < playData.date){
 								gameData[tempId].userId = tempUserId;
-								gameData[tempId].lastPlay = $(this).attr('date');
+								gameData[tempId].lastPlay = playData.date;
 
 								var today = new Date();
 								var gameDate = new Date(gameData[tempId].lastPlay.substring(0,4), (gameData[tempId].lastPlay.substring(5,7) - 1), gameData[tempId].lastPlay.substring(8,10));
