@@ -18,7 +18,6 @@ var getXML = function(req, res){
 		var options = {
 			host: 'boardgamegeek.com',
 			path: '/xmlapi2/' + req.params.parameters + url.parse(req.url, true).search,
-			timeout: 60000,
 			headers: {
 				'Content-Type': 'text/xml'
 			}
@@ -26,9 +25,11 @@ var getXML = function(req, res){
 
 		var callback = function(response) {
 			str = '';
+			chunkTotal = 0;
 
 			//another chunk of data has been recieved, so append it to `str`
 			response.on('data', function (chunk) {
+				console.log('Chunk of data ' + (++chunkTotal));
 				str += chunk;
 			});
 
@@ -41,6 +42,7 @@ var getXML = function(req, res){
 			});
 
 			response.on('end', function () {
+				console.log('Request ended for ' + req.params.parameters + url.parse(req.url, true).search);
 				res.writeHead(200, { 'Content-Type': 'text/xml'});
 				res.write(str);
 				res.send();
