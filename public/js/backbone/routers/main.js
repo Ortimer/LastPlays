@@ -52,6 +52,7 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 	    };
 
 		$("#contenido").html(new Spinner(opts).spin().el);
+		$("#contenido").append('<div id="loadingMessage"><h2>Loading... Collection</h2></div>');
 
 		var requestURL = "/bggData/collection?username=" + bggUser;
 
@@ -106,22 +107,28 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 				console.log('Ajax information');
 				console.log(data);
 
-				$(data.items.item).each(function(index, itemData){
-					ownedGames.push(itemData.objectid);
-					gameData[itemData.objectid] = {
-						id: itemData.objectid,
-						title: itemData.name.$t,
-						image: itemData.thumbnail,
-						lastPlay: 'No play has been recorded',
-						time: 'N/A',
-						timeMilis: -1,
-						totalPlays: itemData.numplays
-					}
+				if(data.message === 'Your request for this collection has been accepted and will be processed.  Please try again later for access.'){
+					window.setTimeout(function() {
+					    self.ajaxCollection(self, bggUser, requestURL);
+					}, 3000);
+				}else{
+					$(data.items.item).each(function(index, itemData){
+						ownedGames.push(itemData.objectid);
+						gameData[itemData.objectid] = {
+							id: itemData.objectid,
+							title: itemData.name.$t,
+							image: itemData.thumbnail,
+							lastPlay: 'No play has been recorded',
+							time: 'N/A',
+							timeMilis: -1,
+							totalPlays: itemData.numplays
+						}
 
-					console.log(gameData[itemData.objectid]);
-				});
+						console.log(gameData[itemData.objectid]);
+					});
 
-				self.ajaxPlays(self, bggUser, 1, ownedGames, gameData);
+					self.ajaxPlays(self, bggUser, 1, ownedGames, gameData);
+				}
 			},
 			error: function (data) {
 				console.log("Error in ajaxCollection");
@@ -131,6 +138,7 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 	},
 	ajaxPlays: function (self, bggUser, page, ownedGames, gameData) {
 		var requestURL = "/bggData/plays?username=" + bggUser + "&page=" + page;
+		$('#loadingMessage h2').html('Loading... Plays page ' + page);
 
 		$.ajax({
 			url: requestURL,
