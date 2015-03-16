@@ -1,7 +1,7 @@
 $( function(){
   var easter_egg = new Konami(calvoInit);
 
-  var calvoImageMarkup = '<img id="elCalvo" style="display: none" src="img/calvo.png" />';
+  var calvoImageMarkup = '<img id="elCalvo" style="display: none" src="/img/calvo.png" />';
 
   $('body').append(calvoImageMarkup);
   var calvo = $('#elCalvo').css({
