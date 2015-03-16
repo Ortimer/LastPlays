@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 					'public/js/app.min.js' : [
 						'public/js/init.js',
 						'public/js/main.js',
+						'public/js/konami.js',
 						'public//js/backbone/models/gameItem.js',
 						'public//js/backbone/collections/gamePlays.js',
 						'public//js/backbone/routers/main.js',

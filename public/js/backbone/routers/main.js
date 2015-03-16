@@ -71,16 +71,21 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 			}
 		}
 
+		console.log("User " + bggUser + " requested: ");
+
 		if(searchData.onlyOwned){
 			requestURL += "&own=1";
+			console.log("- Owned");
 		}
 
 		if(searchData.excludeExp){
 			requestURL += "&excludesubtype=boardgameexpansion";
+			console.log("- Exclude expansion");
 		}
 
 		if(searchData.onlyPlayed){
 			requestURL += "&played=1";
+			console.log("- Only played");
 		}
 
 		ga('set', 'dimension1', searchData.bggUser);
@@ -104,9 +109,6 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 				var ownedGames = [];
 				var gameData = [];
 
-				console.log('Ajax information');
-				console.log(data);
-
 				if(data.message === 'Your request for this collection has been accepted and will be processed.  Please try again later for access.'){
 					window.setTimeout(function() {
 					    self.ajaxCollection(self, bggUser, requestURL);
@@ -123,8 +125,6 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 							timeMilis: -1,
 							totalPlays: itemData.numplays
 						}
-
-						console.log(gameData[itemData.objectid]);
 					});
 
 					self.ajaxPlays(self, bggUser, 1, ownedGames, gameData);
@@ -204,6 +204,9 @@ LastPlaysGamesByBGGUser.Routers.MainRouter = Backbone.Router.extend({
 			error: function (data) {
 				console.log("Error in ajaxPlays [Page: " + page + "]");
 				console.log(data);
+
+				page++;
+				self.ajaxPlays(self, bggUser, page, ownedGames, gameData);
 			}
 		});
 	}
