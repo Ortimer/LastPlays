@@ -6,7 +6,9 @@ var express = require('express'),
 var app = express();
 
 //Static resourses
-app.use(express.static('./public'));
+app.use(express.static(__dirname + "/public", { maxAge: 86400000 }));
+
+//app.use(express.static('./public'));
 
 // Funcion home
 var home = function (req, res) {
