@@ -1,47 +1,100 @@
 module.exports = function(grunt) {
-	grunt.initConfig({
-		bb_generate: {
-			options: {
-				appname       : "Last plays games by BGG user",
-				appsrc        : "public/js/backbone",
-				routersrc     : "public/js/backbone/routers/",
-				modelsrc      : "public/js/backbone/models/",
-				viewsrc       : "public/js/backbone/views/",
-				collectionsrc : "public/js/backbone/collections/",
-				templatesrc   : "public/js/backbone/templates/"
-			},
-			router:{},
-			view:{},
-			collection:{},
-			model:{},
-			template:{}
-		},
-		uglify : {
-			options : {
-				compress:true,
-				report:true,
-				banner:'/*!<%= grunt.template.date() %> */\n'
-			},
-			app : {
-				files: {
-					'public/js/app.min.js' : [
-						'public/js/init.js',
-						'public/js/main.js',
-						'public/js/konami.js',
-						'public//js/backbone/models/gameItem.js',
-						'public//js/backbone/collections/gamePlays.js',
-						'public//js/backbone/routers/main.js',
-						'public//js/backbone/views/inputForm.js',
-						'public//js/backbone/views/plays.js',
-						'public//js/backbone/views/orderFilter.js'
-					]
-				}
-			}
-		}
-	});
+  grunt.initConfig({
+    uglify: {
+      options: {
+        compress: true,
+        report: true,
+        banner: '/*!<%= grunt.template.date() %> */\n'
+      },
+      app: {
+        files: {
+          'public/js/app.min.js': [
+            'js/konami.js',
+            'js/ember/**/*.js'
+          ]
+        }
+      }
+    },
 
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-bb-generate');
+    less: {
+      development: {
+        options: {
+          compress: true,
+          yuicompress: true,
+          optimization: 2
+        },
+        files: {
+          "public/css/main.css": "less/base.less" // destination file and source file
+        }
+      }
+    },
+    emberTemplates: {
+      compile: {
+        options: {
+          templateBasePath: /public\/templates\//,
+          templateCompilerPath: 'bower_components/ember/ember-template-compiler.js',
+          handlebarsPath: 'bower_components/handlebars/handlebars.js',
+          templateNamespace: 'Handlebars'
+        },
+        files: {
+          "public/js/templates.js": "templates/*.hbs"
+        }
+      }
+    },
+    bowercopy: {
+      options: {
+        srcPrefix: 'bower_components'
+      },
+      scripts: {
+        options: {
+          destPrefix: 'public/vendor'
+        },
+        files: {
+          // Jquery
+          'js/jquery.js': 'jquery/dist/jquery.min.js',
 
-	grunt.registerTask('default',['uglify']);
+          // Ember + Handlebars
+          'js/ember.js': 'ember/ember.js',
+          'js/ember-data.js': 'ember-data/ember-data.js',
+          'js/handlebars.js': 'handlebars/handlebars.js',
+
+          // Konami
+          'js/konami.js': 'konami-js/konami.js',
+
+          // Spin.js
+          'js/spin.js': 'spin.js/spin.js',
+
+          // Bootstrap
+          'css/bootstrap-theme.css': 'bootstrap/dist/css/bootstrap-theme.css',
+          'css/bootstrap-theme.css.map': 'bootstrap/dist/css/bootstrap-theme.css.map',
+          'css/bootstrap.css': 'bootstrap/dist/css/bootstrap.css',
+          'css/bootstrap.css.map': 'bootstrap/dist/css/bootstrap.css.map',
+          'fonts': 'bootstrap/dist/fonts/*',
+          'js/bootstrap.js': 'bootstrap/dist/js/bootstrap.js',
+
+          // Font - Awesome
+          'css/font-awesome.css': 'font-awesome/css/font-awesome.css',
+          'css/font-awesome.css.map': 'font-awesome/css/font-awesome.css.map',
+          'fonts': 'font-awesome/fonts/*'
+        }
+      }
+    },
+    watch: {
+      styles: {
+        files: ['less/*.less', 'templates/*.hbs'], // which files to watch
+        tasks: ['less', 'emberTemplates'],
+        options: {
+          nospawn: true
+        }
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-ember-templates');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-bowercopy');
+
+  grunt.registerTask('default', ['less', 'bowercopy', 'emberTemplates', 'uglify']);
 };

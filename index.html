@@ -1,125 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Last plays by BGG user</title>
-        <meta name="description" content="Last plays is a great tool to see what plays have you log on BGG and how long has been since your last play." />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Della+Respira' rel='stylesheet' type='text/css'>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Phoenix a new begining</title>
+  <meta name="description" content="We don't have a clue what are we going to do here" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="/css/normalize.min.css" />
-        <link rel="stylesheet" href="/css/main.css" />
+  <!-- Load vendor CSS -->
+  <link rel="stylesheet" href="/vendor/css/bootstrap-theme.css" />
+  <link rel="stylesheet" href="/vendor/css/bootstrap.css" />
+  <link rel="stylesheet" href="/vendor/css/font-awesome.css" />
 
-        <script src="/js/vendor/jquery-1.10.2.min.js"></script>
-        <script src="/js/vendor/jquery.cookie.js"></script>
-        <script src="/js/vendor/underscore.js"></script>
-        <script src="/js/vendor/backbone.js"></script>
-        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="/js/vendor/spin.min.js"></script>
-        <script src="/js/vendor/konami.js"></script>
+  <link rel="stylesheet" href="/css/main.css" />
 
-        <script src="/js/app.min.js"></script>
+  <link rel="icon" type="image/png" href="/img/logo.png" />
 
-        <link rel="icon" type="image/png" href="/img/logo.png" />
+</head>
 
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+          <li>
+            <a href="#">
+              <div>
+                <strong>John Smith</strong>
+                <span class="pull-right text-muted">
+                  <em>Yesterday</em>
+                </span>
+              </div>
+              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <strong>John Smith</strong>
+                <span class="pull-right text-muted">
+                  <em>Yesterday</em>
+                </span>
+              </div>
+              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <strong>John Smith</strong>
+                <span class="pull-right text-muted">
+                  <em>Yesterday</em>
+                </span>
+              </div>
+              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a class="text-center" href="#">
+              <strong>Read All Messages</strong>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+      </li>
+      <!-- /.dropdown -->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-tasks">
+          <li>
+            <a href="#">
+              <div>
+                <p>
+                  <strong>Task 1</strong>
+                  <span class="pull-right text-muted">40% Complete</span>
+                </p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    <span class="sr-only">40% Complete (success)</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <p>
+                  <strong>Task 2</strong>
+                  <span class="pull-right text-muted">20% Complete</span>
+                </p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                    <span class="sr-only">20% Complete</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <p>
+                  <strong>Task 3</strong>
+                  <span class="pull-right text-muted">60% Complete</span>
+                </p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                    <span class="sr-only">60% Complete (warning)</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <p>
+                  <strong>Task 4</strong>
+                  <span class="pull-right text-muted">80% Complete</span>
+                </p>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                    <span class="sr-only">80% Complete (danger)</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a class="text-center" href="#">
+              <strong>See All Tasks</strong>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- /.dropdown-tasks -->
+      </li>
+      <!-- /.dropdown -->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-comment fa-fw"></i> New Comment
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                <span class="pull-right text-muted small">12 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-tasks fa-fw"></i> New Task
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a class="text-center" href="#">
+              <strong>See All Alerts</strong>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- /.dropdown-alerts -->
+      </li>
+      <!-- /.dropdown -->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+          </li>
+          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+          </li>
+          <li class="divider"></li>
+          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+          </li>
+        </ul>
+        <!-- /.dropdown-user -->
+      </li>
+      <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+          <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+            <!-- /input-group -->
+          </li>
+          <li>
+            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="flot.html">Flot Charts</a>
+              </li>
+              <li>
+                <a href="morris.html">Morris.js Charts</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+          </li>
+          <li>
+            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="panels-wells.html">Panels and Wells</a>
+              </li>
+              <li>
+                <a href="buttons.html">Buttons</a>
+              </li>
+              <li>
+                <a href="notifications.html">Notifications</a>
+              </li>
+              <li>
+                <a href="typography.html">Typography</a>
+              </li>
+              <li>
+                <a href="icons.html"> Icons</a>
+              </li>
+              <li>
+                <a href="grid.html">Grid</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="#">Second Level Item</a>
+              </li>
+              <li>
+                <a href="#">Second Level Item</a>
+              </li>
+              <li>
+                <a href="#">Third Level <span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <a href="#">Third Level Item</a>
+                  </li>
+                  <li>
+                    <a href="#">Third Level Item</a>
+                  </li>
+                  <li>
+                    <a href="#">Third Level Item</a>
+                  </li>
+                  <li>
+                    <a href="#">Third Level Item</a>
+                  </li>
+                </ul>
+                <!-- /.nav-third-level -->
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="blank.html">Blank Page</a>
+              </li>
+              <li>
+                <a href="login.html">Login Page</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+        </ul>
+      </div>
+      <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+  </nav>
+
+  <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        <header>
-            <div id="appHeader">
-                <figure id="logo">
-                    <img src="/img/logo.png" alt="Last played logo" />
-                </figure>
-                <div id="titulo_nav">
-                    <h1>Last plays by BGG user</h1>
-                </div>
-            </div>
-        </header>
-        <section id="contenido">
+    ga('create', 'UA-46375690-1', 'lastplays.herokuapp.com');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  </script>
 
-        </section>
+  <!-- Loading all vendor Javascripts -->
+  <script src="/vendor/js/jquery.js"></script>
+  <script src="/vendor/js/handlebars.js"></script>
+  <script src="/vendor/js/bootstrap.js"></script>
+  <script src="/vendor/js/ember.js"></script>
+  <script src="/vendor/js/ember-data.js"></script>
+  <script src="/vendor/js/konami.js"></script>
+  <script src="/vendor/js/spin.js"></script>
 
-        <script id="inputForm_tpl" type="text/template">
-            <div id="inputForm">
-                <input class="inputRow" type="text" id="bggUser" placeholder="BGG username" />
-                <div class="selectRow">
-                    <select id="orderBy">
-                        <option value="Days">Order by days</option>
-                        <option value="Name">Order by name</option>
-                        <option value="Plays">Order by plays</option>
-                    </select>
-                </div>
-                <div class="selectRow">
-                    <select id="orderType">
-                        <option value="Descending">Descending order</option>
-                        <option value="Ascending">Ascending order</option>
-                    </select>
-                </div>
-                <label class="inputRow" for="onlyOwned">
-                    <input id="onlyOwned" type="checkbox" checked="checked" name="onlyOwned" />
-                    Show only owned games
-                </label>
-                <label class="inputRow" for="excludeExpansions">
-                    <input id="excludeExpansions" type="checkbox" checked="checked" name="excludeExpansions" />
-                    Exclude expansions
-                </label>
-                <label class="inputRow" for="onlyPlayed">
-                    <input id="onlyPlayed" type="checkbox" checked="checked" name="onlyPlayed" />
-                    Only games played
-                </label>
-                <button id="search">Search Games</button>
-            </div>
-        </script>
+  <script src="/js/app.min.js"></script>
+  <script src="/js/templates.js"></script>
+</body>
 
-        <script id="PlaysView_tpl" type="text/template">
-            <div class="gameItem">
-                <figure>
-                    <img class="gameImg" src="<%= data.image %>" alt="<%= data.title %> thumb">
-                </figure>
-                <h2 class="gameTitle"><%= data.title %></h2>
-                <p class="gameTimeLast">Time since: <%= data.time %></p>
-                <p class="gameLastDate">Last play: <%= data.lastPlay %></p>
-                <a href="http://www.boardgamegeek.com/plays/thing/<%= data.id %>?userid=<%= data.userId %>" target="_blank"><p class="gameTotalPlays">Total plays: <%= data.totalPlays %></p></a>
-                <a href="http://www.boardgamegeek.com/boardgame/<%= data.id %>" target="_blank"><p class="bggLink">Go to BGG</p></a>
-            </div>
-        </script>
-
-        <script id="OrderFilter_tpl" type="text/template">
-            <div id="filterForm" class="filterFormHidden">
-                <div class="selectRow">
-                    <select id="filterOrderBy">
-                        <option value="Days">Order by days</option>
-                        <option value="Name">Order by name</option>
-                        <option value="Plays">Order by plays</option>
-                    </select>
-                </div>
-                <div class="selectRow">
-                    <select id="filterOrderType">
-                        <option value="Descending">Descending order</option>
-                        <option value="Ascending">Ascending order</option>
-                    </select>
-                </div>
-                <button id="reOrder">Order Games</button>
-            </div>
-            <div id="filterToggle">
-                <img src="/img/menu-icon.png" />
-            </div>
-        </script>
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-46375690-1', 'lastplays.herokuapp.com');
-            ga('require', 'displayfeatures');
-            ga('send', 'pageview');
-        </script>
-    </body>
 </html>
