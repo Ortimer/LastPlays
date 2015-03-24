@@ -31,10 +31,9 @@ module.exports = function(grunt) {
     emberTemplates: {
       compile: {
         options: {
-          templateBasePath: /public\/templates\//,
+          templateBasePath: /templates\//,
           templateCompilerPath: 'bower_components/ember/ember-template-compiler.js',
-          handlebarsPath: 'bower_components/handlebars/handlebars.js',
-          templateNamespace: 'Handlebars'
+          handlebarsPath: 'bower_components/handlebars/handlebars.js'
         },
         files: {
           "public/js/templates.js": "templates/*.hbs"
@@ -55,7 +54,6 @@ module.exports = function(grunt) {
 
           // Ember + Handlebars
           'js/ember.js': 'ember/ember.js',
-          'js/ember-data.js': 'ember-data/ember-data.js',
           'js/handlebars.js': 'handlebars/handlebars.js',
 
           // Konami
@@ -75,14 +73,25 @@ module.exports = function(grunt) {
           // Font - Awesome
           'css/font-awesome.css': 'font-awesome/css/font-awesome.css',
           'css/font-awesome.css.map': 'font-awesome/css/font-awesome.css.map',
-          'fonts': 'font-awesome/fonts/*'
+          'fonts': 'font-awesome/fonts/*',
+
+          // MetisMenu
+          'css/metisMenu.css': 'metisMenu/dist/metisMenu.css',
+          'js/metisMenu.js': 'metisMenu/dist/metisMenu.js'
         }
       }
     },
     watch: {
       styles: {
-        files: ['less/*.less', 'templates/*.hbs'], // which files to watch
-        tasks: ['less', 'emberTemplates'],
+        files: ['less/*.less'], // which files to watch
+        tasks: ['less'],
+        options: {
+          nospawn: true
+        }
+      },
+      templates: {
+        files: ['templates/*.hbs'], // which files to watch
+        tasks: ['emberTemplates'],
         options: {
           nospawn: true
         }

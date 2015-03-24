@@ -1,8 +1,8 @@
-var express = require('express'),
-  url = require('url'),
-  http = require('http'),
-  fs = require('fs');
-bgg = require('bgg');
+var express = require('express');
+var url = require('url');
+var http = require('http');
+var fs = require('fs');
+//var bgg = require('bgg');
 var app = express();
 
 //Static resourses
@@ -19,13 +19,13 @@ var getXML = function(req, res) {
   try {
     var url_params = url.parse(req.url, true);
 
-    bgg(req.params.parameters, url_params.query).then(function(results) {
+    /*bgg(req.params.parameters, url_params.query).then(function(results) {
       res.writeHead(200, {
         'Content-Type': 'application/json'
       });
       res.write(JSON.stringify(results));
       res.send();
-    });
+    });*/
   } catch (ex) {
     console.log(ex);
   }
