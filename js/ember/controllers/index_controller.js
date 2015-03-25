@@ -1,3 +1,3 @@
-BggBuddy.IndexController = Ember.ObjectController.extend({
-  
+BggBuddy.IndexController = Ember.Controller.extend({
+
 });

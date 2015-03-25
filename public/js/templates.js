@@ -1,6 +1,457 @@
 Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
+  var child0 = (function() {
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0-beta.5",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("          ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("li");
+        var el2 = dom.createTextNode("\n            ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("a");
+        dom.setAttribute(el2,"href","#");
+        var el3 = dom.createTextNode("\n              ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        var el4 = dom.createTextNode("\n                ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("strong");
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n                ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("span");
+        dom.setAttribute(el4,"class","pull-right text-muted");
+        var el5 = dom.createTextNode("\n                  ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("em");
+        var el6 = dom.createComment("");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n                ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n              ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n              ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n            ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n          ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n          ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("li");
+        dom.setAttribute(el1,"class","divider");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, content = hooks.content;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var element9 = dom.childAt(fragment, [1, 1]);
+        var element10 = dom.childAt(element9, [1]);
+        var morph0 = dom.createMorphAt(dom.childAt(element10, [1]),0,0);
+        var morph1 = dom.createMorphAt(dom.childAt(element10, [3, 1]),0,0);
+        var morph2 = dom.createMorphAt(dom.childAt(element9, [3]),0,0);
+        content(env, morph0, context, "singleMessage.author");
+        content(env, morph1, context, "singleMessage.time");
+        content(env, morph2, context, "singleMessage.message");
+        return fragment;
+      }
+    };
+  }());
+  var child1 = (function() {
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0-beta.5",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("          ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("li");
+        var el2 = dom.createTextNode("\n            ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("a");
+        dom.setAttribute(el2,"href","#");
+        var el3 = dom.createTextNode("\n              ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        var el4 = dom.createTextNode("\n                ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("p");
+        var el5 = dom.createTextNode("\n                  ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("strong");
+        var el6 = dom.createComment("");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n                  ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("span");
+        dom.setAttribute(el5,"class","pull-right text-muted");
+        var el6 = dom.createComment("");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("% Complete");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n                ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n                ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","progress progress-striped active");
+        var el5 = dom.createTextNode("\n                  ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"role","progressbar");
+        dom.setAttribute(el5,"aria-valuemin","0");
+        dom.setAttribute(el5,"aria-valuemax","100");
+        var el6 = dom.createTextNode("\n                    ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("span");
+        dom.setAttribute(el6,"class","sr-only");
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("% Complete");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n                  ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n                ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n              ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n            ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n          ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n          ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("li");
+        dom.setAttribute(el1,"class","divider");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, content = hooks.content, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var element6 = dom.childAt(fragment, [1, 1, 1]);
+        var element7 = dom.childAt(element6, [1]);
+        var element8 = dom.childAt(element6, [3, 1]);
+        var morph0 = dom.createMorphAt(dom.childAt(element7, [1]),0,0);
+        var morph1 = dom.createMorphAt(dom.childAt(element7, [3]),0,0);
+        var attrMorph0 = dom.createAttrMorph(element8, 'class');
+        var attrMorph1 = dom.createAttrMorph(element8, 'aria-valuenow');
+        var attrMorph2 = dom.createAttrMorph(element8, 'style');
+        var morph2 = dom.createMorphAt(dom.childAt(element8, [1]),0,0);
+        content(env, morph0, context, "singleTask.name");
+        content(env, morph1, context, "singleTask.progress");
+        attribute(env, attrMorph0, element8, "class", concat(env, ["progress-bar ", get(env, context, "singleTask.barType")]));
+        attribute(env, attrMorph1, element8, "aria-valuenow", concat(env, [get(env, context, "singleTask.progress")]));
+        attribute(env, attrMorph2, element8, "style", concat(env, ["width: ", get(env, context, "singleTask.progress"), "%"]));
+        content(env, morph2, context, "singleTask.progress");
+        return fragment;
+      }
+    };
+  }());
+  var child2 = (function() {
+    var child0 = (function() {
+      var child0 = (function() {
+        return {
+          isHTMLBars: true,
+          revision: "Ember@1.11.0-beta.5",
+          blockParams: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          build: function build(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("                  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("li");
+            var el2 = dom.createTextNode("\n                    ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createElement("a");
+            var el3 = dom.createComment("");
+            dom.appendChild(el2, el3);
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n                  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          render: function render(context, env, contextualElement) {
+            var dom = env.dom;
+            var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+            dom.detectNamespace(contextualElement);
+            var fragment;
+            if (env.useFragmentCache && dom.canClone) {
+              if (this.cachedFragment === null) {
+                fragment = this.build(dom);
+                if (this.hasRendered) {
+                  this.cachedFragment = fragment;
+                } else {
+                  this.hasRendered = true;
+                }
+              }
+              if (this.cachedFragment) {
+                fragment = dom.cloneNode(this.cachedFragment, true);
+              }
+            } else {
+              fragment = this.build(dom);
+            }
+            var element2 = dom.childAt(fragment, [1, 1]);
+            var morph0 = dom.createMorphAt(element2,0,0);
+            var attrMorph0 = dom.createAttrMorph(element2, 'href');
+            attribute(env, attrMorph0, element2, "href", concat(env, [get(env, context, "subMenuOption.link")]));
+            content(env, morph0, context, "subMenuOption.name");
+            return fragment;
+          }
+        };
+      }());
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0-beta.5",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("li");
+          var el2 = dom.createTextNode("\n              ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("a");
+          var el3 = dom.createElement("i");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode(" ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("span");
+          dom.setAttribute(el3,"class","fa arrow");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n              ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("ul");
+          dom.setAttribute(el2,"class","nav nav-second-level");
+          var el3 = dom.createTextNode("\n");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("              ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content, block = hooks.block;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var element3 = dom.childAt(fragment, [1]);
+          var element4 = dom.childAt(element3, [1]);
+          var element5 = dom.childAt(element4, [0]);
+          var attrMorph0 = dom.createAttrMorph(element4, 'href');
+          var attrMorph1 = dom.createAttrMorph(element5, 'class');
+          var morph0 = dom.createMorphAt(element4,2,2);
+          var morph1 = dom.createMorphAt(dom.childAt(element3, [3]),1,1);
+          attribute(env, attrMorph0, element4, "href", concat(env, [get(env, context, "singleOption.link")]));
+          attribute(env, attrMorph1, element5, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
+          content(env, morph0, context, "singleOption.name");
+          block(env, morph1, context, "each", [get(env, context, "singleOption.subMenus")], {"keyword": "subMenuOption"}, child0, null);
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0-beta.5",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("li");
+          var el2 = dom.createTextNode("\n              ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("a");
+          var el3 = dom.createElement("i");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode(" ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var element0 = dom.childAt(fragment, [1, 1]);
+          var element1 = dom.childAt(element0, [0]);
+          var attrMorph0 = dom.createAttrMorph(element0, 'href');
+          var attrMorph1 = dom.createAttrMorph(element1, 'class');
+          var morph0 = dom.createMorphAt(element0,2,2);
+          attribute(env, attrMorph0, element0, "href", concat(env, [get(env, context, "singleOption.link")]));
+          attribute(env, attrMorph1, element1, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
+          content(env, morph0, context, "singleOption.name");
+          return fragment;
+        }
+      };
+    }());
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0-beta.5",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, block = hooks.block;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+        dom.insertBoundary(fragment, null);
+        dom.insertBoundary(fragment, 0);
+        block(env, morph0, context, "if", [get(env, context, "singleOption.subMenus")], {}, child0, child1);
+        return fragment;
+      }
+    };
+  }());
   return {
     isHTMLBars: true,
+    revision: "Ember@1.11.0-beta.5",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -68,7 +519,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("ul");
       dom.setAttribute(el2,"class","nav navbar-top-links navbar-right");
-      var el3 = dom.createTextNode("\n    ");
+      var el3 = dom.createTextNode("\n\n    ");
       dom.appendChild(el2, el3);
       var el3 = dom.createComment(" e-mail icon ");
       dom.appendChild(el2, el3);
@@ -99,105 +550,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el3, el4);
       var el4 = dom.createElement("ul");
       dom.setAttribute(el4,"class","dropdown-menu dropdown-messages");
-      var el5 = dom.createTextNode("\n        ");
+      var el5 = dom.createTextNode("\n");
       dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("strong");
-      var el9 = dom.createTextNode("John Smith");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("span");
-      dom.setAttribute(el8,"class","pull-right text-muted");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("em");
-      var el10 = dom.createTextNode("Yesterday");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
+      var el5 = dom.createComment("");
       dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      dom.setAttribute(el5,"class","divider");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("strong");
-      var el9 = dom.createTextNode("John Smith");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("span");
-      dom.setAttribute(el8,"class","pull-right text-muted");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("em");
-      var el10 = dom.createTextNode("Yesterday");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      dom.setAttribute(el5,"class","divider");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
+      var el5 = dom.createTextNode("        ");
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("li");
       var el6 = dom.createTextNode("\n          ");
@@ -267,145 +624,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el3, el4);
       var el4 = dom.createElement("ul");
       dom.setAttribute(el4,"class","dropdown-menu dropdown-tasks");
-      var el5 = dom.createTextNode("\n        ");
+      var el5 = dom.createTextNode("\n");
       dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("p");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("strong");
-      var el10 = dom.createTextNode("Task 1");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("span");
-      dom.setAttribute(el9,"class","pull-right text-muted");
-      var el10 = dom.createTextNode("40% Complete");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("div");
-      dom.setAttribute(el8,"class","progress progress-striped active");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("div");
-      dom.setAttribute(el9,"class","progress-bar progress-bar-success");
-      dom.setAttribute(el9,"role","progressbar");
-      dom.setAttribute(el9,"aria-valuenow","40");
-      dom.setAttribute(el9,"aria-valuemin","0");
-      dom.setAttribute(el9,"aria-valuemax","100");
-      dom.setAttribute(el9,"style","width: 40%");
-      var el10 = dom.createTextNode("\n                  ");
-      dom.appendChild(el9, el10);
-      var el10 = dom.createElement("span");
-      dom.setAttribute(el10,"class","sr-only");
-      var el11 = dom.createTextNode("40% Complete (success)");
-      dom.appendChild(el10, el11);
-      dom.appendChild(el9, el10);
-      var el10 = dom.createTextNode("\n                ");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
+      var el5 = dom.createComment("");
       dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      dom.setAttribute(el5,"class","divider");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("p");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("strong");
-      var el10 = dom.createTextNode("Task 2");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("span");
-      dom.setAttribute(el9,"class","pull-right text-muted");
-      var el10 = dom.createTextNode("20% Complete");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("div");
-      dom.setAttribute(el8,"class","progress progress-striped active");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("div");
-      dom.setAttribute(el9,"class","progress-bar progress-bar-info");
-      dom.setAttribute(el9,"role","progressbar");
-      dom.setAttribute(el9,"aria-valuenow","20");
-      dom.setAttribute(el9,"aria-valuemin","0");
-      dom.setAttribute(el9,"aria-valuemax","100");
-      dom.setAttribute(el9,"style","width: 20%");
-      var el10 = dom.createTextNode("\n                  ");
-      dom.appendChild(el9, el10);
-      var el10 = dom.createElement("span");
-      dom.setAttribute(el10,"class","sr-only");
-      var el11 = dom.createTextNode("20% Complete");
-      dom.appendChild(el10, el11);
-      dom.appendChild(el9, el10);
-      var el10 = dom.createTextNode("\n                ");
-      dom.appendChild(el9, el10);
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      dom.setAttribute(el5,"class","divider");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
+      var el5 = dom.createTextNode("        ");
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("li");
       var el6 = dom.createTextNode("\n          ");
@@ -744,95 +967,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       var el6 = dom.createTextNode("\n        ");
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
+      var el5 = dom.createTextNode("\n\n");
       dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createElement("i");
-      dom.setAttribute(el7,"class","fa fa-gamepad fa-fw");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode(" Last plays");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
+      var el5 = dom.createComment("");
       dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createElement("i");
-      dom.setAttribute(el7,"class","fa fa-bar-chart-o fa-fw");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode(" Charts");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("span");
-      dom.setAttribute(el7,"class","fa arrow");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("ul");
-      dom.setAttribute(el6,"class","nav nav-second-level");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("li");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("a");
-      dom.setAttribute(el8,"href","#");
-      var el9 = dom.createTextNode("Owned games by year");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("li");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("a");
-      dom.setAttribute(el8,"href","#");
-      var el9 = dom.createTextNode("Plays by month");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createComment(" /.nav-second-level ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("a");
-      dom.setAttribute(el6,"href","#");
-      var el7 = dom.createElement("i");
-      dom.setAttribute(el7,"class","fa fa-table fa-fw");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode(" Tables");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n      ");
+      var el5 = dom.createTextNode("      ");
       dom.appendChild(el4, el5);
       dom.appendChild(el3, el4);
       var el4 = dom.createTextNode("\n    ");
@@ -859,6 +998,8 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       dom.setAttribute(el1,"id","page-wrapper");
       var el2 = dom.createTextNode("\n");
       dom.appendChild(el1, el2);
+      var el2 = dom.createComment("");
+      dom.appendChild(el1, el2);
       var el2 = dom.createTextNode("\n");
       dom.appendChild(el1, el2);
       dom.appendChild(el0, el1);
@@ -868,7 +1009,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, content = hooks.content;
+      var hooks = env.hooks, get = hooks.get, block = hooks.block, content = hooks.content;
       dom.detectNamespace(contextualElement);
       var fragment;
       if (env.useFragmentCache && dom.canClone) {
@@ -886,8 +1027,16 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       } else {
         fragment = this.build(dom);
       }
-      var morph0 = dom.createMorphAt(dom.childAt(fragment, [4]),0,1);
-      content(env, morph0, context, "outlet");
+      var element11 = dom.childAt(fragment, [2]);
+      var element12 = dom.childAt(element11, [5]);
+      var morph0 = dom.createMorphAt(dom.childAt(element12, [3, 3]),1,1);
+      var morph1 = dom.createMorphAt(dom.childAt(element12, [9, 3]),1,1);
+      var morph2 = dom.createMorphAt(dom.childAt(element11, [9, 1, 1]),3,3);
+      var morph3 = dom.createMorphAt(dom.childAt(fragment, [4]),1,1);
+      block(env, morph0, context, "each", [get(env, context, "model.messages")], {"keyword": "singleMessage"}, child0, null);
+      block(env, morph1, context, "each", [get(env, context, "model.tasks")], {"keyword": "singleTask"}, child1, null);
+      block(env, morph2, context, "each", [get(env, context, "model.sideMenuOptions")], {"keyword": "singleOption"}, child2, null);
+      content(env, morph3, context, "outlet");
       return fragment;
     }
   };
@@ -896,6 +1045,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
 Ember.TEMPLATES["index"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
+    revision: "Ember@1.11.0-beta.5",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
