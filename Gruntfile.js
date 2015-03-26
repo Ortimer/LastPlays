@@ -70,6 +70,10 @@ module.exports = function(grunt) {
           'fonts': 'bootstrap/dist/fonts/*',
           'js/bootstrap.js': 'bootstrap/dist/js/bootstrap.js',
 
+          // Bootstrap 3 - Modal
+          'css/bootstrap-dialog.css': 'bootstrap3-dialog/dist/css/bootstrap-dialog.css',
+          'js/bootstrap-dialog.js': 'bootstrap3-dialog/dist/js/bootstrap-dialog.js',
+
           // Font - Awesome
           'css/font-awesome.css': 'font-awesome/css/font-awesome.css',
           'css/font-awesome.css.map': 'font-awesome/css/font-awesome.css.map',
