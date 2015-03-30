@@ -38,7 +38,10 @@ var getBggData = function(path, argsParameters, callbackFunction) {
   client.get('http://www.boardgamegeek.com/xmlapi2/' + path, args, function(data, response){
     // parsed response body as js object
     parser.parseString(data, function (err, result) {
-      callbackFunction(JSON.stringify(result));
+      if (err) {
+        console.log(err);
+      }
+      callbackFunction(result);
     });
   });
 }
@@ -136,16 +139,47 @@ var getMenu = function(req, res) {
 }
 
 var getBggUser = function(req, res) {
-  var args = {
-    name: 'arael'
-  };
+  getBggData('user', req.query, function (data) {
+    var bggUser = {};
 
-  getBggData('user', args, function (data) {
+    bggUser.username = data.user.$.name;
+
     res.writeHead(200, {
       'Content-Type': 'application/json'
     });
-    res.write(data);
+    res.write(JSON.stringify(bggUser));
     res.send();
+  });
+}
+
+var getBggPlays = function(req, res) {
+  getBggData('collection', req.query, function (data) {
+    var collectionData = {
+      collection: []
+    };
+
+    if(data.message != null){
+      setTimeout(function() {
+        getBggPlays(req, res);
+      }, 3000);
+    }else{
+
+      data.items.item.forEach(function(item){
+        var game = {};
+
+        game.bggUrl = 'https://www.boardgamegeek.com/boardgame/' + item.$.objectid;
+        game.name = item.name[0]._;
+        game.image = item.thumbnail[0];
+
+        collectionData.collection.push(game);
+      });
+
+      res.writeHead(200, {
+        'Content-Type': 'application/json'
+      });
+      res.write(JSON.stringify(collectionData));
+      res.send();
+    }
   });
 }
 
@@ -153,5 +187,6 @@ var getBggUser = function(req, res) {
 app.get('/', home);
 app.get('/menuInfo', getMenu);
 app.get('/bggUser', getBggUser);
+app.get('/bggPlays', getBggPlays);
 
 app.listen(process.env.PORT || 3000); //the port you want to use

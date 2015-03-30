@@ -11,34 +11,38 @@ div.list-article {
       padding-right: 75px;
       height: 150px;
       margin-bottom: 30px;
-      background-color: #FFF;
+      background-color: #EEE;
       -moz-border-radius: 150px;
       -webkit-border-radius: 150px;
       border-radius: 150px;
       cursor: pointer;
-      .img-wrapper {
-          position: absolute;
-          top: -10px;
-          left: -10px;
-          -moz-border-radius: 100px;
-          -webkit-border-radius: 100px;
-          border-radius: 100px;
-          background-color: #CDE;
-          padding: 10px;
-          z-index: 1000;
-          -moz-transition: all 0.2s;
-          -o-transition: all 0.2s;
-          -webkit-transition: all 0.2s;
-          transition: all 0.2s;
-          img {
-              -moz-border-radius: 100px;
-              -webkit-border-radius: 100px;
-              border-radius: 100px;
-              -moz-transition: all 0.2s;
-              -o-transition: all 0.2s;
-              -webkit-transition: all 0.2s;
-              transition: all 0.2s;
-              width: 150px;
+      .img-external-wrapper {
+        line-height: 150px;
+        .img-wrapper {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            -moz-border-radius: 100px;
+            -webkit-border-radius: 100px;
+            border-radius: 100px;
+            background-color: #CDE;
+            padding: 10px;
+            z-index: 1000;
+            -moz-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            img {
+                -moz-border-radius: 100px;
+                -webkit-border-radius: 100px;
+                border-radius: 100px;
+                -moz-transition: all 0.2s;
+                -o-transition: all 0.2s;
+                -webkit-transition: all 0.2s;
+                transition: all 0.2s;
+                max-height: 150px;
+                width: 150px;
+            }
           }
       }
       h1 {
@@ -64,7 +68,7 @@ div.list-article {
           line-height: 150px;
           text-align: center;
           width: 100%;
-          background-color: #FFF;
+          background-color: #EEE;
           font-size: 48px;
           font-style: italic;
           opacity: 0;
