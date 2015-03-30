@@ -33,7 +33,5 @@ BggBuddy.ApplicationView = Ember.View.extend({
         element.addClass('active');
     }
     */
-
-    BootstrapDialog.alert('I want banana!');
   }
 });

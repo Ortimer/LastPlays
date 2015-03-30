@@ -2,7 +2,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0-beta.5",
+      revision: "Ember@1.11.0",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -96,7 +96,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   var child1 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0-beta.5",
+      revision: "Ember@1.11.0",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -220,7 +220,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       var child0 = (function() {
         return {
           isHTMLBars: true,
-          revision: "Ember@1.11.0-beta.5",
+          revision: "Ember@1.11.0",
           blockParams: 0,
           cachedFragment: null,
           hasRendered: false,
@@ -273,7 +273,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }());
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0-beta.5",
+        revision: "Ember@1.11.0",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -351,7 +351,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
     var child1 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0-beta.5",
+        revision: "Ember@1.11.0",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -411,7 +411,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0-beta.5",
+      revision: "Ember@1.11.0",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -451,7 +451,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   }());
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0-beta.5",
+    revision: "Ember@1.11.0",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -1042,31 +1042,96 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   };
 }()));
 
-Ember.TEMPLATES["index"] = Ember.HTMLBars.template((function() {
+Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0-beta.5",
+    revision: "Ember@1.11.0",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
     build: function build(dom) {
       var el0 = dom.createDocumentFragment();
       var el1 = dom.createElement("div");
-      dom.setAttribute(el1,"class","container-fluid");
+      dom.setAttribute(el1,"class","container list-article");
       var el2 = dom.createTextNode("\n  ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","col-xs-12 col-md-8");
+      dom.setAttribute(el2,"class","btn-group pull-right");
+      dom.setAttribute(el2,"id","switch-view");
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("button");
+      dom.setAttribute(el3,"class","btn btn-primary");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("i");
+      dom.setAttribute(el4,"class","fa fa-th-large");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("button");
+      dom.setAttribute(el3,"class","btn btn-primary active");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("i");
+      dom.setAttribute(el4,"class","fa fa-list");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n  ");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n  ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("div");
+      dom.setAttribute(el2,"class","clearfix");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n  ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("div");
+      dom.setAttribute(el2,"class","row");
       var el3 = dom.createTextNode("\n    ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
-      dom.setAttribute(el3,"class","form-group");
+      dom.setAttribute(el3,"class","col-xs-12 article-wrapper");
       var el4 = dom.createTextNode("\n      ");
       dom.appendChild(el3, el4);
-      var el4 = dom.createElement("input");
-      dom.setAttribute(el4,"type","text");
-      dom.setAttribute(el4,"class","form-control input-lg");
-      dom.setAttribute(el4,"placeholder","Bgg user");
+      var el4 = dom.createElement("article");
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("a");
+      dom.setAttribute(el5,"href","#");
+      dom.setAttribute(el5,"class","more");
+      var el6 = dom.createTextNode("more");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("div");
+      dom.setAttribute(el5,"class","img-wrapper");
+      var el6 = dom.createElement("img");
+      dom.setAttribute(el6,"src","http://lorempixel.com/150/150/fashion");
+      dom.setAttribute(el6,"alt","");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("h1");
+      var el6 = dom.createTextNode("Lorem ipsum dolor.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("p");
+      var el6 = dom.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ducimus totam quasi nam porro sed.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n      ");
+      dom.appendChild(el4, el5);
       dom.appendChild(el3, el4);
       var el4 = dom.createTextNode("\n    ");
       dom.appendChild(el3, el4);
@@ -1074,12 +1139,166 @@ Ember.TEMPLATES["index"] = Ember.HTMLBars.template((function() {
       var el3 = dom.createTextNode("\n    ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
-      dom.setAttribute(el3,"class","form-group");
+      dom.setAttribute(el3,"class","col-xs-12 article-wrapper");
       var el4 = dom.createTextNode("\n      ");
       dom.appendChild(el3, el4);
-      var el4 = dom.createElement("button");
-      dom.setAttribute(el4,"class","btn btn-primary btn-lg btn-block");
-      var el5 = dom.createTextNode("Login");
+      var el4 = dom.createElement("article");
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("a");
+      dom.setAttribute(el5,"href","#");
+      dom.setAttribute(el5,"class","more");
+      var el6 = dom.createTextNode("more");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("div");
+      dom.setAttribute(el5,"class","img-wrapper");
+      var el6 = dom.createElement("img");
+      dom.setAttribute(el6,"src","http://lorempixel.com/150/150/city");
+      dom.setAttribute(el6,"alt","");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("h1");
+      var el6 = dom.createTextNode("Dignissimos perferendis quae.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("p");
+      var el6 = dom.createTextNode("Numquam dolorem sed quae placeat iusto! Quibusdam doloremque enim assumenda aliquam impedit earum alias labore.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n      ");
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","col-xs-12 article-wrapper");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("article");
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("a");
+      dom.setAttribute(el5,"href","#");
+      dom.setAttribute(el5,"class","more");
+      var el6 = dom.createTextNode("more");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("div");
+      dom.setAttribute(el5,"class","img-wrapper");
+      var el6 = dom.createElement("img");
+      dom.setAttribute(el6,"src","http://lorempixel.com/150/150/food");
+      dom.setAttribute(el6,"alt","");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("h1");
+      var el6 = dom.createTextNode("Quisquam deserunt cumque!");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("p");
+      var el6 = dom.createTextNode("Dolor tempora nihil facere explicabo qui mollitia deleniti quam quia iure nisi voluptate voluptatibus cum.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n      ");
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","col-xs-12 article-wrapper");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("article");
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("a");
+      dom.setAttribute(el5,"href","#");
+      dom.setAttribute(el5,"class","more");
+      var el6 = dom.createTextNode("more");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("div");
+      dom.setAttribute(el5,"class","img-wrapper");
+      var el6 = dom.createElement("img");
+      dom.setAttribute(el6,"src","http://lorempixel.com/150/150/nature");
+      dom.setAttribute(el6,"alt","");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("h1");
+      var el6 = dom.createTextNode("Velit natus possimus.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("p");
+      var el6 = dom.createTextNode("Illum voluptates nisi asperiores temporibus illo maiores qui aliquid corporis exercitationem libero dolor tenetur. Doloremque!");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n      ");
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","col-xs-12 article-wrapper");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("article");
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("a");
+      dom.setAttribute(el5,"href","#");
+      dom.setAttribute(el5,"class","more");
+      var el6 = dom.createTextNode("more");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("div");
+      dom.setAttribute(el5,"class","img-wrapper");
+      var el6 = dom.createElement("img");
+      dom.setAttribute(el6,"src","http://lorempixel.com/150/150/abstract");
+      dom.setAttribute(el6,"alt","");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("h1");
+      var el6 = dom.createTextNode("Atque quo maxime.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n        ");
+      dom.appendChild(el4, el5);
+      var el5 = dom.createElement("p");
+      var el6 = dom.createTextNode("Sed eveniet iste magni possimus ipsum dolore ea nesciunt eligendi id. Eum quos voluptatibus ullam.");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      var el5 = dom.createTextNode("\n      ");
       dom.appendChild(el4, el5);
       dom.appendChild(el3, el4);
       var el4 = dom.createTextNode("\n    ");

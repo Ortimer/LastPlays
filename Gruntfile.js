@@ -36,7 +36,7 @@ module.exports = function(grunt) {
           handlebarsPath: 'bower_components/handlebars/handlebars.js'
         },
         files: {
-          "public/js/templates.js": "templates/*.hbs"
+          "public/js/templates.js": "templates/**/*.hbs"
         }
       }
     },
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
           'js/jquery.js': 'jquery/dist/jquery.min.js',
 
           // Ember + Handlebars
-          'js/ember.js': 'ember/ember.js',
+          'js/ember.js': 'ember/ember.debug.js',
           'js/handlebars.js': 'handlebars/handlebars.js',
 
           // Konami
@@ -94,8 +94,15 @@ module.exports = function(grunt) {
         }
       },
       templates: {
-        files: ['templates/*.hbs'], // which files to watch
+        files: ['templates/**/*.hbs'], // which files to watch
         tasks: ['emberTemplates'],
+        options: {
+          nospawn: true
+        }
+      },
+      javascript: {
+        files: ['js/**/*.js'], // which files to watch
+        tasks: ['uglify'],
         options: {
           nospawn: true
         }

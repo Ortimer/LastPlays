@@ -2,109 +2,126 @@ var express = require('express');
 var url = require('url');
 var http = require('http');
 var fs = require('fs');
-var bgg = require('bgg');
 var app = express();
+var Client = require('node-rest-client').Client;
+var xml2js = require('xml2js');
+var parser = new xml2js.Parser();
 
+// configure proxy
+var options_proxy = {};
+
+if (process.argv[2] != null && process.argv[2].toLowerCase() == 'proxy') {
+  options_proxy = {
+    proxy:{
+      host:'10.10.10.11',
+      port:8080,
+      tunnel:false
+    }
+  };
+}
 
 //Static resourses
-app.use(express.static(__dirname + "/public", {
+app.use(express.static(__dirname + '/public', {
   maxAge: 86400000
 }));
+
+// BGG Function
+var getBggData = function(path, argsParameters, callbackFunction) {
+  var client = new Client(options_proxy);
+
+  // set content-type header and data as json in args parameter
+  var args = {
+    parameters:argsParameters
+  };
+
+  // direct way
+  client.get('http://www.boardgamegeek.com/xmlapi2/' + path, args, function(data, response){
+    // parsed response body as js object
+    parser.parseString(data, function (err, result) {
+      callbackFunction(JSON.stringify(result));
+    });
+  });
+}
 
 // Funcion home
 var home = function(req, res) {
   res.sendFile(__dirname + '/index.html');
 };
 
-var getData = function(req, res) {
-  var url_params = url.parse(req.url, true);
-
-  bgg(req.params.parameters, url_params.query).then(function(results) {
-    res.writeHead(200, {
-      'Content-Type': 'application/json'
-    },
-    function(error) {
-      console.log(error);
-    });
-    res.write(JSON.stringify(results));
-    res.send();
-  });
-}
-
 var getMenu = function(req, res) {
   var menu = {
     messages: [
       {
-        author: "John Smith",
-        time: "Yesterday",
-        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend..."
+        author: 'John Smith',
+        time: 'Yesterday',
+        message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
       },
       {
-        author: "John Doe",
-        time: "3 days ago",
-        message: "Bacon ipsum dolor amet porchetta flank turducken, pork belly beef ribs bresaola chuck swine beef turkey jerky picanha leberkas..."
+        author: 'John Doe',
+        time: '3 days ago',
+        message: 'Bacon ipsum dolor amet porchetta flank turducken, pork belly beef ribs bresaola chuck swine beef turkey jerky picanha leberkas...'
       }
     ],
     tasks: [
       {
-        name: "Task 1",
+        name: 'Task 1',
         progress: 42,
-        barType: "progress-bar-success"
+        barType: 'progress-bar-success'
       },
       {
-        name: "Task 2",
+        name: 'Task 2',
         progress: 15,
-        barType: "progress-bar-info"
+        barType: 'progress-bar-info'
       },
       {
-        name: "Task 3",
+        name: 'Task 3',
         progress: 80,
-        barType: "progress-bar-warning"
+        barType: 'progress-bar-warning'
       },
       {
-        name: "Task 4",
+        name: 'Task 4',
         progress: 5,
-        barType: "progress-bar-danger"
+        barType: 'progress-bar-danger'
       }
     ],
     sideMenuOptions: [
       {
-        name: "Last plays",
-        icon: "fa-gamepad",
-        link: "#"
+        name: 'Last plays',
+        icon: 'fa-gamepad',
+        link: '#'
       },
       {
-        name: "Charts",
-        icon: "fa-bar-chart-o",
-        link: "#",
+        name: 'Charts',
+        icon: 'fa-bar-chart-o',
+        link: '#',
         subMenus: [
           {
-            name: "Owned games by year",
-            link: "#"
+            name: 'Owned games by year',
+            link: '#'
           },
           {
-            name: "Plays by month",
-            link: "#"
+            name: 'Plays by month',
+            link: '#'
           }
         ]
       },
       {
-        name: "Tables",
-        icon: "fa-table",
-        link: "#"
+        name: 'Tables',
+        icon: 'fa-table',
+        link: '#'
       },
       {
-        name: "Stats",
-        icon: "fa-pie-chart",
-        link: "#",
+        name: 'Stats',
+        icon: 'fa-pie-chart',
+        link: '#',
         subMenus: [
           {
-            name: "H-Index",
-            link: "#"
+            name: 'H-Index',
+            link: '#'
           },
           {
-            name: "Money spend",
-            link: "#"
+            name: 'Money spend',
+            link: '#'
           }
         ]
       }
@@ -118,19 +135,23 @@ var getMenu = function(req, res) {
   res.send();
 }
 
+var getBggUser = function(req, res) {
+  var args = {
+    name: 'arael'
+  };
+
+  getBggData('user', args, function (data) {
+    res.writeHead(200, {
+      'Content-Type': 'application/json'
+    });
+    res.write(data);
+    res.send();
+  });
+}
+
 // Routes
 app.get('/', home);
 app.get('/menuInfo', getMenu);
-app.get('/plays/:bggUser', home);
-app.get('/bggData/:parameters', getData);
-
-bgg('user', {name: 'arael'}).then(
-  function(response) {
-    console.log('response: ', response);
-  },
-  function(response) {
-    console.error('response error: ', response);
-  }
-);
+app.get('/bggUser', getBggUser);
 
 app.listen(process.env.PORT || 3000); //the port you want to use
