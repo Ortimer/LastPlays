@@ -1055,7 +1055,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el1 = dom.createTextNode("      ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1,"class","col-xs-12 article-wrapper");
+        dom.setAttribute(el1,"class","article-wrapper col-xs-12");
         var el2 = dom.createTextNode("\n        ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("article");
@@ -1155,11 +1155,11 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
     build: function build(dom) {
       var el0 = dom.createDocumentFragment();
       var el1 = dom.createElement("div");
-      dom.setAttribute(el1,"class","container list-article");
+      dom.setAttribute(el1,"class","container-fluid list-article");
       var el2 = dom.createTextNode("\n  ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","btn-group pull-right");
+      dom.setAttribute(el2,"class","btn-group pull-right hidden-xs hidden-sm");
       dom.setAttribute(el2,"id","switch-view");
       var el3 = dom.createTextNode("\n    ");
       dom.appendChild(el2, el3);
@@ -1232,7 +1232,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         fragment = this.build(dom);
       }
       var morph0 = dom.createMorphAt(dom.childAt(fragment, [0, 5]),1,1);
-      block(env, morph0, context, "each", [get(env, context, "collection")], {"keyword": "gameEntry"}, child0, null);
+      block(env, morph0, context, "each", [get(env, context, "model.collection")], {"keyword": "gameEntry"}, child0, null);
       return fragment;
     }
   };

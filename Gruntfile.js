@@ -2,14 +2,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     uglify: {
       options: {
-        compress: true,
-        report: true,
-        banner: '/*!<%= grunt.template.date() %> */\n'
+        banner: '/*!<%= grunt.template.date() %> */\n',
+        mangle: false
       },
       app: {
         files: {
           'public/js/app.min.js': [
-            'js/konami.js',
             'js/ember/**/*.js'
           ]
         }
