@@ -1068,15 +1068,20 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n          ");
         dom.appendChild(el2, el3);
-        var el3 = dom.createElement("div");
-        dom.setAttribute(el3,"class","img-external-wrapper");
+        var el3 = dom.createElement("table");
+        dom.setAttribute(el3,"class","img-wrapper");
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","img-wrapper");
+        var el4 = dom.createElement("tr");
         var el5 = dom.createTextNode("\n              ");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("img");
+        var el5 = dom.createElement("td");
+        var el6 = dom.createTextNode("\n                ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("img");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n              ");
+        dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n            ");
         dom.appendChild(el4, el5);
@@ -1128,7 +1133,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         }
         var element0 = dom.childAt(fragment, [1, 1]);
         var element1 = dom.childAt(element0, [1]);
-        var element2 = dom.childAt(element0, [3, 1, 1]);
+        var element2 = dom.childAt(element0, [3, 1, 1, 1]);
         var attrMorph0 = dom.createAttrMorph(element1, 'href');
         var attrMorph1 = dom.createAttrMorph(element2, 'src');
         var attrMorph2 = dom.createAttrMorph(element2, 'alt');

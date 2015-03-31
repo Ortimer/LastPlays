@@ -29,6 +29,8 @@
     "ember": "~1.11.0"
   },
   "resolutions": {
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "handlebars": "2.0.0",
+    "ember": "~1.11.0"
   }
 }

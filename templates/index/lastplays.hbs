@@ -13,11 +13,13 @@
       <div class="col-xs-12 article-wrapper">
         <article>
           <a href="{{gameEntry.bggUrl}}" class="gotoBgg">Go to BGG</a>
-          <div class="img-external-wrapper">
-            <div class="img-wrapper">
-              <img src="{{gameEntry.image}}" alt="{{gameEntry.name}}" />
-            </div>
-          </div>
+          <table class="img-wrapper">
+            <tr>
+              <td>
+                <img src="{{gameEntry.image}}" alt="{{gameEntry.name}}" />
+              </td>
+            </tr>
+          </table>
           <h1>{{gameEntry.name}}</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ducimus totam quasi nam porro sed.</p>
         </article>
