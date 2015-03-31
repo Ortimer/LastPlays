@@ -12,36 +12,32 @@ var options_proxy = {};
 
 if (process.argv[2] != null && process.argv[2].toLowerCase() == 'proxy') {
   options_proxy = {
-    proxy:{
-      host:'10.10.10.11',
-      port:8080,
-      tunnel:false
+    "proxy":{
+      "host":'10.10.10.11',
+      "port":8080,
+      "tunnel":false
     }
   };
 }
+var client = new Client(options_proxy);
 
 //Static resourses
 app.use(express.static(__dirname + '/public', {
-  maxAge: 86400000
+  "maxAge": 86400000
 }));
 
 // BGG Function
 var getBggData = function(path, argsParameters, callbackFunction) {
-  var client = new Client(options_proxy);
-
   // set content-type header and data as json in args parameter
   var args = {
-    parameters:argsParameters
+    "parameters":argsParameters
   };
 
   // direct way
   client.get('http://www.boardgamegeek.com/xmlapi2/' + path, args, function(data, response){
     // parsed response body as js object
     parser.parseString(data, function (err, result) {
-      if (err) {
-        console.log(err);
-      }
-      callbackFunction(result);
+      callbackFunction(err, result);
     });
   });
 }
@@ -53,78 +49,78 @@ var home = function(req, res) {
 
 var getMenu = function(req, res) {
   var menu = {
-    messages: [
+    "messages": [
       {
-        author: 'John Smith',
-        time: 'Yesterday',
-        message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
+        "author": 'John Smith',
+        "time": 'Yesterday',
+        "message": 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...'
       },
       {
-        author: 'John Doe',
-        time: '3 days ago',
-        message: 'Bacon ipsum dolor amet porchetta flank turducken, pork belly beef ribs bresaola chuck swine beef turkey jerky picanha leberkas...'
+        "author": 'John Doe',
+        "time": '3 days ago',
+        "message": 'Bacon ipsum dolor amet porchetta flank turducken, pork belly beef ribs bresaola chuck swine beef turkey jerky picanha leberkas...'
       }
     ],
-    tasks: [
+    "tasks": [
       {
-        name: 'Task 1',
-        progress: 42,
-        barType: 'progress-bar-success'
+        "name": 'Task 1',
+        "progress": 42,
+        "barType": 'progress-bar-success'
       },
       {
-        name: 'Task 2',
-        progress: 15,
-        barType: 'progress-bar-info'
+        "name": 'Task 2',
+        "progress": 15,
+        "barType": 'progress-bar-info'
       },
       {
-        name: 'Task 3',
-        progress: 80,
-        barType: 'progress-bar-warning'
+        "name": 'Task 3',
+        "progress": 80,
+        "barType": 'progress-bar-warning'
       },
       {
-        name: 'Task 4',
-        progress: 5,
-        barType: 'progress-bar-danger'
+        "name": 'Task 4',
+        "progress": 5,
+        "barType": 'progress-bar-danger'
       }
     ],
-    sideMenuOptions: [
+    "sideMenuOptions": [
       {
-        name: 'Last plays',
-        icon: 'fa-gamepad',
-        link: '#'
+        "name": 'Last plays',
+        "icon": 'fa-gamepad',
+        "link": '#'
       },
       {
-        name: 'Charts',
-        icon: 'fa-bar-chart-o',
-        link: '#',
-        subMenus: [
+        "name": 'Charts',
+        "icon": 'fa-bar-chart-o',
+        "link": '#',
+        "subMenus": [
           {
-            name: 'Owned games by year',
-            link: '#'
+            "name": 'Owned games by year',
+            "link": '#'
           },
           {
-            name: 'Plays by month',
-            link: '#'
+            "name": 'Plays by month',
+            "link": '#'
           }
         ]
       },
       {
-        name: 'Tables',
-        icon: 'fa-table',
-        link: '#'
+        "name": 'Tables',
+        "icon": 'fa-table',
+        "link": '#'
       },
       {
-        name: 'Stats',
-        icon: 'fa-pie-chart',
-        link: '#',
-        subMenus: [
+        "name": 'Stats',
+        "icon": 'fa-pie-chart',
+        "link": '#',
+        "subMenus": [
           {
-            name: 'H-Index',
-            link: '#'
+            "name": 'H-Index',
+            "link": '#'
           },
           {
-            name: 'Money spend',
-            link: '#'
+            "name": 'Money spend',
+            "link": '#'
           }
         ]
       }
@@ -139,7 +135,13 @@ var getMenu = function(req, res) {
 }
 
 var getBggUser = function(req, res) {
-  getBggData('user', req.query, function (data) {
+  getBggData('user', req.query, function (error, data) {
+    if (error) {
+      res.writeHead(500);
+      res.write(error.message);
+      res.send();
+    }
+
     var bggUser = {};
 
     bggUser.username = data.user.$.name;
@@ -153,32 +155,62 @@ var getBggUser = function(req, res) {
 }
 
 var getBggPlays = function(req, res) {
-  getBggData('collection', req.query, function (data) {
+  getBggData('collection', req.query, function (error, data) {
+    if (error) {
+      res.writeHead(500);
+      res.write(error.message);
+      res.send();
+    }
+
     var collectionData = {
-      collection: []
+      "collection": []
     };
 
-    if(data.message != null){
-      setTimeout(function() {
-        getBggPlays(req, res);
-      }, 3000);
-    }else{
-
-      data.items.item.forEach(function(item){
+    if(data.items){
+      data.items.item.forEach(function(item, index){
         var game = {};
 
+        game.id = item.$.objectid;
         game.bggUrl = 'https://www.boardgamegeek.com/boardgame/' + item.$.objectid;
         game.name = item.name[0]._;
         game.image = item.thumbnail[0];
+        game.totalPlays = item.numplays[0];
+
+        var playsParams = {
+          "username": req.query.username,
+          "id": item.$.objectid
+        };
 
         collectionData.collection.push(game);
-      });
 
-      res.writeHead(200, {
-        'Content-Type': 'application/json'
+        if (game.totalPlays > 0) {
+          getBggData('plays', playsParams, function (error, playData) {
+            if (error) {
+              res.writeHead(500);
+              res.write(error.message);
+              res.send();
+            }
+
+            if (playData.plays) {
+              game.lastplay = playData.plays.play[0].$.date;
+
+              collectionData.collection.push(game);
+
+              if (index === data.items.item.length - 1) {
+                res.writeHead(200, {
+                  'Content-Type': 'application/json'
+                });
+                res.write(JSON.stringify(collectionData));
+                res.send();
+              }
+            }
+          });
+        }
       });
-      res.write(JSON.stringify(collectionData));
-      res.send();
+    }else{
+      setTimeout(function() {
+        getBggPlays(req, res);
+      }, 3000);
     }
   });
 }
