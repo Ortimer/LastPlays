@@ -42,8 +42,6 @@ BggBuddy.ApplicationView = Ember.View.extend({
       }
     });
 
-    $('#side-menu').metisMenu();
-
     var changeMenu = function() {
       var topOffset = 50;
       var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;

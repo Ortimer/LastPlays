@@ -49,10 +49,13 @@ module.exports = function(grunt) {
         files: {
           // Jquery
           'js/jquery.js': 'jquery/dist/jquery.min.js',
+          'js/jquery.min.map': 'jquery/dist/jquery.min.map',
 
           // Ember + Handlebars
           'js/ember.js': 'ember/ember.debug.js',
           'js/handlebars.js': 'handlebars/handlebars.js',
+          'js/ember-data.js': 'ember-data/ember-data.js',
+          'js/ember-data.js.map': 'ember-data/ember-data.js.map',
 
           // Konami
           'js/konami.js': 'konami-js/konami.js',
