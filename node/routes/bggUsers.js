@@ -2,7 +2,7 @@ var express = require('express');
 var getBggData = require('../bgg');
 var router = express.Router();
 
-// Get an expecific id
+// Get bgg user data
 router.get('/:username', function(req, res) {
   try {
     var args = {
@@ -11,13 +11,13 @@ router.get('/:username', function(req, res) {
     var bggUserData = getBggData('user', args);
 
     var bggUser = {};
-    bggUser.userName = bggUserData.user.$.name;
+    bggUser.id = bggUserData.user.$.name;
     bggUser.firstName = bggUserData.user.firstname[0].$.value;
     bggUser.lastName = bggUserData.user.lastname[0].$.value;
     bggUser.avatarLink = 'http:' + bggUserData.user.avatarlink[0].$.value;
 
     bggUser = {
-      "bggUser": bggUser
+      'bggUser': bggUser
     };
 
     res.writeHead(200, {
@@ -34,6 +34,5 @@ router.get('/:username', function(req, res) {
     res.send();
   }
 });
-
 
 module.exports = router;

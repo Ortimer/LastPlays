@@ -15,13 +15,13 @@ var menuMessages = [{
 
 // Get an expecific id
 router.get('/:id', function(req, res) {
-  var result = menuMessages.filter(function( obj ) {
+  var result = menuMessages.filter(function(obj) {
     return obj.id == req.params.id;
   });
 
   if (result[0]) {
     var response = {
-      'menuMessage' : result[0]
+      'menuMessage': result[0]
     }
 
 

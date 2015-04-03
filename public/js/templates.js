@@ -143,6 +143,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         dom.setAttribute(el5,"role","progressbar");
         dom.setAttribute(el5,"aria-valuemin","0");
         dom.setAttribute(el5,"aria-valuemax","100");
+        dom.setAttribute(el5,"style","width: 40%");
         var el6 = dom.createTextNode("\n                    ");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("span");
@@ -203,13 +204,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         var morph1 = dom.createMorphAt(dom.childAt(element7, [3]),0,0);
         var attrMorph0 = dom.createAttrMorph(element8, 'class');
         var attrMorph1 = dom.createAttrMorph(element8, 'aria-valuenow');
-        var attrMorph2 = dom.createAttrMorph(element8, 'style');
         var morph2 = dom.createMorphAt(dom.childAt(element8, [1]),0,0);
         content(env, morph0, context, "singleTask.name");
         content(env, morph1, context, "singleTask.progress");
         attribute(env, attrMorph0, element8, "class", concat(env, ["progress-bar ", get(env, context, "singleTask.barType")]));
         attribute(env, attrMorph1, element8, "aria-valuenow", concat(env, [get(env, context, "singleTask.progress")]));
-        attribute(env, attrMorph2, element8, "style", concat(env, ["width: ", get(env, context, "singleTask.progress"), "%"]));
         content(env, morph2, context, "singleTask.progress");
         return fragment;
       }
@@ -1232,7 +1231,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         fragment = this.build(dom);
       }
       var morph0 = dom.createMorphAt(dom.childAt(fragment, [0, 5]),1,1);
-      block(env, morph0, context, "each", [get(env, context, "model.collection")], {"keyword": "gameEntry"}, child0, null);
+      block(env, morph0, context, "each", [get(env, context, "model.games")], {"keyword": "gameEntry"}, child0, null);
       return fragment;
     }
   };

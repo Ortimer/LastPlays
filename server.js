@@ -29,56 +29,7 @@ app.use('/menuSideSubs', require('./node/routes/menuSideSubs'));
 
 // BGG routes
 app.use('/bggUsers', require('./node/routes/bggUsers'));
-
-var getBggPlays = function(req, res) {
-  try {
-    var collectionData = {
-      'collection': []
-    };
-    var bggCollectionData = getBggData('collection', req.query);
-
-    if (bggCollectionData.items) {
-      bggCollectionData.items.item.forEach(function(item, index) {
-        var game = {};
-
-        game.id = item.$.objectid;
-        game.bggUrl = 'https://www.boardgamegeek.com/boardgame/' + item.$.objectid;
-        game.name = item.name[0]._;
-        game.image = item.thumbnail[0];
-        game.totalPlays = item.numplays[0];
-
-        if (game.totalPlays > 0) {
-          var playsParams = {
-            'username': req.query.username,
-            'id': item.$.objectid
-          };
-          var bggPlaysData = getBggData('plays', playsParams);
-
-          game.lastplay = bggPlaysData.plays.play[0].$.date;
-        }
-
-        collectionData.collection.push(game);
-      });
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json'
-      });
-      res.write(JSON.stringify(collectionData));
-      res.send();
-    } else {
-      return setTimeout(function() {
-        getBggPlays(req, res)
-      }, 3000);
-    }
-  } catch (err) {
-    console.log(err);
-    console.trace();
-
-    res.writeHead(500);
-    res.write(err.message);
-    res.send();
-  }
-}
-app.get('/bggPlays', getBggPlays);
+app.use('/collections', require('./node/routes/bggGames'));
+app.use('/plays', require('./node/routes/bggPlays'));
 
 app.listen(process.env.PORT || 3000); //the port you want to use

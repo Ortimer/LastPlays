@@ -12,7 +12,7 @@ module.exports = function(path, argsParameters) {
   // Este código solo lo puse aquí para que no me joda esto en PSL
   // *** INICIO JODA PSL ***
   if (process.env.node_psl == 'true') {
-    bggUrl =  {
+    bggUrl = {
       'host': '10.10.10.11',
       'port': 8080,
       'path': bggUrl
@@ -32,5 +32,11 @@ module.exports = function(path, argsParameters) {
     }
     return deferred.resolve(stdout);
   });
-  return deferred.promise.valueOf();
+
+  var response = deferred.promise.valueOf();
+  if (response.errors) {
+    throw new Error(response.errors.error[0].message);
+  }
+
+  return response;
 }

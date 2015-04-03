@@ -1,7 +1,13 @@
 BggBuddy.MenuInfo = DS.Model.extend({
-  'messages': DS.hasMany('menuMessage', {async: true}),
-  'tasks': DS.hasMany('menuTask', {async: true}),
-  'sideMenuOptions': DS.hasMany('menuSideOption', {async: true})
+  'messages': DS.hasMany('menuMessage', {
+    async: true
+  }),
+  'tasks': DS.hasMany('menuTask', {
+    async: true
+  }),
+  'sideMenuOptions': DS.hasMany('menuSideOption', {
+    async: true
+  })
 });
 
 BggBuddy.MenuMessage = DS.Model.extend({
@@ -20,7 +26,9 @@ BggBuddy.MenuSideOption = DS.Model.extend({
   'name': DS.attr('string'),
   'icon': DS.attr('string'),
   'link': DS.attr('string'),
-  'subMenus': DS.hasMany('menuSideSub', {async: true})
+  'subMenus': DS.hasMany('menuSideSub', {
+    async: true
+  })
 });
 
 BggBuddy.MenuSideSub = DS.Model.extend({

@@ -9,7 +9,7 @@ var menuSideSubs = [{
   'id': 2,
   'name': 'Plays by month',
   'link': 'javascript:void(0)'
-},{
+}, {
   'id': 3,
   'name': 'H-Index',
   'link': 'javascript:void(0)'
@@ -21,13 +21,13 @@ var menuSideSubs = [{
 
 // Get an expecific id
 router.get('/:id', function(req, res) {
-  var result = menuSideSubs.filter(function( obj ) {
+  var result = menuSideSubs.filter(function(obj) {
     return obj.id == req.params.id;
   });
 
   if (result[0]) {
     var response = {
-      'menuSideSub' : result[0]
+      'menuSideSub': result[0]
     }
 
 

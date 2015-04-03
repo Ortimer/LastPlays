@@ -3,9 +3,6 @@ BggBuddy.ApplicationView = Ember.View.extend({
     $(function(){
       var easter_egg = new Konami(calvoInit);
 
-      var calvoImageMarkup = '<img id="elCalvo" style="display: none" src="/img/calvo.png" />';
-
-      $('body').append(calvoImageMarkup);
       var calvo = $('#elCalvo').css({
             "position":"fixed",
             "bottom": "-700px",

@@ -25,13 +25,13 @@ var menuTasks = [{
 
 // Get an expecific id
 router.get('/:id', function(req, res) {
-  var result = menuTasks.filter(function( obj ) {
+  var result = menuTasks.filter(function(obj) {
     return obj.id == req.params.id;
   });
 
   if (result[0]) {
     var response = {
-      'menuTask' : result[0]
+      'menuTask': result[0]
     }
 
 

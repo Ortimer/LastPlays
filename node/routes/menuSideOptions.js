@@ -27,13 +27,13 @@ var menuSideOptions = [{
 
 // Get an expecific id
 router.get('/:id', function(req, res) {
-  var result = menuSideOptions.filter(function( obj ) {
+  var result = menuSideOptions.filter(function(obj) {
     return obj.id == req.params.id;
   });
 
   if (result[0]) {
     var response = {
-      'menuSideOption' : result[0]
+      'menuSideOption': result[0]
     }
 
 

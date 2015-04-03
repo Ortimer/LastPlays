@@ -14,19 +14,21 @@ router.get('/', function(req, res) {
   res.writeHead(200, {
     'Content-Type': 'application/json'
   });
-  res.write(JSON.stringify({'menuInfos': menuInfos}));
+  res.write(JSON.stringify({
+    'menuInfos': menuInfos
+  }));
   res.send();
 });
 
 // Get an expecific id
 router.get('/:id', function(req, res) {
-  var result = menuInfos.filter(function( obj ) {
+  var result = menuInfos.filter(function(obj) {
     return obj.id == req.params.id;
   });
 
   if (result[0]) {
     var response = {
-      'menuInfo' : result[0]
+      'menuInfo': result[0]
     }
 
 

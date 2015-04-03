@@ -1,10 +1,6 @@
 BggBuddy.IndexRoute = Ember.Route.extend({
   model: function(params){
-    var userParams = {
-      "name": params.bggUser
-    };
-
-    return Ember.$.getJSON('bggUser', userParams);
+    return this.store.find('bggUser', params.bggUser);
   },
   afterModel: function(bggUser, transition) {
     if (bggUser != null) {
