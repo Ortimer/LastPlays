@@ -29,7 +29,7 @@ router.get('/:username', function(req, res) {
             game.name = item.name[0]._;
             game.image = 'http:' + item.thumbnail[0];
             game.totalPlays = item.numplays[0];
-            game.plays = item.$.objectid;
+            game.lastPlay = req.params.username + '-' + item.$.objectid;
 
             collectionData.games.push(game);
           });

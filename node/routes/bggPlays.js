@@ -2,7 +2,7 @@ var express = require('express');
 var getBggData = require('../bgg');
 var router = express.Router();
 
-router.get('/:username/:gameid', function(req, res) {
+router.get('/:username-:gameid', function(req, res) {
   try {
     var args = {
       'username': req.params.username,
@@ -10,33 +10,27 @@ router.get('/:username/:gameid', function(req, res) {
     }
     var bggPlaysData = getBggData('plays', args);
 
-    var playData = {
-      'plays': []
+    var playData = {}
+
+    if (bggPlaysData.plays && bggPlaysData.plays.play) {
+      var item = bggPlaysData.plays.play[0];
+
+      playData.id = item.$.id;
+      playData.game_id = req.params.gameid;
+      playData.date = item.$.date;
+      playData.location = item.$.location;
     }
 
-    if (bggPlaysData.plays) {
-      if (bggPlaysData.plays.play) {
-        bggPlaysData.plays.play.forEach(function(item, index) {
-          var play = {};
+    playData = {
+      play: playData
+    };
 
-          play.id = item.$.id;
-          play.date = item.$.date;
-          play.location = item.$.location;
+    res.writeHead(200, {
+      'Content-Type': 'application/json'
+    });
+    res.write(JSON.stringify(playData));
+    res.send();
 
-          playData.plays.push(play);
-        });
-      }
-
-      res.writeHead(200, {
-        'Content-Type': 'application/json'
-      });
-      res.write(JSON.stringify(playData));
-      res.send();
-    } else {
-      return setTimeout(function() {
-        getBggCollection(req, res)
-      }, 3000);
-    }
   } catch (err) {
     console.log(err);
     console.trace();

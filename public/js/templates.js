@@ -1043,6 +1043,99 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
 
 Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("Last play date: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
+          content(env, morph0, context, "gameEntry.lastPlay.date");
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("Last play date: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("i");
+          var el3 = dom.createTextNode("Loading...");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
     return {
       isHTMLBars: true,
       revision: "Ember@1.11.0",
@@ -1097,10 +1190,16 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el3 = dom.createTextNode("\n          ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("p");
-        var el4 = dom.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ducimus totam quasi nam porro sed.");
+        var el4 = dom.createTextNode("Total plays: ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n        ");
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("        ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n      ");
@@ -1112,7 +1211,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       },
       render: function render(context, env, contextualElement) {
         var dom = env.dom;
-        var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+        var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content, block = hooks.block;
         dom.detectNamespace(contextualElement);
         var fragment;
         if (env.useFragmentCache && dom.canClone) {
@@ -1137,10 +1236,14 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var attrMorph1 = dom.createAttrMorph(element2, 'src');
         var attrMorph2 = dom.createAttrMorph(element2, 'alt');
         var morph0 = dom.createMorphAt(dom.childAt(element0, [5]),0,0);
+        var morph1 = dom.createMorphAt(dom.childAt(element0, [7]),1,1);
+        var morph2 = dom.createMorphAt(element0,9,9);
         attribute(env, attrMorph0, element1, "href", concat(env, [get(env, context, "gameEntry.bggUrl")]));
         attribute(env, attrMorph1, element2, "src", concat(env, [get(env, context, "gameEntry.image")]));
         attribute(env, attrMorph2, element2, "alt", concat(env, [get(env, context, "gameEntry.name")]));
         content(env, morph0, context, "gameEntry.name");
+        content(env, morph1, context, "gameEntry.totalPlays");
+        block(env, morph2, context, "if", [get(env, context, "gameEntry.lastPlay.date")], {}, child0, child1);
         return fragment;
       }
     };

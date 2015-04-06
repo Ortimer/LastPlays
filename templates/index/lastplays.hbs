@@ -21,7 +21,12 @@
             </tr>
           </table>
           <h1>{{gameEntry.name}}</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ducimus totam quasi nam porro sed.</p>
+          <p>Total plays: {{gameEntry.totalPlays}}</p>
+          {{#if gameEntry.lastPlay.date}}
+            <p>Last play date: {{gameEntry.lastPlay.date}}</p>
+          {{else}}
+            <p>Last play date: <i>Loading...</i></p>
+          {{/if}}
         </article>
       </div>
     {{/each}}
