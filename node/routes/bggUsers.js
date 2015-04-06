@@ -7,10 +7,12 @@ router.get('/:username', function(req, res) {
   var args = {
     'name': req.params.username
   }
-  var bggUserData = getBggData('user', args);
+  var bggUserPromise = getBggData('user', args);
 
-  bggUserData
+  bggUserPromise
     .then(function(bggUserData) {
+      bggUserData = bggUserData.data;
+
       var bggUser = {};
       bggUser.id = bggUserData.user.$.name;
       bggUser.firstName = bggUserData.user.firstname[0].$.value;
@@ -26,8 +28,7 @@ router.get('/:username', function(req, res) {
       });
       res.write(JSON.stringify(bggUser));
       res.send();
-    })
-    .catch(function(err) {
+    }, function(err) {
       console.log(err);
       console.trace();
 
