@@ -1,13 +1,13 @@
-var request = require('urllib-sync').request;
-var xml2js = require('xml2js');
 var querystring = require('querystring');
-var Q = require('q');
+var Promise = require("bluebird");
+var xml2js = require('xml2js');
+var Client = Promise.promisifyAll(require('node-rest-client').Client);
 
 // BGG Function
 module.exports = function(path, argsParameters) {
-  var deferred = Q.defer();
   var parser = new xml2js.Parser();
   var bggUrl = 'http://www.boardgamegeek.com/xmlapi2/' + path + '?' + querystring.stringify(argsParameters);
+  var client = new Client();
 
   // Este código solo lo puse aquí para que no me joda esto en PSL
   // *** INICIO JODA PSL ***
@@ -20,23 +20,5 @@ module.exports = function(path, argsParameters) {
   }
   // *** FIN JODA PSL ***
 
-  var res = request(bggUrl);
-
-  if (res.status != 200) {
-    return new Error('There was an error in the request to BGG', res);
-  }
-
-  parser.parseString(res.data.toString(), function(err, stdout, stderr) {
-    if (err) {
-      return deferred.reject(err);
-    }
-    return deferred.resolve(stdout);
-  });
-
-  var response = deferred.promise.valueOf();
-  if (response.errors) {
-    throw new Error(response.errors.error[0].message);
-  }
-
-  return response;
+  return client.getAsync(bggUrl).then(parser.parseString);
 }
