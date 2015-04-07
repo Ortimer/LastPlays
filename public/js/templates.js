@@ -1294,7 +1294,14 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el5 = dom.createElement("td");
         var el6 = dom.createTextNode("\n                ");
         dom.appendChild(el5, el6);
-        var el6 = dom.createElement("img");
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","game-image");
+        var el7 = dom.createTextNode("\n                  ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("img");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n                ");
+        dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n              ");
         dom.appendChild(el5, el6);
@@ -1375,7 +1382,14 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el5 = dom.createElement("td");
         var el6 = dom.createTextNode("\n                ");
         dom.appendChild(el5, el6);
-        var el6 = dom.createElement("img");
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","game-image");
+        var el7 = dom.createTextNode("\n                  ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("img");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n                ");
+        dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n              ");
         dom.appendChild(el5, el6);
@@ -1451,10 +1465,10 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         }
         var element0 = dom.childAt(fragment, [3, 1]);
         var element1 = dom.childAt(element0, [1]);
-        var element2 = dom.childAt(element0, [3, 1, 1, 1]);
+        var element2 = dom.childAt(element0, [3, 1, 1, 1, 1]);
         var element3 = dom.childAt(fragment, [7, 1]);
         var element4 = dom.childAt(element3, [1]);
-        var element5 = dom.childAt(element3, [3, 1, 1, 1]);
+        var element5 = dom.childAt(element3, [3, 1, 1, 1, 1]);
         var attrMorph0 = dom.createAttrMorph(element1, 'href');
         var attrMorph1 = dom.createAttrMorph(element2, 'src');
         var attrMorph2 = dom.createAttrMorph(element2, 'alt');

@@ -2,68 +2,57 @@
 
 div.list-article {
   .article-wrapper {
-    -moz-transition: width 0.4s;
-    -o-transition: width 0.4s;
-    -webkit-transition: width 0.4s;
-    transition: width 0.4s;
+    .transition(width, 0.4s);
   }
   article {
+    .border-radius(150px);
     position: relative;
     padding-left: 180px;
     padding-right: 75px;
     height: 150px;
     margin-bottom: 30px;
     background-color: #eee;
-    -moz-border-radius: 150px;
-    -webkit-border-radius: 150px;
-    border-radius: 150px;
     cursor: pointer;
     .img-wrapper {
+      .border-radius(100px);
+      .transition(all, 0.2s);
       position: absolute;
       top: -10px;
       left: -10px;
-      -moz-border-radius: 100px;
-      -webkit-border-radius: 100px;
-      border-radius: 100px;
       background-color: #cde;
       padding: 10px;
-      -moz-transition: all 0.2s;
-      -o-transition: all 0.2s;
-      -webkit-transition: all 0.2s;
-      transition: all 0.2s;
       height: 170px;
       width: 170px;
       z-index: 3;
-      img {
-        -moz-border-radius: 100px;
-        -webkit-border-radius: 100px;
-        border-radius: 100px;
-        -moz-transition: all 0.2s;
-        -o-transition: all 0.2s;
-        -webkit-transition: all 0.2s;
-        transition: all 0.2s;
-        max-height: 150px;
-        max-width: 150px;
+      .game-image {
+        .border-radius(100px);
+        .transition(all, 0.2s);
+        height: 150px;
+        width: 150px;
+        overflow: hidden;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        img {
+          min-height: 150px;
+          min-width: 150px;
+        }
       }
     }
     h1 {
+      .transition(all, 0.4s);
       height: 75px;
       line-height: 75px;
       font-size: 24px;
       border-bottom: 2px solid #cde;
       color: #428bca;
-      -moz-transition: all 0.4s;
-      -o-transition: all 0.4s;
-      -webkit-transition: all 0.4s;
-      transition: all 0.4s;
     }
     p {
       color: #888;
     }
     a {
+      .transition(all, 0.4s);
+      .border-radius(150px);
       position: absolute;
       display: block;
       top: 0;
@@ -72,48 +61,34 @@ div.list-article {
       line-height: 150px;
       text-align: center;
       width: 100%;
-      background-color: #eee;
+      background-color: rgba(238,238,238,0.60);
       font-size: 48px;
       font-style: italic;
       opacity: 0;
       color: #428bca !important;
-      -moz-transition: all 0.4s;
-      -o-transition: all 0.4s;
-      -webkit-transition: all 0.4s;
-      transition: all 0.4s;
       text-decoration: none !important;
-      -moz-border-radius: 150px;
-      -webkit-border-radius: 150px;
-      border-radius: 150px;
       font-family: "Pacifico";
       text-shadow: 0 1px 1px #aaa;
       z-index: 2;
     }
-  }
-  article:hover {
-    .img-wrapper {
-      padding: 5px;
-      -moz-transform: rotate(10deg);
-      -ms-transform: rotate(10deg);
-      -webkit-transform: rotate(10deg);
-      transform: rotate(10deg);
-      img {
-        -ms-transform: scale(1.1,1.1); /* IE 9 */
-        -webkit-transform: scale(1.1,1.1); /* Safari */
-        transform: scale(1.1,1.1);
+    &:hover {
+      .img-wrapper {
+        //.rotate(10deg);
+        padding: 5px;
+        .game-image {
+          .scale(1.1, 1.1);
+        }
       }
-    }
-    a {
-      opacity: 1;
+      a {
+        opacity: 1;
+      }
     }
   }
   .bloc {
     article {
+      .border-radius(3px);
       padding: 10px;
       height: 225px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
       margin-top: 75px;
       .img-wrapper {
         position: relative;
@@ -131,9 +106,7 @@ div.list-article {
         font-size: 12px;
       }
       a {
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
+        .border-radius(3px);
         line-height: 255px;
       }
     }
