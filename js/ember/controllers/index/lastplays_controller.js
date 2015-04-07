@@ -1,32 +1,66 @@
 BggBuddy.IndexLastplaysController = Ember.Controller.extend({
-  orderByArray: ['Name', 'Days', 'Total plays'],
-  orderByIndex: 0,
-  orderBy: function() {
-    return this.get('orderByArray')[this.get('orderByIndex')];
-  }.property('orderByIndex'),
+  ascSymbol: '<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>',
+  descSymbol: '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>',
+  nameOrder: 'asc',
+  daysOrder: null,
+  playsOrder: null,
+  nameOrderSymbol: function () {
+    var symbolHtml = '';
+    if (this.get('nameOrder') == 'asc') {
+      symbolHtml = this.get('ascSymbol');
+    } else if (this.get('nameOrder') == 'desc') {
+      symbolHtml = this.get('descSymbol');
+    }
 
-  orderTypeArray: ['Ascending', 'Descending'],
-  orderTypeIndex: 0,
-  orderType: function() {
-    return this.get('orderTypeArray')[this.get('orderTypeIndex')];
-  }.property('orderTypeIndex'),
+    return new Ember.Handlebars.SafeString(symbolHtml);
+  }.property('nameOrder'),
+  daysOrderSymbol: function () {
+    var symbolHtml = '';
+    if (this.get('daysOrder') == 'asc') {
+      symbolHtml = this.get('ascSymbol');
+    } else if (this.get('daysOrder') == 'desc') {
+      symbolHtml = this.get('descSymbol');
+    }
 
+    return new Ember.Handlebars.SafeString(symbolHtml);
+  }.property('daysOrder'),
+  playsOrderSymbol: function () {
+    var symbolHtml = '';
+    if (this.get('playsOrder') == 'asc') {
+      symbolHtml = this.get('ascSymbol');
+    } else if (this.get('playsOrder') == 'desc') {
+      symbolHtml = this.get('descSymbol');
+    }
+
+    return new Ember.Handlebars.SafeString(symbolHtml);
+  }.property('playsOrder'),
   actions: {
-    changeOrderBy: function() {
-      var orderByIndex = this.get('orderByIndex') + 1;
-      if (orderByIndex >= this.get('orderByArray').length) {
-        orderByIndex = 0;
+    toggleName: function () {
+      this.set('daysOrder', null);
+      this.set('playsOrder', null);
+      if (this.get('nameOrder') == null || this.get('nameOrder') == 'desc') {
+        this.set('nameOrder', 'asc');
+      } else {
+        this.set('nameOrder', 'desc');
       }
-      this.set('orderByIndex', orderByIndex);
-
-      this.get('model').get('games').sortBy('id');
     },
-    changeOrderType: function() {
-      var orderTypeIndex = this.get('orderTypeIndex') + 1;
-      if (orderTypeIndex >= this.get('orderTypeArray').length) {
-        orderTypeIndex = 0;
+    toggleDays: function () {
+      this.set('nameOrder', null);
+      this.set('playsOrder', null);
+      if (this.get('daysOrder') == null || this.get('daysOrder') == 'desc') {
+        this.set('daysOrder', 'asc');
+      } else {
+        this.set('daysOrder', 'desc');
       }
-      this.set('orderTypeIndex', orderTypeIndex);
+    },
+    togglePlays: function () {
+      this.set('nameOrder', null);
+      this.set('daysOrder', null);
+      if (this.get('playsOrder') == null || this.get('playsOrder') == 'desc') {
+        this.set('playsOrder', 'asc');
+      } else {
+        this.set('playsOrder', 'desc');
+      }
     }
   }
 });
