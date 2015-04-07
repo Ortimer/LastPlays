@@ -7,7 +7,8 @@ BggBuddy.ApplicationView = Ember.View.extend({
             "position":"fixed",
             "bottom": "-700px",
             "right" : "0",
-            "display" : "block"
+            "display" : "block",
+            "z-index" : 10
           });
 
       var locked = false;

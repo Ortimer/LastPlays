@@ -1358,6 +1358,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el3 = dom.createTextNode("\n          ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"target","_blank");
         dom.setAttribute(el3,"class","gotoBgg");
         var el4 = dom.createTextNode("Go to BGG");
         dom.appendChild(el3, el4);
