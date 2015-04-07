@@ -1509,7 +1509,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
-      dom.setAttribute(el5,"class","btn btn-primary btn-lg orderButton");
+      dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
       var el6 = dom.createTextNode("Name ");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
@@ -1526,7 +1526,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
-      dom.setAttribute(el5,"class","btn btn-primary btn-lg orderButton");
+      dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
       var el6 = dom.createTextNode("Days ");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
@@ -1543,7 +1543,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
-      dom.setAttribute(el5,"class","btn btn-primary btn-lg orderButton");
+      dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
       var el6 = dom.createTextNode("Plays ");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
