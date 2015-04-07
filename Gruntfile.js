@@ -53,6 +53,7 @@ module.exports = function(grunt) {
 
           // Ember + Handlebars
           'js/ember.js': 'ember/ember.debug.js',
+          'js/ember-template-compiler.js': 'ember/ember-template-compiler.js',
           'js/handlebars.js': 'handlebars/handlebars.js',
           'js/ember-data.js': 'ember-data/ember-data.js',
           'js/ember-data.js.map': 'ember-data/ember-data.js.map',
@@ -79,6 +80,9 @@ module.exports = function(grunt) {
           'css/font-awesome.css': 'font-awesome/css/font-awesome.css',
           'css/font-awesome.css.map': 'font-awesome/css/font-awesome.css.map',
           'fonts': 'font-awesome/fonts/*',
+
+          // Moment.js
+          'js/moment.js': 'moment/moment.js',
 
           // MetisMenu
           'css/metisMenu.css': 'metisMenu/dist/metisMenu.css',

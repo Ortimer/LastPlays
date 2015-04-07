@@ -1052,10 +1052,20 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("            ");
+          var el1 = dom.createTextNode("              ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-12");
           var el2 = dom.createTextNode("Last play date: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-12");
+          var el2 = dom.createTextNode("Time since: ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
@@ -1066,7 +1076,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, content = hooks.content;
+          var hooks = env.hooks, get = hooks.get, inline = hooks.inline, content = hooks.content;
           dom.detectNamespace(contextualElement);
           var fragment;
           if (env.useFragmentCache && dom.canClone) {
@@ -1085,7 +1095,9 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
             fragment = this.build(dom);
           }
           var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
-          content(env, morph0, context, "gameEntry.lastPlay.date");
+          var morph1 = dom.createMorphAt(dom.childAt(fragment, [3]),1,1);
+          inline(env, morph0, context, "formatdate", [get(env, context, "gameEntry.lastPlay.date")], {});
+          content(env, morph1, context, "gameEntry.lastPlayText");
           return fragment;
         }
       };
@@ -1099,9 +1111,116 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("            ");
+          var el1 = dom.createTextNode("              ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-12");
+          var el2 = dom.createTextNode("Last play date: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("i");
+          var el3 = dom.createTextNode("Loading...");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child2 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-6");
+          var el2 = dom.createTextNode("Last play date: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-6 text-right");
+          var el2 = dom.createTextNode("Time since: ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, get = hooks.get, inline = hooks.inline, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
+          var morph1 = dom.createMorphAt(dom.childAt(fragment, [3]),1,1);
+          inline(env, morph0, context, "formatdate", [get(env, context, "gameEntry.lastPlay.date")], {});
+          content(env, morph1, context, "gameEntry.lastPlayText");
+          return fragment;
+        }
+      };
+    }());
+    var child3 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("p");
+          dom.setAttribute(el1,"class","col-xs-12");
           var el2 = dom.createTextNode("Last play date: ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("i");
@@ -1146,8 +1265,93 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createTextNode("      ");
         dom.appendChild(el0, el1);
+        var el1 = dom.createComment("Small-Medium layout");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n      ");
+        dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1,"class","article-wrapper col-xs-12");
+        dom.setAttribute(el1,"class","article-wrapper bloc col-xs-12 col-sm-6 visible-xs-block visible-sm-block");
+        var el2 = dom.createTextNode("\n        ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("article");
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"target","_blank");
+        dom.setAttribute(el3,"class","gotoBgg");
+        var el4 = dom.createTextNode("Go to BGG");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("table");
+        dom.setAttribute(el3,"class","img-wrapper");
+        var el4 = dom.createTextNode("\n            ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("tr");
+        var el5 = dom.createTextNode("\n              ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("td");
+        var el6 = dom.createTextNode("\n                ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("img");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n              ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n            ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n          ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h1");
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","row");
+        var el4 = dom.createTextNode("\n            ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("p");
+        dom.setAttribute(el4,"class","col-xs-12");
+        var el5 = dom.createTextNode("Total plays: ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n          ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","row");
+        var el4 = dom.createTextNode("\n");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("          ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n      ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n      ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("Big layout");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n      ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","article-wrapper col-md-12 visible-md-block visible-lg-block");
         var el2 = dom.createTextNode("\n        ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("article");
@@ -1189,17 +1393,32 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n          ");
         dom.appendChild(el2, el3);
-        var el3 = dom.createElement("p");
-        var el4 = dom.createTextNode("Total plays: ");
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","row");
+        var el4 = dom.createTextNode("\n            ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("p");
+        dom.setAttribute(el4,"class","col-xs-12");
+        var el5 = dom.createTextNode("Total plays: ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n          ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n          ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","row");
+        var el4 = dom.createTextNode("\n");
         dom.appendChild(el3, el4);
         var el4 = dom.createComment("");
         dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("          ");
+        dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("        ");
+        var el3 = dom.createTextNode("\n        ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n      ");
@@ -1229,21 +1448,36 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         } else {
           fragment = this.build(dom);
         }
-        var element0 = dom.childAt(fragment, [1, 1]);
+        var element0 = dom.childAt(fragment, [3, 1]);
         var element1 = dom.childAt(element0, [1]);
         var element2 = dom.childAt(element0, [3, 1, 1, 1]);
+        var element3 = dom.childAt(fragment, [7, 1]);
+        var element4 = dom.childAt(element3, [1]);
+        var element5 = dom.childAt(element3, [3, 1, 1, 1]);
         var attrMorph0 = dom.createAttrMorph(element1, 'href');
         var attrMorph1 = dom.createAttrMorph(element2, 'src');
         var attrMorph2 = dom.createAttrMorph(element2, 'alt');
         var morph0 = dom.createMorphAt(dom.childAt(element0, [5]),0,0);
-        var morph1 = dom.createMorphAt(dom.childAt(element0, [7]),1,1);
-        var morph2 = dom.createMorphAt(element0,9,9);
+        var morph1 = dom.createMorphAt(dom.childAt(element0, [7, 1]),1,1);
+        var morph2 = dom.createMorphAt(dom.childAt(element0, [9]),1,1);
+        var attrMorph3 = dom.createAttrMorph(element4, 'href');
+        var attrMorph4 = dom.createAttrMorph(element5, 'src');
+        var attrMorph5 = dom.createAttrMorph(element5, 'alt');
+        var morph3 = dom.createMorphAt(dom.childAt(element3, [5]),0,0);
+        var morph4 = dom.createMorphAt(dom.childAt(element3, [7, 1]),1,1);
+        var morph5 = dom.createMorphAt(dom.childAt(element3, [9]),1,1);
         attribute(env, attrMorph0, element1, "href", concat(env, [get(env, context, "gameEntry.bggUrl")]));
         attribute(env, attrMorph1, element2, "src", concat(env, [get(env, context, "gameEntry.image")]));
         attribute(env, attrMorph2, element2, "alt", concat(env, [get(env, context, "gameEntry.name")]));
         content(env, morph0, context, "gameEntry.name");
         content(env, morph1, context, "gameEntry.totalPlays");
         block(env, morph2, context, "if", [get(env, context, "gameEntry.lastPlay.date")], {}, child0, child1);
+        attribute(env, attrMorph3, element4, "href", concat(env, [get(env, context, "gameEntry.bggUrl")]));
+        attribute(env, attrMorph4, element5, "src", concat(env, [get(env, context, "gameEntry.image")]));
+        attribute(env, attrMorph5, element5, "alt", concat(env, [get(env, context, "gameEntry.name")]));
+        content(env, morph3, context, "gameEntry.name");
+        content(env, morph4, context, "gameEntry.totalPlays");
+        block(env, morph5, context, "if", [get(env, context, "gameEntry.lastPlay.date")], {}, child2, child3);
         return fragment;
       }
     };
@@ -1261,45 +1495,31 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       var el2 = dom.createTextNode("\n  ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","btn-group pull-right hidden-xs hidden-sm");
-      dom.setAttribute(el2,"id","switch-view");
-      var el3 = dom.createTextNode("\n    ");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createElement("button");
-      dom.setAttribute(el3,"class","btn btn-primary");
-      var el4 = dom.createTextNode("\n      ");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createElement("i");
-      dom.setAttribute(el4,"class","fa fa-th-large");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createTextNode("\n    ");
-      dom.appendChild(el3, el4);
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n    ");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createElement("button");
-      dom.setAttribute(el3,"class","btn btn-primary active");
-      var el4 = dom.createTextNode("\n      ");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createElement("i");
-      dom.setAttribute(el4,"class","fa fa-list");
-      dom.appendChild(el3, el4);
-      var el4 = dom.createTextNode("\n    ");
-      dom.appendChild(el3, el4);
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n  ");
-      dom.appendChild(el2, el3);
-      dom.appendChild(el1, el2);
-      var el2 = dom.createTextNode("\n  ");
-      dom.appendChild(el1, el2);
-      var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","clearfix");
-      dom.appendChild(el1, el2);
-      var el2 = dom.createTextNode("\n  ");
-      dom.appendChild(el1, el2);
-      var el2 = dom.createElement("div");
       dom.setAttribute(el2,"class","row");
-      var el3 = dom.createTextNode("\n");
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("div");
+      dom.setAttribute(el3,"class","col-xs-12");
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("button");
+      dom.setAttribute(el4,"type","button");
+      dom.setAttribute(el4,"class","btn btn-primary btn-lg col-xs-offset-1 col-xs-4");
+      var el5 = dom.createComment("");
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n      ");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("button");
+      dom.setAttribute(el4,"type","button");
+      dom.setAttribute(el4,"class","btn btn-primary btn-lg col-xs-offset-2 col-xs-4");
+      var el5 = dom.createComment("");
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n    ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n\n");
       dom.appendChild(el2, el3);
       var el3 = dom.createComment("");
       dom.appendChild(el2, el3);
@@ -1315,7 +1535,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, get = hooks.get, block = hooks.block;
+      var hooks = env.hooks, element = hooks.element, content = hooks.content, get = hooks.get, block = hooks.block;
       dom.detectNamespace(contextualElement);
       var fragment;
       if (env.useFragmentCache && dom.canClone) {
@@ -1333,8 +1553,18 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       } else {
         fragment = this.build(dom);
       }
-      var morph0 = dom.createMorphAt(dom.childAt(fragment, [0, 5]),1,1);
-      block(env, morph0, context, "each", [get(env, context, "model.games")], {"keyword": "gameEntry"}, child0, null);
+      var element6 = dom.childAt(fragment, [0, 1]);
+      var element7 = dom.childAt(element6, [1]);
+      var element8 = dom.childAt(element7, [1]);
+      var element9 = dom.childAt(element7, [3]);
+      var morph0 = dom.createMorphAt(element8,0,0);
+      var morph1 = dom.createMorphAt(element9,0,0);
+      var morph2 = dom.createMorphAt(element6,3,3);
+      element(env, element8, context, "action", ["changeOrderBy"], {});
+      content(env, morph0, context, "controller.orderBy");
+      element(env, element9, context, "action", ["changeOrderType"], {});
+      content(env, morph1, context, "controller.orderType");
+      block(env, morph2, context, "each", [get(env, context, "model.games")], {"keyword": "gameEntry"}, child0, null);
       return fragment;
     }
   };
