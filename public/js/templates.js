@@ -1054,6 +1054,381 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("              ");
           dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-top");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-bottom");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, block = hooks.block;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+        dom.insertBoundary(fragment, null);
+        dom.insertBoundary(fragment, 0);
+        block(env, morph0, context, "if", [get(env, context, "sortAscending")], {}, child0, child1);
+        return fragment;
+      }
+    };
+  }());
+  var child1 = (function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-top");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-bottom");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, block = hooks.block;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+        dom.insertBoundary(fragment, null);
+        dom.insertBoundary(fragment, 0);
+        block(env, morph0, context, "if", [get(env, context, "sortAscending")], {}, child0, child1);
+        return fragment;
+      }
+    };
+  }());
+  var child2 = (function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-top");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","glyphicon glyphicon-triangle-bottom");
+          dom.setAttribute(el1,"aria-hidden","true");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, block = hooks.block;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+        dom.insertBoundary(fragment, null);
+        dom.insertBoundary(fragment, 0);
+        block(env, morph0, context, "if", [get(env, context, "sortAscending")], {}, child0, child1);
+        return fragment;
+      }
+    };
+  }());
+  var child3 = (function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
           var el1 = dom.createElement("p");
           dom.setAttribute(el1,"class","col-xs-12");
           var el2 = dom.createTextNode("Last play date: ");
@@ -1524,9 +1899,11 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
       dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
-      var el6 = dom.createTextNode("Name ");
+      var el6 = dom.createTextNode("\n          Name\n");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      var el6 = dom.createTextNode("        ");
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       var el5 = dom.createTextNode("\n      ");
@@ -1541,9 +1918,11 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
       dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
-      var el6 = dom.createTextNode("Days ");
+      var el6 = dom.createTextNode("\n          Days\n");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      var el6 = dom.createTextNode("        ");
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       var el5 = dom.createTextNode("\n      ");
@@ -1558,9 +1937,11 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       var el5 = dom.createElement("button");
       dom.setAttribute(el5,"type","button");
       dom.setAttribute(el5,"class","level-btn level-btn-primary btn-lg orderButton");
-      var el6 = dom.createTextNode("Plays ");
+      var el6 = dom.createTextNode("\n          Plays\n");
       dom.appendChild(el5, el6);
       var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      var el6 = dom.createTextNode("        ");
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       var el5 = dom.createTextNode("\n      ");
@@ -1585,7 +1966,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, element = hooks.element, content = hooks.content, get = hooks.get, block = hooks.block;
+      var hooks = env.hooks, element = hooks.element, get = hooks.get, block = hooks.block;
       dom.detectNamespace(contextualElement);
       var fragment;
       if (env.useFragmentCache && dom.canClone) {
@@ -1612,13 +1993,13 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
       var morph1 = dom.createMorphAt(element9,1,1);
       var morph2 = dom.createMorphAt(element10,1,1);
       var morph3 = dom.createMorphAt(element6,3,3);
-      element(env, element8, context, "action", ["toggleName"], {});
-      content(env, morph0, context, "nameOrderSymbol");
-      element(env, element9, context, "action", ["toggleDays"], {});
-      content(env, morph1, context, "daysOrderSymbol");
-      element(env, element10, context, "action", ["togglePlays"], {});
-      content(env, morph2, context, "playsOrderSymbol");
-      block(env, morph3, context, "each", [get(env, context, "model.games")], {"keyword": "gameEntry"}, child0, null);
+      element(env, element8, context, "action", ["sortBy", "name"], {});
+      block(env, morph0, context, "if", [get(env, context, "orderedByName")], {}, child0, null);
+      element(env, element9, context, "action", ["sortBy", "lastPlayMillis"], {});
+      block(env, morph1, context, "if", [get(env, context, "orderedByDays")], {}, child1, null);
+      element(env, element10, context, "action", ["sortBy", "totalPlays"], {});
+      block(env, morph2, context, "if", [get(env, context, "orderedByPlays")], {}, child2, null);
+      block(env, morph3, context, "each", [get(env, context, "arrangedContent")], {"keyword": "gameEntry"}, child3, null);
       return fragment;
     }
   };

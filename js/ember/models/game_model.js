@@ -1,37 +1,32 @@
-BggBuddy.Collection = DS.Model.extend({
-  games: DS.hasMany('game')
-});
-
 BggBuddy.Game = DS.Model.extend({
-  collection_id: DS.belongsTo('collection'),
   bggUrl: DS.attr('string'),
   name: DS.attr('string'),
   image: DS.attr('string'),
-  totalPlays: DS.attr('string'),
+  totalPlays: DS.attr('number'),
   lastPlay: DS.belongsTo('play', {
     async: true
   }),
   lastPlayMillis: function() {
-    var now = moment(); // get the current moment
-    var then = moment(new Date(this.get('lastPlay.date')));
+    var now = moment().utcOffset('+0'); // get the current moment
+    var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
     var ms = then.diff(now, 'milliseconds', true);
 
     return ms;
   }.property('lastPlay'),
   lastPlayText: function() {
-    var now = moment(); // get the current moment
-    var then = moment(new Date(this.get('lastPlay.date')));
-    var ms = then.diff(now, 'milliseconds', true);
+    var now = moment().utcOffset('+0'); // get the current moment
+    var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
+    var ms = now.diff(then, 'milliseconds', true);
 
     var years = Math.floor(moment.duration(ms).asYears());
 
-    then = then.subtract(years, 'years');
-    ms = then.diff(now, 'milliseconds', true);
+    now = now.subtract(years, 'years');
+    ms = now.diff(then, 'milliseconds', true);
 
     var months = Math.floor(moment.duration(ms).asMonths());
 
-    then = then.subtract(months, 'months').subtract(1, 'days');
-    ms = then.diff(now, 'milliseconds', true);
+    now = now.subtract(months, 'months');
+    ms = now.diff(then, 'milliseconds', true);
 
     days = Math.floor(moment.duration(ms).asDays());
 
@@ -45,9 +40,7 @@ BggBuddy.Game = DS.Model.extend({
       result += months + ' month(s) ';
     }
 
-    if (days > 0) {
-      result += days + ' day(s) ';
-    }
+    result += days + ' day(s)';
 
     return result.trim();
   }.property('lastPlay')

@@ -4,16 +4,25 @@ var router = express.Router();
 var RateLimiter = require('limiter').RateLimiter;
 var limiter = new RateLimiter(1, 650);
 
-router.get('/:username', function(req, res) {
+router.get('/', function(req, res) {
   var getBggCollection = function(req, res, retry) {
+    if (req.query.username == null) {
+      res.writeHead(400);
+      res.write('No username defined');
+      res.send();
+      return;
+    }
+
+
     if (retry >= 5) {
       res.writeHead(500);
       res.write('Retry limit reached');
       res.send();
+      return;
     }
 
     var args = {
-      'username': req.params.username,
+      'username': req.query.username,
       'own': 1,
       'excludesubtype': 'boardgameexpansion',
       'played': 1
@@ -24,7 +33,6 @@ router.get('/:username', function(req, res) {
       bggCollectionData = bggCollectionData.data;
 
       var collectionData = {
-        'id': req.params.username,
         'games': []
       }
 
@@ -34,20 +42,15 @@ router.get('/:username', function(req, res) {
             var game = {};
 
             game.id = item.$.objectid;
-            game.collection_id = req.params.username;
-            game.bggUrl = 'https://www.boardgamegeek.com/boardgame/' + item.$.objectid;
+            game.bggUrl = 'http://www.boardgamegeek.com/boardgame/' + item.$.objectid;
             game.name = item.name[0]._;
             game.image = 'http:' + item.thumbnail[0];
             game.totalPlays = item.numplays[0];
-            game.lastPlay = req.params.username + '-' + item.$.objectid;
+            game.lastPlay = req.query.username + '-' + item.$.objectid;
 
             collectionData.games.push(game);
           });
         }
-
-        collectionData = {
-          'collection': collectionData
-        };
 
         res.writeHead(200, {
           'Content-Type': 'application/json'
