@@ -9,7 +9,7 @@ BggBuddy.Game = DS.Model.extend({
   lastPlayMillis: function() {
     var now = moment().utcOffset('+0'); // get the current moment
     var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
-    var ms = then.diff(now, 'milliseconds', true);
+    var ms = now.diff(then, 'milliseconds', true);
 
     return ms;
   }.property('lastPlay'),
