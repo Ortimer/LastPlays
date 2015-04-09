@@ -131,6 +131,12 @@ div.list-article {
   .border-radius(10);
   .transition(all, 50ms, ease);
   .level-btn(rgb(204, 204, 204), 20%);
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    .opacity(.65);
+  }
 }
 
 .level-btn-default {

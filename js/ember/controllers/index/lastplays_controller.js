@@ -1,15 +1,21 @@
 BggBuddy.IndexLastplaysController = Ember.ArrayController.extend({
   sortProperties: ['name'],
   sortAscending: true,
-  orderedByName : function () {
+  orderedByName: function() {
     return this.get('sortProperties')[0] == 'name';
   }.property('sortProperties'),
-  orderedByDays : function () {
-    return this.get('sortProperties')[0] == 'lastPlayMillis';
+  orderedByDays: function() {
+    return this.get('sortProperties')[0] == 'lastPlay.date';
   }.property('sortProperties'),
-  orderedByPlays : function () {
+  orderedByPlays: function() {
     return this.get('sortProperties')[0] == 'totalPlays';
   }.property('sortProperties'),
+  allPlaysLoaded: function() {
+    var model = this.get('model');
+    return model.reduce(function(previousValue, game){
+        return previousValue && (game.get('lastPlay').get('date') != null);
+    }, true);
+  }.property('model.@each.lastPlay.date'),
   actions: {
     sortBy: function(property) {
       if (this.get('sortProperties')[0] == property) {

@@ -6,13 +6,6 @@ BggBuddy.Game = DS.Model.extend({
   lastPlay: DS.belongsTo('play', {
     async: true
   }),
-  lastPlayMillis: function() {
-    var now = moment().utcOffset('+0'); // get the current moment
-    var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
-    var ms = now.diff(then, 'milliseconds', true);
-
-    return ms;
-  }.property('lastPlay'),
   lastPlayText: function() {
     var now = moment().utcOffset('+0'); // get the current moment
     var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
@@ -43,7 +36,7 @@ BggBuddy.Game = DS.Model.extend({
     result += days + ' day(s)';
 
     return result.trim();
-  }.property('lastPlay')
+  }.property('lastPlay.date')
 });
 
 BggBuddy.Play = DS.Model.extend({

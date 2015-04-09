@@ -6,33 +6,37 @@
           Name
           {{#if orderedByName}}
             {{#if sortAscending}}
-              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+              <i class="fa fa-sort-alpha-asc" style="color: #dddddd"></i>
             {{else}}
-              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+              <i class="fa fa-sort-alpha-desc" style="color: #dddddd"></i>
             {{/if}}
           {{/if}}
         </button>
       </div>
       <div class="col-xs-4">
-        <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'lastPlayMillis'}}>
-          Days
-          {{#if orderedByDays}}
-            {{#if sortAscending}}
-              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-            {{else}}
-              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        {{#if allPlaysLoaded}}
+          <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'lastPlay.date'}}>
+            Date
+            {{#if orderedByDays}}
+              {{#if sortAscending}}
+                <i class="fa fa-sort-amount-asc" style="color: #dddddd"></i>
+              {{else}}
+                <i class="fa fa-sort-amount-desc" style="color: #dddddd"></i>
+              {{/if}}
             {{/if}}
-          {{/if}}
-        </button>
+          </button>
+        {{else}}
+          <button type="button" class="level-btn level-btn-primary btn-lg orderButton" disabled>Date <i class="fa fa-spinner fa-pulse"></i></button>
+        {{/if}}
       </div>
       <div class="col-xs-4">
         <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'totalPlays'}}>
           Plays
           {{#if orderedByPlays}}
             {{#if sortAscending}}
-              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+              <i class="fa fa-sort-numeric-asc" style="color: #dddddd"></i>
             {{else}}
-              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+              <i class="fa fa-sort-numeric-desc" style="color: #dddddd"></i>
             {{/if}}
           {{/if}}
         </button>
