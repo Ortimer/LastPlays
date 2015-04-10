@@ -3,9 +3,27 @@ BggBuddy.Game = DS.Model.extend({
   name: DS.attr('string'),
   image: DS.attr('string'),
   totalPlays: DS.attr('number'),
-  lastPlay: DS.belongsTo('play', {
-    async: true
-  }),
+  lastPlay_id: DS.attr('string'),
+  lastPlay: DS.belongsTo('play'),
+  lastPlayWatcher: function () {
+    var self = this;
+    var retryCount = 1;
+
+    var loadJSON = function () {
+      $.getJSON( "plays/" + self.get('lastPlay_id'), function(playData) {
+        var play = self.store.createRecord('play', playData.play);
+        self.set('lastPlay', play);
+      })
+      .fail(function() {
+        console.log(self.get('lastPlay_id') + ' - Retry ' + retryCount);
+        if (retryCount++ <= 5) {
+          loadJSON();
+        }
+      });
+    }
+
+    loadJSON();
+  }.observes('lastPlay_id'),
   lastPlayText: function() {
     var now = moment().utcOffset('+0'); // get the current moment
     var then = moment(new Date(this.get('lastPlay.date'))).utcOffset('+0');
@@ -40,7 +58,7 @@ BggBuddy.Game = DS.Model.extend({
 });
 
 BggBuddy.Play = DS.Model.extend({
-  game_id: DS.belongsTo('game'),
+  bgg_id: DS.attr('number'),
   date: DS.attr('date'),
   location: DS.attr('string')
 });

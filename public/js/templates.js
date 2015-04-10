@@ -1693,10 +1693,10 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("              ");
+          var el1 = dom.createTextNode("            ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("p");
-          dom.setAttribute(el1,"class","col-xs-12");
+          dom.setAttribute(el1,"class","col-md-12");
           var el2 = dom.createTextNode("Last play date: ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("i");
@@ -1962,13 +1962,13 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
         attribute(env, attrMorph2, element2, "alt", concat(env, [get(env, context, "gameEntry.name")]));
         content(env, morph0, context, "gameEntry.name");
         content(env, morph1, context, "gameEntry.totalPlays");
-        block(env, morph2, context, "if", [get(env, context, "gameEntry.lastPlay.date")], {}, child0, child1);
+        block(env, morph2, context, "if", [get(env, context, "gameEntry.lastPlay")], {}, child0, child1);
         attribute(env, attrMorph3, element4, "href", concat(env, [get(env, context, "gameEntry.bggUrl")]));
         attribute(env, attrMorph4, element5, "src", concat(env, [get(env, context, "gameEntry.image")]));
         attribute(env, attrMorph5, element5, "alt", concat(env, [get(env, context, "gameEntry.name")]));
         content(env, morph3, context, "gameEntry.name");
         content(env, morph4, context, "gameEntry.totalPlays");
-        block(env, morph5, context, "if", [get(env, context, "gameEntry.lastPlay.date")], {}, child2, child3);
+        block(env, morph5, context, "if", [get(env, context, "gameEntry.lastPlay")], {}, child2, child3);
         return fragment;
       }
     };

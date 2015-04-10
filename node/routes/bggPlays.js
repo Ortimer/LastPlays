@@ -21,8 +21,8 @@ router.get('/:username-:gameid', function(req, res) {
         if (bggPlaysData.plays && bggPlaysData.plays.play) {
           var item = bggPlaysData.plays.play[0];
 
-          playData.id = item.$.id;
-          playData.game_id = req.params.gameid;
+          playData.id = req.params.username + '-' + req.params.gameid;
+          playData.bgg_id = item.$.id;
           playData.date = item.$.date;
           playData.location = item.$.location;
         }

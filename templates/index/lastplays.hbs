@@ -62,7 +62,7 @@
             <p class='col-xs-12'>Total plays: {{gameEntry.totalPlays}}</p>
           </div>
           <div class="row">
-            {{#if gameEntry.lastPlay.date}}
+            {{#if gameEntry.lastPlay}}
               <p class='col-xs-12'>Last play date: {{formatdate gameEntry.lastPlay.date}}</p>
               <p class='col-xs-12'>Time since: {{gameEntry.lastPlayText}}</p>
             {{else}}
@@ -90,11 +90,11 @@
             <p class='col-xs-12'>Total plays: {{gameEntry.totalPlays}}</p>
           </div>
           <div class="row">
-            {{#if gameEntry.lastPlay.date}}
+            {{#if gameEntry.lastPlay}}
               <p class='col-xs-6'>Last play date: {{formatdate gameEntry.lastPlay.date}}</p>
               <p class='col-xs-6 text-right'>Time since: {{gameEntry.lastPlayText}}</p>
             {{else}}
-              <p class='col-xs-12'>Last play date: <i>Loading...</i></p>
+            <p class='col-md-12'>Last play date: <i>Loading...</i></p>
             {{/if}}
           </div>
         </article>

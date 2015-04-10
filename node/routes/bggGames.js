@@ -46,7 +46,7 @@ router.get('/', function(req, res) {
             game.name = item.name[0]._;
             game.image = 'http:' + item.thumbnail[0];
             game.totalPlays = item.numplays[0];
-            game.lastPlay = req.query.username + '-' + item.$.objectid;
+            game.lastPlay_id = req.query.username + '-' + item.$.objectid;
 
             collectionData.games.push(game);
           });

@@ -13,7 +13,7 @@ BggBuddy.IndexLastplaysController = Ember.ArrayController.extend({
   allPlaysLoaded: function() {
     var model = this.get('model');
     return model.reduce(function(previousValue, game){
-        return previousValue && (game.get('lastPlay').get('date') != null);
+        return previousValue && (game.get('lastPlay.date') != null);
     }, true);
   }.property('model.@each.lastPlay.date'),
   actions: {
