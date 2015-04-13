@@ -22,10 +22,17 @@ router.get('/', function(req, res) {
 
     var args = {
       'username': req.query.username,
-      'own': 1,
-      'excludesubtype': 'boardgameexpansion',
-      'played': 1
+      'excludesubtype': 'boardgameexpansion'
     }
+
+    if (req.query.own != -1) {
+      args.own = req.query.own;
+    }
+
+    if (req.query.played != -1) {
+      args.played = req.query.played;
+    }
+
     var bggCollectionPromise = getBggData('collection', args);
 
     bggCollectionPromise.then(function(bggCollectionData) {

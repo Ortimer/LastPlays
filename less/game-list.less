@@ -1,0 +1,207 @@
+@import "mixins.less";
+
+div.list-article {
+  .article-wrapper {
+    .transition(width, 0.4s);
+  }
+  article {
+    .border-radius(150px);
+    position: relative;
+    padding-left: 180px;
+    padding-right: 75px;
+    height: 150px;
+    margin-bottom: 30px;
+    background-color: #eee;
+    cursor: pointer;
+    .img-wrapper {
+      .border-radius(100px);
+      .transition(all, 0.2s);
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background-color: #cde;
+      padding: 10px;
+      height: 170px;
+      width: 170px;
+      z-index: 3;
+      .game-image {
+        .border-radius(100px);
+        .transition(all, 0.2s);
+        height: 150px;
+        width: 150px;
+        overflow: hidden;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        img {
+          min-height: 150px;
+          min-width: 150px;
+        }
+      }
+    }
+    h1 {
+      .transition(all, 0.4s);
+      height: 75px;
+      line-height: 75px;
+      font-size: 24px;
+      border-bottom: 2px solid #cde;
+      color: #428bca;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    p {
+      color: #888;
+    }
+    a {
+      .transition(all, 0.4s);
+      .border-radius(150px);
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 100%;
+      line-height: 150px;
+      text-align: center;
+      width: 100%;
+      background-color: rgba(238,238,238,0.60);
+      font-size: 48px;
+      font-style: italic;
+      opacity: 0;
+      color: #428bca !important;
+      text-decoration: none !important;
+      font-family: "Pacifico";
+      text-shadow: 0 1px 1px #aaa;
+      z-index: 2;
+    }
+    &:hover {
+      .img-wrapper {
+        //.rotate(10deg);
+        padding: 5px;
+        .game-image {
+          .scale(1.1, 1.1);
+        }
+      }
+      a {
+        opacity: 1;
+      }
+    }
+  }
+  .bloc {
+    article {
+      .border-radius(3px);
+      padding: 10px;
+      height: 225px;
+      margin-top: 75px;
+      .img-wrapper {
+        position: relative;
+        top: -85px;
+        width: 170px;
+        left: inherit;
+        margin: auto auto -100px;
+      }
+      h1 {
+        font-size: 14px;
+        height: 37.5px;
+        line-height: 37.5px;
+      }
+      p {
+        font-size: 12px;
+      }
+      a {
+        .border-radius(3px);
+        line-height: 255px;
+      }
+    }
+  }
+}
+
+.orderButton {
+  font-size: 1em;
+  width: 100%;
+}
+
+.level-btn {
+  position: relative;
+  border: 0 !important;
+  &:focus { outline: 0; }
+  &:hover { top: 2px; }
+  &:active { top: 6px; }
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold !important;
+
+  .border-radius(10);
+  .transition(all, 50ms, ease);
+  .level-btn(rgb(204, 204, 204), 20%);
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    .opacity(.65);
+  }
+}
+
+.level-btn-default {
+  color: #333333;
+}
+
+.level-btn-primary {
+  .level-btn(#428bca);
+}
+
+.level-btn-success {
+  .level-btn(#5cb85c);
+}
+
+.level-btn-info {
+  .level-btn(#5bc0de);
+}
+
+.level-btn-warning {
+  .level-btn(#f0ad4e);
+}
+
+.level-btn-danger {
+  .level-btn(#d9534f);
+}
+
+.level-btn-link {
+  text-shadow: none;
+  background: none !important;
+  .box-shadow(none);
+  &:hover {
+    border: 0;
+    background: none !important;
+    .box-shadow(none);
+    top: 0;
+  }
+  &:active {
+    .box-shadow(none);
+    top: 0;
+  }
+}
+
+.level-btn(@color, @percent: 10%)  {
+    border: 0;
+    color: #ffffff;
+    text-shadow: 0px 1px 0px darken(@color, @percent);
+    background-color: @color;
+    .box-shadow(0px, 6px, 0px, darken(@color, @percent));
+    &:hover {
+      border: 0;
+      background-color: lighten(@color, 5%) !important;
+      .box-shadow(0px, 4px, 0px, darken(@color, @percent));
+    }
+    &:active {
+      .box-shadow(inset, 0px, 3px, 0px, darken(@color, @percent));
+    }
+}
+
+.loading-container {
+  h1 {
+    //line-height: 75px;
+    font-size: 24px;
+    color: #428bca;
+  }
+}

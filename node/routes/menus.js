@@ -65,7 +65,7 @@ var menuInfos = [{
     subMenus: [{
       id: 3,
       name: 'H-Index',
-      link: 'root'
+      link: 'index.hindex'
     }, {
       id: 4,
       name: 'Money spend',

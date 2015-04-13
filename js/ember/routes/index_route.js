@@ -3,9 +3,7 @@ BggBuddy.IndexRoute = Ember.Route.extend({
     return this.store.find('bggUser', params.bggUser);
   },
   afterModel: function(bggUser, transition) {
-    if (bggUser != null) {
-      this.transitionTo('index.lastplays');
-    } else {
+    if (bggUser == null) {
       this.transitionTo('root');
     }
   }
