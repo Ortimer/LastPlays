@@ -39,39 +39,37 @@ var menuInfos = [{
     id: 1,
     name: 'Last plays',
     icon: 'fa-gamepad',
-    link: 'javascript:void(0)'
+    link: 'index.lastplays'
   }, {
     id: 2,
     name: 'Charts',
     icon: 'fa-bar-chart-o',
-    link: 'javascript:void(0)',
     subMenus: [{
       id: 1,
       name: 'Owned games by year',
-      link: 'javascript:void(0)'
+      link: 'root'
     }, {
       id: 2,
       name: 'Plays by month',
-      link: 'javascript:void(0)'
+      link: 'root'
     }]
   }, {
     id: 3,
     name: 'Tables',
     icon: 'fa-table',
-    link: 'javascript:void(0)'
+    link: 'root'
   }, {
     id: 4,
     name: 'Stats',
     icon: 'fa-pie-chart',
-    link: 'javascript:void(0)',
     subMenus: [{
       id: 3,
       name: 'H-Index',
-      link: 'javascript:void(0)'
+      link: 'root'
     }, {
       id: 4,
       name: 'Money spend',
-      link: 'javascript:void(0)'
+      link: 'root'
     }]
   }]
 }];

@@ -46,6 +46,7 @@ div.list-article {
       font-size: 24px;
       border-bottom: 2px solid #cde;
       color: #428bca;
+      overflow: hidden;
     }
     p {
       color: #888;
@@ -193,4 +194,13 @@ div.list-article {
     &:active {
       .box-shadow(inset, 0px, 3px, 0px, darken(@color, @percent));
     }
+}
+
+.loading-container {
+  margin-top: 0.5em;
+  h1 {
+    //line-height: 75px;
+    font-size: 24px;
+    color: #428bca;
+  }
 }

@@ -81,11 +81,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         } else {
           fragment = this.build(dom);
         }
-        var element9 = dom.childAt(fragment, [1, 1]);
-        var element10 = dom.childAt(element9, [1]);
-        var morph0 = dom.createMorphAt(dom.childAt(element10, [1]),0,0);
-        var morph1 = dom.createMorphAt(dom.childAt(element10, [3, 1]),0,0);
-        var morph2 = dom.createMorphAt(dom.childAt(element9, [3]),0,0);
+        var element7 = dom.childAt(fragment, [1, 1]);
+        var element8 = dom.childAt(element7, [1]);
+        var morph0 = dom.createMorphAt(dom.childAt(element8, [1]),0,0);
+        var morph1 = dom.createMorphAt(dom.childAt(element8, [3, 1]),0,0);
+        var morph2 = dom.createMorphAt(dom.childAt(element7, [3]),0,0);
         content(env, morph0, context, "singleMessage.author");
         content(env, morph1, context, "singleMessage.time");
         content(env, morph2, context, "singleMessage.message");
@@ -197,18 +197,18 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         } else {
           fragment = this.build(dom);
         }
-        var element6 = dom.childAt(fragment, [1, 1, 1]);
-        var element7 = dom.childAt(element6, [1]);
-        var element8 = dom.childAt(element6, [3, 1]);
-        var morph0 = dom.createMorphAt(dom.childAt(element7, [1]),0,0);
-        var morph1 = dom.createMorphAt(dom.childAt(element7, [3]),0,0);
-        var attrMorph0 = dom.createAttrMorph(element8, 'class');
-        var attrMorph1 = dom.createAttrMorph(element8, 'aria-valuenow');
-        var morph2 = dom.createMorphAt(dom.childAt(element8, [1]),0,0);
+        var element4 = dom.childAt(fragment, [1, 1, 1]);
+        var element5 = dom.childAt(element4, [1]);
+        var element6 = dom.childAt(element4, [3, 1]);
+        var morph0 = dom.createMorphAt(dom.childAt(element5, [1]),0,0);
+        var morph1 = dom.createMorphAt(dom.childAt(element5, [3]),0,0);
+        var attrMorph0 = dom.createAttrMorph(element6, 'class');
+        var attrMorph1 = dom.createAttrMorph(element6, 'aria-valuenow');
+        var morph2 = dom.createMorphAt(dom.childAt(element6, [1]),0,0);
         content(env, morph0, context, "singleTask.name");
         content(env, morph1, context, "singleTask.progress");
-        attribute(env, attrMorph0, element8, "class", concat(env, ["progress-bar ", get(env, context, "singleTask.barType")]));
-        attribute(env, attrMorph1, element8, "aria-valuenow", concat(env, [get(env, context, "singleTask.progress")]));
+        attribute(env, attrMorph0, element6, "class", concat(env, ["progress-bar ", get(env, context, "singleTask.barType")]));
+        attribute(env, attrMorph1, element6, "aria-valuenow", concat(env, [get(env, context, "singleTask.progress")]));
         content(env, morph2, context, "singleTask.progress");
         return fragment;
       }
@@ -217,6 +217,47 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   var child2 = (function() {
     var child0 = (function() {
       var child0 = (function() {
+        var child0 = (function() {
+          return {
+            isHTMLBars: true,
+            revision: "Ember@1.11.0",
+            blockParams: 0,
+            cachedFragment: null,
+            hasRendered: false,
+            build: function build(dom) {
+              var el0 = dom.createDocumentFragment();
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              return el0;
+            },
+            render: function render(context, env, contextualElement) {
+              var dom = env.dom;
+              var hooks = env.hooks, content = hooks.content;
+              dom.detectNamespace(contextualElement);
+              var fragment;
+              if (env.useFragmentCache && dom.canClone) {
+                if (this.cachedFragment === null) {
+                  fragment = this.build(dom);
+                  if (this.hasRendered) {
+                    this.cachedFragment = fragment;
+                  } else {
+                    this.hasRendered = true;
+                  }
+                }
+                if (this.cachedFragment) {
+                  fragment = dom.cloneNode(this.cachedFragment, true);
+                }
+              } else {
+                fragment = this.build(dom);
+              }
+              var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+              dom.insertBoundary(fragment, null);
+              dom.insertBoundary(fragment, 0);
+              content(env, morph0, context, "subMenuOption.name");
+              return fragment;
+            }
+          };
+        }());
         return {
           isHTMLBars: true,
           revision: "Ember@1.11.0",
@@ -230,9 +271,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
             var el1 = dom.createElement("li");
             var el2 = dom.createTextNode("\n                    ");
             dom.appendChild(el1, el2);
-            var el2 = dom.createElement("a");
-            var el3 = dom.createComment("");
-            dom.appendChild(el2, el3);
+            var el2 = dom.createComment("");
             dom.appendChild(el1, el2);
             var el2 = dom.createTextNode("\n                  ");
             dom.appendChild(el1, el2);
@@ -243,7 +282,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
           },
           render: function render(context, env, contextualElement) {
             var dom = env.dom;
-            var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+            var hooks = env.hooks, get = hooks.get, block = hooks.block;
             dom.detectNamespace(contextualElement);
             var fragment;
             if (env.useFragmentCache && dom.canClone) {
@@ -261,11 +300,8 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
             } else {
               fragment = this.build(dom);
             }
-            var element2 = dom.childAt(fragment, [1, 1]);
-            var morph0 = dom.createMorphAt(element2,0,0);
-            var attrMorph0 = dom.createAttrMorph(element2, 'href');
-            attribute(env, attrMorph0, element2, "href", concat(env, [get(env, context, "subMenuOption.link")]));
-            content(env, morph0, context, "subMenuOption.name");
+            var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
+            block(env, morph0, context, "link-to", [get(env, context, "singleOption.link")], {}, child0, null);
             return fragment;
           }
         };
@@ -284,6 +320,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
           var el2 = dom.createTextNode("\n              ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("a");
+          dom.setAttribute(el2,"href","#");
           var el3 = dom.createElement("i");
           dom.appendChild(el2, el3);
           var el3 = dom.createTextNode(" ");
@@ -332,15 +369,13 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
           } else {
             fragment = this.build(dom);
           }
-          var element3 = dom.childAt(fragment, [1]);
-          var element4 = dom.childAt(element3, [1]);
-          var element5 = dom.childAt(element4, [0]);
-          var attrMorph0 = dom.createAttrMorph(element4, 'href');
-          var attrMorph1 = dom.createAttrMorph(element5, 'class');
-          var morph0 = dom.createMorphAt(element4,2,2);
-          var morph1 = dom.createMorphAt(dom.childAt(element3, [3]),1,1);
-          attribute(env, attrMorph0, element4, "href", concat(env, [get(env, context, "singleOption.link")]));
-          attribute(env, attrMorph1, element5, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
+          var element1 = dom.childAt(fragment, [1]);
+          var element2 = dom.childAt(element1, [1]);
+          var element3 = dom.childAt(element2, [0]);
+          var attrMorph0 = dom.createAttrMorph(element3, 'class');
+          var morph0 = dom.createMorphAt(element2,2,2);
+          var morph1 = dom.createMorphAt(dom.childAt(element1, [3]),1,1);
+          attribute(env, attrMorph0, element3, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
           content(env, morph0, context, "singleOption.name");
           block(env, morph1, context, "each", [get(env, context, "singleOption.subMenus")], {"keyword": "subMenuOption"}, child0, null);
           return fragment;
@@ -348,6 +383,53 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       };
     }());
     var child1 = (function() {
+      var child0 = (function() {
+        return {
+          isHTMLBars: true,
+          revision: "Ember@1.11.0",
+          blockParams: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          build: function build(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createElement("i");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode(" ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          render: function render(context, env, contextualElement) {
+            var dom = env.dom;
+            var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+            dom.detectNamespace(contextualElement);
+            var fragment;
+            if (env.useFragmentCache && dom.canClone) {
+              if (this.cachedFragment === null) {
+                fragment = this.build(dom);
+                if (this.hasRendered) {
+                  this.cachedFragment = fragment;
+                } else {
+                  this.hasRendered = true;
+                }
+              }
+              if (this.cachedFragment) {
+                fragment = dom.cloneNode(this.cachedFragment, true);
+              }
+            } else {
+              fragment = this.build(dom);
+            }
+            var element0 = dom.childAt(fragment, [0]);
+            var attrMorph0 = dom.createAttrMorph(element0, 'class');
+            var morph0 = dom.createMorphAt(fragment,2,2,contextualElement);
+            dom.insertBoundary(fragment, null);
+            attribute(env, attrMorph0, element0, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
+            content(env, morph0, context, "singleOption.name");
+            return fragment;
+          }
+        };
+      }());
       return {
         isHTMLBars: true,
         revision: "Ember@1.11.0",
@@ -361,13 +443,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
           var el1 = dom.createElement("li");
           var el2 = dom.createTextNode("\n              ");
           dom.appendChild(el1, el2);
-          var el2 = dom.createElement("a");
-          var el3 = dom.createElement("i");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode(" ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createComment("");
-          dom.appendChild(el2, el3);
+          var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n            ");
           dom.appendChild(el1, el2);
@@ -378,7 +454,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+          var hooks = env.hooks, get = hooks.get, block = hooks.block;
           dom.detectNamespace(contextualElement);
           var fragment;
           if (env.useFragmentCache && dom.canClone) {
@@ -396,14 +472,8 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
           } else {
             fragment = this.build(dom);
           }
-          var element0 = dom.childAt(fragment, [1, 1]);
-          var element1 = dom.childAt(element0, [0]);
-          var attrMorph0 = dom.createAttrMorph(element0, 'href');
-          var attrMorph1 = dom.createAttrMorph(element1, 'class');
-          var morph0 = dom.createMorphAt(element0,2,2);
-          attribute(env, attrMorph0, element0, "href", concat(env, [get(env, context, "singleOption.link")]));
-          attribute(env, attrMorph1, element1, "class", concat(env, ["fa fa-fw ", get(env, context, "singleOption.icon")]));
-          content(env, morph0, context, "singleOption.name");
+          var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
+          block(env, morph0, context, "link-to", [get(env, context, "singleOption.link")], {}, child0, null);
           return fragment;
         }
       };
@@ -1026,11 +1096,11 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       } else {
         fragment = this.build(dom);
       }
-      var element11 = dom.childAt(fragment, [2]);
-      var element12 = dom.childAt(element11, [5]);
-      var morph0 = dom.createMorphAt(dom.childAt(element12, [3, 3]),1,1);
-      var morph1 = dom.createMorphAt(dom.childAt(element12, [9, 3]),1,1);
-      var morph2 = dom.createMorphAt(dom.childAt(element11, [9, 1, 1]),3,3);
+      var element9 = dom.childAt(fragment, [2]);
+      var element10 = dom.childAt(element9, [5]);
+      var morph0 = dom.createMorphAt(dom.childAt(element10, [3, 3]),1,1);
+      var morph1 = dom.createMorphAt(dom.childAt(element10, [9, 3]),1,1);
+      var morph2 = dom.createMorphAt(dom.childAt(element9, [9, 1, 1]),3,3);
       var morph3 = dom.createMorphAt(dom.childAt(fragment, [4]),1,1);
       block(env, morph0, context, "each", [get(env, context, "model.messages")], {"keyword": "singleMessage"}, child0, null);
       block(env, morph1, context, "each", [get(env, context, "model.tasks")], {"keyword": "singleTask"}, child1, null);
@@ -2105,8 +2175,21 @@ Ember.TEMPLATES["index/loading"] = Ember.HTMLBars.template((function() {
     hasRendered: false,
     build: function build(dom) {
       var el0 = dom.createDocumentFragment();
-      var el1 = dom.createElement("p");
-      var el2 = dom.createTextNode("LOADING...");
+      var el1 = dom.createElement("div");
+      dom.setAttribute(el1,"class","well loading-container");
+      var el2 = dom.createTextNode("\n  ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("h1");
+      dom.setAttribute(el2,"class","text-center");
+      var el3 = dom.createTextNode("\n    ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("i");
+      dom.setAttribute(el3,"class","fa fa-cog fa-spin");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode(" Loading...\n  ");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n");
       dom.appendChild(el1, el2);
       dom.appendChild(el0, el1);
       var el1 = dom.createTextNode("\n");

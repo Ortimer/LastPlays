@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
       return;
     }
 
-
     if (retry >= 5) {
       res.writeHead(500);
       res.write('Retry limit reached');
@@ -32,9 +31,8 @@ router.get('/', function(req, res) {
     bggCollectionPromise.then(function(bggCollectionData) {
       bggCollectionData = bggCollectionData.data;
 
-      var collectionData = {
-        'games': []
-      }
+      var collectionData = {};
+      collectionData[req.baseUrl.substring(1)] = [];
 
       if (bggCollectionData.items) {
         if (bggCollectionData.items.item) {
@@ -48,7 +46,7 @@ router.get('/', function(req, res) {
             game.totalPlays = item.numplays[0];
             game.lastPlay_id = req.query.username + '-' + item.$.objectid;
 
-            collectionData.games.push(game);
+            collectionData[req.baseUrl.substring(1)].push(game);
           });
         }
 

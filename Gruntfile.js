@@ -61,9 +61,6 @@ module.exports = function(grunt) {
           // Konami
           'js/konami.js': 'konami-js/konami.js',
 
-          // Spin.js
-          'js/spin.js': 'spin.js/spin.js',
-
           // Bootstrap
           'css/bootstrap-theme.css': 'bootstrap/dist/css/bootstrap-theme.css',
           'css/bootstrap-theme.css.map': 'bootstrap/dist/css/bootstrap-theme.css.map',

@@ -152,18 +152,18 @@
         {{#each singleOption in model.sideMenuOptions}}
           {{#if singleOption.subMenus}}
             <li>
-              <a href="{{singleOption.link}}"><i class="fa fa-fw {{singleOption.icon}}"></i> {{singleOption.name}}<span class="fa arrow"></span></a>
+              <a href='#'><i class="fa fa-fw {{singleOption.icon}}"></i> {{singleOption.name}}<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 {{#each subMenuOption in singleOption.subMenus}}
                   <li>
-                    <a href="{{subMenuOption.link}}">{{subMenuOption.name}}</a>
+                    {{#link-to singleOption.link}}{{subMenuOption.name}}{{/link-to}}
                   </li>
                 {{/each}}
               </ul>
             </li>
           {{else}}
             <li>
-              <a href="{{singleOption.link}}"><i class="fa fa-fw {{singleOption.icon}}"></i> {{singleOption.name}}</a>
+              {{#link-to singleOption.link}}<i class="fa fa-fw {{singleOption.icon}}"></i> {{singleOption.name}}{{/link-to}}
             </li>
           {{/if}}
         {{/each}}
