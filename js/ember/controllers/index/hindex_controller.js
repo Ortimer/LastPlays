@@ -1,4 +1,29 @@
 BggBuddy.IndexHindexController = BaseGameController.extend({
+  filter: 0, //0: No filter, 1: H-Index, 2: Not played
+  filteredContent: function () {
+    var self = this;
+    var filter = this.get('filter');
+    var games = this.get('arrangedContent');
+    var filtered;
+
+    switch (filter) {
+      case 1:
+        filtered = games.filter(function(game){
+          return game.get('totalPlays') >= self.get('hindexvalue');
+        });
+        break;
+      case 2:
+        filtered = games.filter(function(game){
+          return game.get('totalPlays') == 0;
+        });
+        break;
+      case 0:
+      default:
+        filtered = games;
+    }
+
+    return filtered;
+  }.property('arrangedContent', 'filter'),
   hindexvalue: function () {
     var model = this.get('model');
     var plays = [];
@@ -40,5 +65,10 @@ BggBuddy.IndexHindexController = BaseGameController.extend({
         return previousValue;
       }
     }, 0);
-  }.property('model.@each.totalPlays')
+  }.property('model.@each.totalPlays'),
+  actions: {
+    setFilter: function (type) {
+      this.set('filter', type);
+    }
+  }
 });

@@ -1,24 +1,7 @@
 <div class="row margin-top-05">
-    <!-- H-Index -->
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-trophy fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">{{hindexvalue}}</div>
-                        <div>H-Index</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Collection -->
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
+    <div class="col-lg-3 col-md-6" {{action 'setFilter' 0}}>
+        <div class="panel panel-success-clickable">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -33,9 +16,26 @@
         </div>
     </div>
 
+    <!-- H-Index -->
+    <div class="col-lg-3 col-md-6" {{action 'setFilter' 1}}>
+        <div class="panel panel-info-clickable">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-trophy fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{hindexvalue}}</div>
+                        <div>H-Index</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logged plays -->
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-yellow">
+        <div class="panel panel-warning">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -51,8 +51,8 @@
     </div>
 
     <!-- Unplayed games -->
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-red">
+    <div class="col-lg-3 col-md-6" {{action 'setFilter' 2}}>
+        <div class="panel panel-danger-clickable">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -68,11 +68,11 @@
     </div>
 
     <!-- Games List -->
-    <div class="container-fluid list-article">
+    <div id="h-index-list" class="container-fluid list-article">
       <div class="row">
-        {{#each gameEntry in arrangedContent}}
+        {{#each gameEntry in filteredContent}}
           <!--Small-Medium layout-->
-          <div class="article-wrapper bloc col-xs-12 col-sm-6 col-md-3 col-lg-2">
+          <div class="article-wrapper bloc col-xs-12 col-sm-6 col-md-4 col-lg-2 {{gameEntry.customClass}}">
             <article>
               <a href="{{gameEntry.bggUrl}}" target="_blank" class="gotoBgg">Go to BGG</a>
               <table class="img-wrapper">
