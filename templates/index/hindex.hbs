@@ -1,6 +1,6 @@
 <div class="row margin-top-05">
     <!-- Collection -->
-    <div class="col-lg-3 col-md-6" {{action 'setFilter' 0}}>
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 0}}>
         <div class="panel panel-success-clickable">
             <div class="panel-heading">
                 <div class="row">
@@ -17,7 +17,7 @@
     </div>
 
     <!-- H-Index -->
-    <div class="col-lg-3 col-md-6" {{action 'setFilter' 1}}>
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 1}}>
         <div class="panel panel-info-clickable">
             <div class="panel-heading">
                 <div class="row">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Logged plays -->
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-sm-6">
         <div class="panel panel-warning">
             <div class="panel-heading">
                 <div class="row">
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Unplayed games -->
-    <div class="col-lg-3 col-md-6" {{action 'setFilter' 2}}>
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 2}}>
         <div class="panel panel-danger-clickable">
             <div class="panel-heading">
                 <div class="row">
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{unplayedGames}}</div>
-                        <div>Base games unplayed!</div>
+                        <div>Unplayed games!</div>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
       <div class="row">
         {{#each gameEntry in filteredContent}}
           <!--Small-Medium layout-->
-          <div class="article-wrapper bloc col-xs-12 col-sm-6 col-md-4 col-lg-2 {{gameEntry.customClass}}">
+          <div class="article-wrapper bloc col-sm-6 col-lg-3 {{gameEntry.customClass}}">
             <article>
               <a href="{{gameEntry.bggUrl}}" target="_blank" class="gotoBgg">Go to BGG</a>
               <table class="img-wrapper">
@@ -86,7 +86,12 @@
               </table>
               <h1>{{gameEntry.name}}</h1>
               <div class="row">
-                <p class='col-xs-12'>Total plays: {{gameEntry.totalPlays}}</p>
+                <p class='col-xs-12'>
+                  Total plays: {{gameEntry.totalPlays}}
+                  {{#if gameEntry.hindexDiff}}
+                    <span class="hindexDiff">(+{{gameEntry.hindexDiff}})</span>
+                  {{/if}}
+                </p>
               </div>
             </article>
           </div>

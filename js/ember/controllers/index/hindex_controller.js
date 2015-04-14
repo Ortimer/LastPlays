@@ -48,6 +48,18 @@ BggBuddy.IndexHindexController = BaseGameController.extend({
       hindex++;
     }
 
+    model.forEach(function(game){
+      if (game.get('totalPlays') == 0) {
+        game.set('customClass', 'noplay');
+      } else if (game.get('totalPlays') >= hindex) {
+        game.set('customClass', 'hindex');
+      }
+
+      if (game.get('totalPlays') >= hindex - 3 && game.get('totalPlays') < hindex + 1) {
+        game.set('hindexDiff', hindex + 1 - game.get('totalPlays'));
+      }
+    });
+
     return hindex;
   }.property('model.@each.totalPlays'),
   sumPlays: function () {

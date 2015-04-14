@@ -991,52 +991,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       var el4 = dom.createElement("ul");
       dom.setAttribute(el4,"class","nav");
       dom.setAttribute(el4,"id","side-menu");
-      var el5 = dom.createTextNode("\n        ");
-      dom.appendChild(el4, el5);
-      var el5 = dom.createElement("li");
-      dom.setAttribute(el5,"class","sidebar-search");
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createElement("div");
-      dom.setAttribute(el6,"class","input-group custom-search-form");
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("input");
-      dom.setAttribute(el7,"type","text");
-      dom.setAttribute(el7,"class","form-control");
-      dom.setAttribute(el7,"placeholder","Search...");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n            ");
-      dom.appendChild(el6, el7);
-      var el7 = dom.createElement("span");
-      dom.setAttribute(el7,"class","input-group-btn");
-      var el8 = dom.createTextNode("\n              ");
-      dom.appendChild(el7, el8);
-      var el8 = dom.createElement("button");
-      dom.setAttribute(el8,"class","btn btn-default");
-      dom.setAttribute(el8,"type","button");
-      var el9 = dom.createTextNode("\n                ");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createElement("i");
-      dom.setAttribute(el9,"class","fa fa-search");
-      dom.appendChild(el8, el9);
-      var el9 = dom.createTextNode("\n              ");
-      dom.appendChild(el8, el9);
-      dom.appendChild(el7, el8);
-      var el8 = dom.createTextNode("\n            ");
-      dom.appendChild(el7, el8);
-      dom.appendChild(el6, el7);
-      var el7 = dom.createTextNode("\n          ");
-      dom.appendChild(el6, el7);
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n          ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createComment(" /input-group ");
-      dom.appendChild(el5, el6);
-      var el6 = dom.createTextNode("\n        ");
-      dom.appendChild(el5, el6);
-      dom.appendChild(el4, el5);
-      var el5 = dom.createTextNode("\n\n");
+      var el5 = dom.createTextNode("\n");
       dom.appendChild(el4, el5);
       var el5 = dom.createComment("");
       dom.appendChild(el4, el5);
@@ -1100,7 +1055,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       var element10 = dom.childAt(element9, [5]);
       var morph0 = dom.createMorphAt(dom.childAt(element10, [3, 3]),1,1);
       var morph1 = dom.createMorphAt(dom.childAt(element10, [9, 3]),1,1);
-      var morph2 = dom.createMorphAt(dom.childAt(element9, [9, 1, 1]),3,3);
+      var morph2 = dom.createMorphAt(dom.childAt(element9, [9, 1, 1]),1,1);
       var morph3 = dom.createMorphAt(dom.childAt(fragment, [4]),1,1);
       block(env, morph0, context, "each", [get(env, context, "model.messages")], {"keyword": "singleMessage"}, child0, null);
       block(env, morph1, context, "each", [get(env, context, "model.tasks")], {"keyword": "singleTask"}, child1, null);
@@ -1113,6 +1068,56 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
 
 Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("                    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","hindexDiff");
+          var el2 = dom.createTextNode("(+");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode(")");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),1,1);
+          content(env, morph0, context, "gameEntry.hindexDiff");
+          return fragment;
+        }
+      };
+    }());
     return {
       isHTMLBars: true,
       revision: "Ember@1.11.0",
@@ -1183,9 +1188,15 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("p");
         dom.setAttribute(el4,"class","col-xs-12");
-        var el5 = dom.createTextNode("Total plays: ");
+        var el5 = dom.createTextNode("\n                  Total plays: ");
         dom.appendChild(el4, el5);
         var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("                ");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n              ");
@@ -1203,7 +1214,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       },
       render: function render(context, env, contextualElement) {
         var dom = env.dom;
-        var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+        var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content, block = hooks.block;
         dom.detectNamespace(contextualElement);
         var fragment;
         if (env.useFragmentCache && dom.canClone) {
@@ -1225,18 +1236,21 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
         var element1 = dom.childAt(element0, [1]);
         var element2 = dom.childAt(element1, [1]);
         var element3 = dom.childAt(element1, [3, 1, 1, 1, 1]);
+        var element4 = dom.childAt(element1, [7, 1]);
         var attrMorph0 = dom.createAttrMorph(element0, 'class');
         var attrMorph1 = dom.createAttrMorph(element2, 'href');
         var attrMorph2 = dom.createAttrMorph(element3, 'src');
         var attrMorph3 = dom.createAttrMorph(element3, 'alt');
         var morph0 = dom.createMorphAt(dom.childAt(element1, [5]),0,0);
-        var morph1 = dom.createMorphAt(dom.childAt(element1, [7, 1]),1,1);
-        attribute(env, attrMorph0, element0, "class", concat(env, ["article-wrapper bloc col-xs-12 col-sm-6 col-md-4 col-lg-2 ", get(env, context, "gameEntry.customClass")]));
+        var morph1 = dom.createMorphAt(element4,1,1);
+        var morph2 = dom.createMorphAt(element4,3,3);
+        attribute(env, attrMorph0, element0, "class", concat(env, ["article-wrapper bloc col-sm-6 col-lg-3 ", get(env, context, "gameEntry.customClass")]));
         attribute(env, attrMorph1, element2, "href", concat(env, [get(env, context, "gameEntry.bggUrl")]));
         attribute(env, attrMorph2, element3, "src", concat(env, [get(env, context, "gameEntry.image")]));
         attribute(env, attrMorph3, element3, "alt", concat(env, [get(env, context, "gameEntry.name")]));
         content(env, morph0, context, "gameEntry.name");
         content(env, morph1, context, "gameEntry.totalPlays");
+        block(env, morph2, context, "if", [get(env, context, "gameEntry.hindexDiff")], {}, child0, null);
         return fragment;
       }
     };
@@ -1258,7 +1272,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var el2 = dom.createTextNode("\n    ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","col-lg-3 col-md-6");
+      dom.setAttribute(el2,"class","col-lg-3 col-sm-6");
       var el3 = dom.createTextNode("\n        ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
@@ -1322,7 +1336,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var el2 = dom.createTextNode("\n    ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","col-lg-3 col-md-6");
+      dom.setAttribute(el2,"class","col-lg-3 col-sm-6");
       var el3 = dom.createTextNode("\n        ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
@@ -1386,7 +1400,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var el2 = dom.createTextNode("\n    ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","col-lg-3 col-md-6");
+      dom.setAttribute(el2,"class","col-lg-3 col-sm-6");
       var el3 = dom.createTextNode("\n        ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
@@ -1450,7 +1464,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var el2 = dom.createTextNode("\n    ");
       dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
-      dom.setAttribute(el2,"class","col-lg-3 col-md-6");
+      dom.setAttribute(el2,"class","col-lg-3 col-sm-6");
       var el3 = dom.createTextNode("\n        ");
       dom.appendChild(el2, el3);
       var el3 = dom.createElement("div");
@@ -1489,7 +1503,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var el7 = dom.createTextNode("\n                        ");
       dom.appendChild(el6, el7);
       var el7 = dom.createElement("div");
-      var el8 = dom.createTextNode("Base games unplayed!");
+      var el8 = dom.createTextNode("Unplayed games!");
       dom.appendChild(el7, el8);
       dom.appendChild(el6, el7);
       var el7 = dom.createTextNode("\n                    ");
@@ -1557,21 +1571,21 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       } else {
         fragment = this.build(dom);
       }
-      var element4 = dom.childAt(fragment, [0]);
-      var element5 = dom.childAt(element4, [3]);
-      var element6 = dom.childAt(element4, [7]);
-      var element7 = dom.childAt(element4, [15]);
-      var morph0 = dom.createMorphAt(dom.childAt(element5, [1, 1, 1, 3, 1]),0,0);
-      var morph1 = dom.createMorphAt(dom.childAt(element6, [1, 1, 1, 3, 1]),0,0);
-      var morph2 = dom.createMorphAt(dom.childAt(element4, [11, 1, 1, 1, 3, 1]),0,0);
-      var morph3 = dom.createMorphAt(dom.childAt(element7, [1, 1, 1, 3, 1]),0,0);
-      var morph4 = dom.createMorphAt(dom.childAt(element4, [19, 1]),1,1);
-      element(env, element5, context, "action", ["setFilter", 0], {});
+      var element5 = dom.childAt(fragment, [0]);
+      var element6 = dom.childAt(element5, [3]);
+      var element7 = dom.childAt(element5, [7]);
+      var element8 = dom.childAt(element5, [15]);
+      var morph0 = dom.createMorphAt(dom.childAt(element6, [1, 1, 1, 3, 1]),0,0);
+      var morph1 = dom.createMorphAt(dom.childAt(element7, [1, 1, 1, 3, 1]),0,0);
+      var morph2 = dom.createMorphAt(dom.childAt(element5, [11, 1, 1, 1, 3, 1]),0,0);
+      var morph3 = dom.createMorphAt(dom.childAt(element8, [1, 1, 1, 3, 1]),0,0);
+      var morph4 = dom.createMorphAt(dom.childAt(element5, [19, 1]),1,1);
+      element(env, element6, context, "action", ["setFilter", 0], {});
       content(env, morph0, context, "length");
-      element(env, element6, context, "action", ["setFilter", 1], {});
+      element(env, element7, context, "action", ["setFilter", 1], {});
       content(env, morph1, context, "hindexvalue");
       content(env, morph2, context, "sumPlays");
-      element(env, element7, context, "action", ["setFilter", 2], {});
+      element(env, element8, context, "action", ["setFilter", 2], {});
       content(env, morph3, context, "unplayedGames");
       block(env, morph4, context, "each", [get(env, context, "filteredContent")], {"keyword": "gameEntry"}, child0, null);
       return fragment;
