@@ -1374,7 +1374,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el6, el7);
       var el7 = dom.createTextNode("\n                        ");
       dom.appendChild(el6, el7);
-      var el7 = dom.createElement("div");
+      var el7 = dom.createElement("abbr");
       var el8 = dom.createTextNode("H-Index");
       dom.appendChild(el7, el8);
       dom.appendChild(el6, el7);
@@ -1553,7 +1553,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, element = hooks.element, content = hooks.content, get = hooks.get, block = hooks.block;
+      var hooks = env.hooks, element = hooks.element, content = hooks.content, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, block = hooks.block;
       dom.detectNamespace(contextualElement);
       var fragment;
       if (env.useFragmentCache && dom.canClone) {
@@ -1574,18 +1574,22 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
       var element5 = dom.childAt(fragment, [0]);
       var element6 = dom.childAt(element5, [3]);
       var element7 = dom.childAt(element5, [7]);
-      var element8 = dom.childAt(element5, [15]);
+      var element8 = dom.childAt(element7, [1, 1, 1, 3]);
+      var element9 = dom.childAt(element8, [3]);
+      var element10 = dom.childAt(element5, [15]);
       var morph0 = dom.createMorphAt(dom.childAt(element6, [1, 1, 1, 3, 1]),0,0);
-      var morph1 = dom.createMorphAt(dom.childAt(element7, [1, 1, 1, 3, 1]),0,0);
+      var morph1 = dom.createMorphAt(dom.childAt(element8, [1]),0,0);
+      var attrMorph0 = dom.createAttrMorph(element9, 'title');
       var morph2 = dom.createMorphAt(dom.childAt(element5, [11, 1, 1, 1, 3, 1]),0,0);
-      var morph3 = dom.createMorphAt(dom.childAt(element8, [1, 1, 1, 3, 1]),0,0);
+      var morph3 = dom.createMorphAt(dom.childAt(element10, [1, 1, 1, 3, 1]),0,0);
       var morph4 = dom.createMorphAt(dom.childAt(element5, [19, 1]),1,1);
       element(env, element6, context, "action", ["setFilter", 0], {});
       content(env, morph0, context, "length");
       element(env, element7, context, "action", ["setFilter", 1], {});
       content(env, morph1, context, "hindexvalue");
+      attribute(env, attrMorph0, element9, "title", concat(env, ["You have played ", get(env, context, "hindexvalue"), " games ", get(env, context, "hindexvalue"), " times"]));
       content(env, morph2, context, "sumPlays");
-      element(env, element8, context, "action", ["setFilter", 2], {});
+      element(env, element10, context, "action", ["setFilter", 2], {});
       content(env, morph3, context, "unplayedGames");
       block(env, morph4, context, "each", [get(env, context, "filteredContent")], {"keyword": "gameEntry"}, child0, null);
       return fragment;
