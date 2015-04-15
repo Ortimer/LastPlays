@@ -8,6 +8,45 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       hasRendered: false,
       build: function build(dom) {
         var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("span");
+        dom.setAttribute(el1,"class","navbar-brand");
+        var el2 = dom.createTextNode("BGGBuddy V0.1a");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        return fragment;
+      }
+    };
+  }());
+  var child1 = (function() {
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
         var el1 = dom.createTextNode("          ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("li");
@@ -93,7 +132,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }
     };
   }());
-  var child1 = (function() {
+  var child2 = (function() {
     return {
       isHTMLBars: true,
       revision: "Ember@1.11.0",
@@ -214,7 +253,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }
     };
   }());
-  var child2 = (function() {
+  var child3 = (function() {
     var child0 = (function() {
       var child0 = (function() {
         var child0 = (function() {
@@ -572,10 +611,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el2, el3);
       var el3 = dom.createTextNode("\n    ");
       dom.appendChild(el2, el3);
-      var el3 = dom.createElement("a");
-      dom.setAttribute(el3,"class","navbar-brand");
-      var el4 = dom.createTextNode("BGGBuddy V0.1a");
-      dom.appendChild(el3, el4);
+      var el3 = dom.createComment("");
       dom.appendChild(el2, el3);
       var el3 = dom.createTextNode("\n  ");
       dom.appendChild(el2, el3);
@@ -1033,7 +1069,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, get = hooks.get, block = hooks.block, content = hooks.content;
+      var hooks = env.hooks, block = hooks.block, get = hooks.get, content = hooks.content;
       dom.detectNamespace(contextualElement);
       var fragment;
       if (env.useFragmentCache && dom.canClone) {
@@ -1053,20 +1089,196 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }
       var element9 = dom.childAt(fragment, [2]);
       var element10 = dom.childAt(element9, [5]);
-      var morph0 = dom.createMorphAt(dom.childAt(element10, [3, 3]),1,1);
-      var morph1 = dom.createMorphAt(dom.childAt(element10, [9, 3]),1,1);
-      var morph2 = dom.createMorphAt(dom.childAt(element9, [9, 1, 1]),1,1);
-      var morph3 = dom.createMorphAt(dom.childAt(fragment, [4]),1,1);
-      block(env, morph0, context, "each", [get(env, context, "model.messages")], {"keyword": "singleMessage"}, child0, null);
-      block(env, morph1, context, "each", [get(env, context, "model.tasks")], {"keyword": "singleTask"}, child1, null);
-      block(env, morph2, context, "each", [get(env, context, "model.sideMenuOptions")], {"keyword": "singleOption"}, child2, null);
-      content(env, morph3, context, "outlet");
+      var morph0 = dom.createMorphAt(dom.childAt(element9, [1]),3,3);
+      var morph1 = dom.createMorphAt(dom.childAt(element10, [3, 3]),1,1);
+      var morph2 = dom.createMorphAt(dom.childAt(element10, [9, 3]),1,1);
+      var morph3 = dom.createMorphAt(dom.childAt(element9, [9, 1, 1]),1,1);
+      var morph4 = dom.createMorphAt(dom.childAt(fragment, [4]),1,1);
+      block(env, morph0, context, "link-to", ["bgguser"], {}, child0, null);
+      block(env, morph1, context, "each", [get(env, context, "model.messages")], {"keyword": "singleMessage"}, child1, null);
+      block(env, morph2, context, "each", [get(env, context, "model.tasks")], {"keyword": "singleTask"}, child2, null);
+      block(env, morph3, context, "each", [get(env, context, "model.sideMenuOptions")], {"keyword": "singleOption"}, child3, null);
+      content(env, morph4, context, "outlet");
       return fragment;
     }
   };
 }()));
 
-Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
+Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
+  var child0 = (function() {
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("  ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, content = hooks.content;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var morph0 = dom.createMorphAt(fragment,1,1,contextualElement);
+        content(env, morph0, context, "outlet");
+        return fragment;
+      }
+    };
+  }());
+  var child1 = (function() {
+    return {
+      isHTMLBars: true,
+      revision: "Ember@1.11.0",
+      blockParams: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("  ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"id","welcome-message");
+        dom.setAttribute(el1,"class","container margin-top-05");
+        var el2 = dom.createTextNode("\n      ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","row welcome-header");
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("img");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n        ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h1");
+        var el4 = dom.createTextNode("Welcome ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("span");
+        dom.setAttribute(el4,"class","username");
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode(" to BGGBuddy");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n      ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","row welcome-body");
+        var el3 = dom.createTextNode("\n        BGGBuddy is an application to help you see the info you store in BGG is different ways, so you can see stats about your gamming habits, collection and other stuff that will make your gamming life a little bit better.\n      ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n      ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","row welcome-footer");
+        var el3 = dom.createTextNode("\n        Enjoy your visit, and have fun gamming.\n      ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+        dom.detectNamespace(contextualElement);
+        var fragment;
+        if (env.useFragmentCache && dom.canClone) {
+          if (this.cachedFragment === null) {
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
+          }
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
+        } else {
+          fragment = this.build(dom);
+        }
+        var element0 = dom.childAt(fragment, [1, 1]);
+        var element1 = dom.childAt(element0, [1]);
+        var attrMorph0 = dom.createAttrMorph(element1, 'src');
+        var morph0 = dom.createMorphAt(dom.childAt(element0, [3, 1]),0,0);
+        attribute(env, attrMorph0, element1, "src", concat(env, [get(env, context, "model.avatarLink")]));
+        content(env, morph0, context, "model.id");
+        return fragment;
+      }
+    };
+  }());
+  return {
+    isHTMLBars: true,
+    revision: "Ember@1.11.0",
+    blockParams: 0,
+    cachedFragment: null,
+    hasRendered: false,
+    build: function build(dom) {
+      var el0 = dom.createDocumentFragment();
+      var el1 = dom.createComment("");
+      dom.appendChild(el0, el1);
+      return el0;
+    },
+    render: function render(context, env, contextualElement) {
+      var dom = env.dom;
+      var hooks = env.hooks, get = hooks.get, block = hooks.block;
+      dom.detectNamespace(contextualElement);
+      var fragment;
+      if (env.useFragmentCache && dom.canClone) {
+        if (this.cachedFragment === null) {
+          fragment = this.build(dom);
+          if (this.hasRendered) {
+            this.cachedFragment = fragment;
+          } else {
+            this.hasRendered = true;
+          }
+        }
+        if (this.cachedFragment) {
+          fragment = dom.cloneNode(this.cachedFragment, true);
+        }
+      } else {
+        fragment = this.build(dom);
+      }
+      var morph0 = dom.createMorphAt(fragment,0,0,contextualElement);
+      dom.insertBoundary(fragment, null);
+      dom.insertBoundary(fragment, 0);
+      block(env, morph0, context, "if", [get(env, context, "showOutlet")], {}, child0, child1);
+      return fragment;
+    }
+  };
+}()));
+
+Ember.TEMPLATES["bgguser/hindex"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
     var child0 = (function() {
       return {
@@ -1597,7 +1809,7 @@ Ember.TEMPLATES["index/hindex"] = Ember.HTMLBars.template((function() {
   };
 }()));
 
-Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
+Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
     var child0 = (function() {
       return {
@@ -2652,7 +2864,7 @@ Ember.TEMPLATES["index/lastplays"] = Ember.HTMLBars.template((function() {
   };
 }()));
 
-Ember.TEMPLATES["index/loading"] = Ember.HTMLBars.template((function() {
+Ember.TEMPLATES["bgguser/loading"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
     revision: "Ember@1.11.0",

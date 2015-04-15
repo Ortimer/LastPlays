@@ -1,0 +1,22 @@
+@import "variables.less";
+@import "mixins.less";
+
+#welcome-message {
+  .welcome-header {
+    img {
+      .border-radius(100px);
+      padding-right: 1em;
+    }
+    h1 {
+      .transition(all, 0.4s);
+      height: 75px;
+      line-height: 75px;
+      font-size: 24px;
+      color: #428bca;
+
+      .username {
+        font-style: italic;
+      }
+    }
+  }
+}

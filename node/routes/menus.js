@@ -39,7 +39,7 @@ var menuInfos = [{
     id: 1,
     name: 'Last plays',
     icon: 'fa-gamepad',
-    link: 'index.lastplays'
+    link: 'bgguser.lastplays'
   }, {
     id: 2,
     name: 'Stats',
@@ -47,7 +47,7 @@ var menuInfos = [{
     subMenus: [{
       id: 3,
       name: 'H-Index',
-      link: 'index.hindex'
+      link: 'bgguser.hindex'
     }]
   }]
 }];

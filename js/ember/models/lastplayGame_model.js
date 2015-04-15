@@ -6,16 +6,20 @@ BggBuddy.Lastplaygame = BggBuddy.Game.extend({
     var retryCount = 1;
 
     var loadJSON = function () {
-      $.getJSON( "plays/" + self.get('lastPlay_id'), function(playData) {
-        var play = self.store.createRecord('play', playData.play);
-        self.set('lastPlay', play);
-      })
-      .fail(function() {
-        console.log(self.get('lastPlay_id') + ' - Retry ' + retryCount);
-        if (retryCount++ <= 5) {
-          loadJSON();
-        }
-      });
+      if (self.store.recordIsLoaded('play', self.get('lastPlay_id'))) {
+        return self.store.find('play', playData.play);
+      } else {
+        $.getJSON( "plays/" + self.get('lastPlay_id'), function(playData) {
+          var play = self.store.createRecord('play', playData.play);
+          self.set('lastPlay', play);
+        })
+        .fail(function() {
+          console.log(self.get('lastPlay_id') + ' - Retry ' + retryCount);
+          if (retryCount++ <= 5) {
+            loadJSON();
+          }
+        });
+      }
     }
 
     loadJSON();

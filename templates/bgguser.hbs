@@ -1,0 +1,18 @@
+{{#if showOutlet}}
+  {{outlet}}
+{{else}}
+  <div id="welcome-message" class="container margin-top-05">
+      <div class="row welcome-header">
+        <img src="{{model.avatarLink}}">
+        <h1>Welcome <span class="username">{{model.id}}</span> to BGGBuddy</h1>
+      </div>
+
+      <div class="row welcome-body">
+        BGGBuddy is an application to help you see the info you store in BGG is different ways, so you can see stats about your gamming habits, collection and other stuff that will make your gamming life a little bit better.
+      </div>
+
+      <div class="row welcome-footer">
+        Enjoy your visit, and have fun gamming.
+      </div>
+  </div>
+{{/if}}

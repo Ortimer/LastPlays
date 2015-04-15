@@ -1,0 +1,104 @@
+<div class="container-fluid list-article">
+  <div class="row">
+    <div class="row-fluid margin-top-05">
+      <div class="col-xs-4">
+        <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'name'}}>
+          Name
+          {{#if orderedByName}}
+            {{#if sortAscending}}
+              <i class="fa fa-sort-alpha-asc" style="color: #dddddd"></i>
+            {{else}}
+              <i class="fa fa-sort-alpha-desc" style="color: #dddddd"></i>
+            {{/if}}
+          {{/if}}
+        </button>
+      </div>
+      <div class="col-xs-4">
+        {{#if allPlaysLoaded}}
+          <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'lastPlay.date'}}>
+            Date
+            {{#if orderedByDays}}
+              {{#if sortAscending}}
+                <i class="fa fa-sort-amount-asc" style="color: #dddddd"></i>
+              {{else}}
+                <i class="fa fa-sort-amount-desc" style="color: #dddddd"></i>
+              {{/if}}
+            {{/if}}
+          </button>
+        {{else}}
+          <button type="button" class="level-btn level-btn-primary btn-lg orderButton" disabled>Date <i class="fa fa-spinner fa-pulse"></i></button>
+        {{/if}}
+      </div>
+      <div class="col-xs-4">
+        <button type="button" class="level-btn level-btn-primary btn-lg orderButton" {{action 'sortBy' 'totalPlays'}}>
+          Plays
+          {{#if orderedByPlays}}
+            {{#if sortAscending}}
+              <i class="fa fa-sort-numeric-asc" style="color: #dddddd"></i>
+            {{else}}
+              <i class="fa fa-sort-numeric-desc" style="color: #dddddd"></i>
+            {{/if}}
+          {{/if}}
+        </button>
+      </div>
+    </div>
+
+    {{#each gameEntry in arrangedContent}}
+      <!--Small-Medium layout-->
+      <div class="article-wrapper bloc col-xs-12 col-sm-6 visible-xs-block visible-sm-block">
+        <article>
+          <a href="{{gameEntry.bggUrl}}" target="_blank" class="gotoBgg">Go to BGG</a>
+          <table class="img-wrapper">
+            <tr>
+              <td>
+                <div class="game-image">
+                  <img src="{{gameEntry.image}}" alt="{{gameEntry.name}}" />
+                </div>
+              </td>
+            </tr>
+          </table>
+          <h1>{{gameEntry.name}}</h1>
+          <div class="row">
+            <p class='col-xs-12'>Total plays: {{gameEntry.totalPlays}}</p>
+          </div>
+          <div class="row">
+            {{#if gameEntry.lastPlay}}
+              <p class='col-xs-12'>Last play date: {{formatdate gameEntry.lastPlay.date}}</p>
+              <p class='col-xs-12'>Time since: {{gameEntry.lastPlayText}}</p>
+            {{else}}
+              <p class='col-xs-12'>Last play date: <i>Loading...</i></p>
+            {{/if}}
+          </div>
+        </article>
+      </div>
+
+      <!--Big layout-->
+      <div class="article-wrapper col-md-12 visible-md-block visible-lg-block">
+        <article>
+          <a href="{{gameEntry.bggUrl}}" target="_blank" class="gotoBgg">Go to BGG</a>
+          <table class="img-wrapper">
+            <tr>
+              <td>
+                <div class="game-image">
+                  <img src="{{gameEntry.image}}" alt="{{gameEntry.name}}" />
+                </div>
+              </td>
+            </tr>
+          </table>
+          <h1>{{gameEntry.name}}</h1>
+          <div class="row">
+            <p class='col-xs-12'>Total plays: {{gameEntry.totalPlays}}</p>
+          </div>
+          <div class="row">
+            {{#if gameEntry.lastPlay}}
+              <p class='col-xs-6'>Last play date: {{formatdate gameEntry.lastPlay.date}}</p>
+              <p class='col-xs-6 text-right'>Time since: {{gameEntry.lastPlayText}}</p>
+            {{else}}
+            <p class='col-md-12'>Last play date: <i>Loading...</i></p>
+            {{/if}}
+          </div>
+        </article>
+      </div>
+    {{/each}}
+  </div>
+</div>
