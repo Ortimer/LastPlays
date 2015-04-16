@@ -6,9 +6,7 @@ BggBuddy.Lastplaygame = BggBuddy.Game.extend({
     var retryCount = 1;
 
     var loadJSON = function () {
-      if (self.store.recordIsLoaded('play', self.get('lastPlay_id'))) {
-        return self.store.find('play', playData.play);
-      } else {
+      if (!self.store.recordIsLoaded('play', self.get('lastPlay_id'))) {
         $.getJSON( "plays/" + self.get('lastPlay_id'), function(playData) {
           var play = self.store.createRecord('play', playData.play);
           self.set('lastPlay', play);

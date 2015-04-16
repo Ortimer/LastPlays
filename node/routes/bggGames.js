@@ -22,14 +22,15 @@ router.get('/', function(req, res) {
 
     var args = {
       'username': req.query.username,
+      'stats': 1,
       'excludesubtype': 'boardgameexpansion'
     }
 
-    if (req.query.own != -1) {
+    if (req.query.own) {
       args.own = req.query.own;
     }
 
-    if (req.query.played != -1) {
+    if (req.query.played) {
       args.played = req.query.played;
     }
 
@@ -51,6 +52,13 @@ router.get('/', function(req, res) {
             game.name = item.name[0]._;
             game.image = 'http:' + item.thumbnail[0];
             game.totalPlays = item.numplays[0];
+            game.yearpublished = item.yearpublished[0];
+            game.minplayers = item.stats[0].$.minplayers;
+            game.maxplayers = item.stats[0].$.maxplayers;
+            game.playingtime = item.stats[0].$.playingtime;
+            game.numowned = item.stats[0].$.numowned;
+            game.rating = item.stats[0].rating[0].$.value;
+            game.ratingBgg = item.stats[0].rating[0].average[0].$.value;
             game.lastPlay_id = req.query.username + '-' + item.$.objectid;
 
             collectionData[req.baseUrl.substring(1)].push(game);

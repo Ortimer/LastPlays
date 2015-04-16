@@ -42,13 +42,14 @@ var menuInfos = [{
     link: 'bgguser.lastplays'
   }, {
     id: 2,
-    name: 'Stats',
+    name: 'H-Index',
     icon: 'fa-pie-chart',
-    subMenus: [{
-      id: 3,
-      name: 'H-Index',
-      link: 'bgguser.hindex'
-    }]
+    link: 'bgguser.hindex'
+  }, {
+    id: 3,
+    name: 'Graphs',
+    icon: 'fa-bar-chart',
+    link: 'bgguser.graphs'
   }]
 }];
 

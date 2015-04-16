@@ -1,4 +1,4 @@
-BggBuddy.BgguserHindexRoute = Ember.Route.extend({
+BggBuddy.BgguserGraphsRoute = Ember.Route.extend({
   model: function(params){
     var bggUser = this.modelFor('bgguser');
 

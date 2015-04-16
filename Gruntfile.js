@@ -81,6 +81,11 @@ module.exports = function(grunt) {
           // Moment.js
           'js/moment.js': 'moment/moment.js',
 
+          // Morris.js + Rephael
+          'css/morris.css': 'morris.js/morris.css',
+          'js/morris.js': 'morris.js/morris.js',
+          'js/raphael.js': 'raphael/raphael.js',
+
           // MetisMenu
           'css/metisMenu.css': 'metisMenu/dist/metisMenu.css',
           'js/metisMenu.js': 'metisMenu/dist/metisMenu.js'
