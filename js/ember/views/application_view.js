@@ -1,9 +1,9 @@
 BggBuddy.ApplicationView = Ember.View.extend({
   afterRenderEvent: function() {
     $(function(){
-      var easter_egg = new Konami(calvoInit);
+      var easter_egg = new Konami(konamiInit);
 
-      var calvo = $('#elCalvo').css({
+      var konamiImg = $('#konamiImg').css({
             "position":"fixed",
             "bottom": "-700px",
             "right" : "0",
@@ -13,12 +13,12 @@ BggBuddy.ApplicationView = Ember.View.extend({
 
       var locked = false;
 
-      function calvoInit() {
+      function konamiInit() {
         if (!locked) {
           locked = true;
 
           // Movement Hilarity
-          calvo.animate({
+          konamiImg.animate({
             "bottom" : "0"
           }, function() {
             $(this).animate({
@@ -28,7 +28,7 @@ BggBuddy.ApplicationView = Ember.View.extend({
               $(this).delay(300).animate({
                 "right" : offset
               }, 3500, function() {
-                calvo = $('#elCalvo').css({
+                konamiImg = $('#konamiImg').css({
                   "bottom": "-700px",
                   "right" : "0"
                 })

@@ -21,7 +21,7 @@ BggBuddy.RootView = Ember.View.extend({
             return false;
           }
 
-          self.get('controller').transitionToRoute('index', $.trim(bggUser.toLowerCase()));
+          self.get('controller').transitionToRoute('bgguser', $.trim(bggUser.toLowerCase()));
         }
     });
   }
