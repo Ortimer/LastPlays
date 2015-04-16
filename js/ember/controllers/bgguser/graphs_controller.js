@@ -25,18 +25,12 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
     });
 
     var options = {
-      // ID of the element in which to draw the chart.
       element: 'games-per-year-graph',
-      // Chart data records -- each entry in this array corresponds to a point on
-      // the chart.
       data: gamesData,
-      // The name of the data record attribute that contains x-values.
       xkey: 'year',
-      // A list of names of data record attributes that contain y-values.
       ykeys: ['gamesCount'],
-      // Labels for the ykeys -- will be displayed when you hover over the
-      // chart.
       labels: ['gamesCount'],
+      hideHover: 'true',
       hoverCallback: function (index, options, content, row) {
         var hoverHtml = '
           <div class="morris-hover-row-label">' + row.year + '</div>
@@ -54,6 +48,51 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
 
         return hoverHtml;
       }
+    }
+
+    return options;
+  }.property(),
+  avgRatingPerYearOptions : function () {
+    var gamesData = [];
+    var gamesPerYearTemp = [];
+
+    this.forEach(function(game) {
+      var year = game.get('yearpublished');
+
+      if (game.get('rating') != null && game.get('rating') != 0) {
+        if (gamesPerYearTemp[year]) {
+          gamesPerYearTemp[year].count++;
+          gamesPerYearTemp[year].sumRating += game.get('rating');
+          gamesPerYearTemp[year].sumRatingBgg += game.get('ratingBgg');
+        } else {
+          gamesPerYearTemp[year] = {
+            count: 1,
+            sumRating: game.get('rating'),
+            sumRatingBgg: game.get('ratingBgg')
+          };
+        }
+      }
+    });
+
+    $(gamesPerYearTemp).map(function(key, gameItem){
+      if (gameItem) {
+        var singleYear = {
+          year: key.toString(),
+          avgRating: Math.round(gameItem.sumRating / gameItem.count * 100) / 100,
+          avgRatingBgg: Math.round(gameItem.sumRatingBgg / gameItem.count * 100) / 100
+        };
+        gamesData.push(singleYear);
+      }
+    });
+
+    var options = {
+      element: 'avgRating-per-year-graph',
+      data: gamesData,
+      xkey: 'year',
+      xLabels: 'year',
+      ykeys: ['avgRating', 'avgRatingBgg'],
+      labels: ['Avg. Own Rating', 'Avg. Bgg Rating'],
+      hideHover: 'true'
     }
 
     return options;

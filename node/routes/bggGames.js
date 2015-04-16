@@ -52,7 +52,9 @@ router.get('/', function(req, res) {
             game.name = item.name[0]._;
             game.image = 'http:' + item.thumbnail[0];
             game.totalPlays = item.numplays[0];
-            game.yearpublished = item.yearpublished[0];
+            if (item.yearpublished) {
+              game.yearpublished = item.yearpublished[0];
+            }
             game.minplayers = item.stats[0].$.minplayers;
             game.maxplayers = item.stats[0].$.maxplayers;
             game.playingtime = item.stats[0].$.playingtime;
