@@ -5,5 +5,7 @@ BggBuddy.BgguserGraphsView = Ember.View.extend({
     new Morris.Bar(controller.get('gamesPerYearOptions'));
 
     new Morris.Line(controller.get('avgRatingPerYearOptions'));
+
+    new Morris.Bar(controller.get('gamesPerPlayersOptions'));
   }
 });

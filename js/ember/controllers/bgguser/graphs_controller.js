@@ -96,5 +96,76 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
     }
 
     return options;
+  }.property(),
+  gamesPerPlayersOptions : function () {
+    var gamesData = [];
+    var gamesPerPlayersTemp = [];
+    var RIDICULE_THRESHOLD = 13;
+    var ridiculeLabel = RIDICULE_THRESHOLD + '+ Players';
+
+    this.forEach(function(game) {
+      var minPlayers = game.get('minplayers');
+      var maxPlayers = game.get('maxplayers');
+
+      if (minPlayers && maxPlayers) {
+        // Some games las Ultimate Werewolf have ricule number count so let's put then in the same place
+        if (maxPlayers >= RIDICULE_THRESHOLD) {
+          maxPlayers = RIDICULE_THRESHOLD;
+        }
+
+        for (var i = minPlayers; i <= maxPlayers; i++) {
+          if (gamesPerPlayersTemp[i]) {
+            gamesPerPlayersTemp[i].push(game);
+          } else {
+            gamesPerPlayersTemp[i] = [game];
+          }
+        }
+      }
+    });
+
+    $(gamesPerPlayersTemp).map(function(key, gameCount){
+      if (gameCount) {
+        var playerLabel = key.toString() + ' Players';
+
+        if (key == RIDICULE_THRESHOLD) {
+          playerLabel = ridiculeLabel;
+        }
+
+        var singlePlayer = {
+          players: playerLabel,
+          games: gameCount,
+          gamesCount: gameCount.length
+        };
+        gamesData.push(singlePlayer);
+      }
+    });
+
+    var options = {
+      element: 'games-per-players-graph',
+      data: gamesData,
+      xkey: 'players',
+      ykeys: ['gamesCount'],
+      labels: ['gamesCount'],
+      hideHover: 'true',
+      hoverCallback: function (index, options, content, row) {
+        var hoverHtml = '
+          <div class="morris-hover-row-label">' + row.players + '</div>
+          <div class="morris-hover-point" style="color: #0b62a4">
+            Games:
+          </div>';
+
+          for (var i = 0; i < row.gamesCount && i < 3; i++) {
+            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">' + row.games[i].get('name') + '<div>';
+          }
+
+          if (row.gamesCount > 3) {
+            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">... and ' + (row.gamesCount - 3) + ' more<div>';
+          }
+
+        return hoverHtml;
+      }
+    }
+
+    return options;
   }.property()
 });

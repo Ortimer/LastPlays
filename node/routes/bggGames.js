@@ -61,6 +61,15 @@ router.get('/', function(req, res) {
             game.numowned = item.stats[0].$.numowned;
             game.rating = item.stats[0].rating[0].$.value;
             game.ratingBgg = item.stats[0].rating[0].average[0].$.value;
+
+            game.families = [];
+            var ranks = item.stats[0].rating[0].ranks[0].rank;
+            for (var i = 0; i < ranks.length; i++) {
+              if (ranks[i].$.type == 'family') {
+                game.families.push(ranks[i].$.name);
+              }
+            }
+
             game.lastPlay_id = req.query.username + '-' + item.$.objectid;
 
             collectionData[req.baseUrl.substring(1)].push(game);

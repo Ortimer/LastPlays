@@ -1,5 +1,21 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: 'version',
+              replacement: 'V 0.5b'
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['replace/index.html'], dest: '.'},
+          {expand: true, flatten: true, src: ['replace/application.hbs'], dest: './templates'}
+        ]
+      }
+    },
     uglify: {
       options: {
         banner: '/*!<%= grunt.template.date() %> */\n',
@@ -93,6 +109,13 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+      version: {
+        files: ['Gruntfile.js'], // which files to watch
+        tasks: ['replace'],
+        options: {
+          nospawn: true
+        }
+      },
       styles: {
         files: ['less/*.less'], // which files to watch
         tasks: ['less'],
@@ -117,11 +140,12 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-ember-templates');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bowercopy');
 
-  grunt.registerTask('default', ['less', 'bowercopy', 'emberTemplates', 'uglify']);
+  grunt.registerTask('default', ['replace', 'less', 'bowercopy', 'emberTemplates', 'uglify']);
 };
