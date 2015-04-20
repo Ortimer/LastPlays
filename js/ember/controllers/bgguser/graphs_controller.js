@@ -2,9 +2,14 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
   gamesPerYearOptions : function () {
     var gamesData = [];
     var gamesPerYearTemp = [];
+    var labels = [];
 
     this.forEach(function(game) {
       var year = game.get('yearpublished');
+
+      if (labels.indexOf(year) == -1) {
+        labels.push(year);
+      }
 
       if (gamesPerYearTemp[year]) {
         gamesPerYearTemp[year].push(game);
@@ -13,6 +18,8 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
       }
     });
 
+    labels.sort();
+
     $(gamesPerYearTemp).map(function(key, gameCount){
       if (gameCount) {
         var singleYear = {
@@ -20,46 +27,39 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
           games: gameCount,
           gamesCount: gameCount.length
         };
-        gamesData.push(singleYear);
+        gamesData.push(gameCount.length);
       }
     });
 
-    var options = {
-      element: 'games-per-year-graph',
-      data: gamesData,
-      xkey: 'year',
-      ykeys: ['gamesCount'],
-      labels: ['gamesCount'],
-      hideHover: 'true',
-      hoverCallback: function (index, options, content, row) {
-        var hoverHtml = '
-          <div class="morris-hover-row-label">' + row.year + '</div>
-          <div class="morris-hover-point" style="color: #0b62a4">
-            Games:
-          </div>';
+    var data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Owned games per year",
+          fillColor: "rgba(151,187,205,0.5)",
+          strokeColor: "rgba(151,187,205,0.8)",
+          highlightFill: "rgba(151,187,205,0.75)",
+          highlightStroke: "rgba(151,187,205,1)",
+          data: gamesData
+        }
+      ]
+    };
 
-          for (var i = 0; i < row.gamesCount && i < 3; i++) {
-            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">' + row.games[i].get('name') + '<div>';
-          }
-
-          if (row.gamesCount > 3) {
-            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">... and ' + (row.gamesCount - 3) + ' more<div>';
-          }
-
-        return hoverHtml;
-      }
-    }
-
-    return options;
+    return data;
   }.property(),
   avgRatingPerYearOptions : function () {
-    var gamesData = [];
+    var avgRating = [];
+    var avgRatingBgg = [];
     var gamesPerYearTemp = [];
+    var labels = [];
 
     this.forEach(function(game) {
       var year = game.get('yearpublished');
-
       if (game.get('rating') != null && game.get('rating') != 0) {
+        if (labels.indexOf(year) == -1) {
+          labels.push(year);
+        }
+
         if (gamesPerYearTemp[year]) {
           gamesPerYearTemp[year].count++;
           gamesPerYearTemp[year].sumRating += game.get('rating');
@@ -74,32 +74,48 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
       }
     });
 
+    labels.sort();
+
     $(gamesPerYearTemp).map(function(key, gameItem){
       if (gameItem) {
-        var singleYear = {
-          year: key.toString(),
-          avgRating: Math.round(gameItem.sumRating / gameItem.count * 100) / 100,
-          avgRatingBgg: Math.round(gameItem.sumRatingBgg / gameItem.count * 100) / 100
-        };
-        gamesData.push(singleYear);
+        avgRating.push(Math.round(gameItem.sumRating / gameItem.count * 100) / 100);
+        avgRatingBgg.push(Math.round(gameItem.sumRatingBgg / gameItem.count * 100) / 100);
       }
     });
 
-    var options = {
-      element: 'avgRating-per-year-graph',
-      data: gamesData,
-      xkey: 'year',
-      xLabels: 'year',
-      ykeys: ['avgRating', 'avgRatingBgg'],
-      labels: ['Avg. Own Rating', 'Avg. Bgg Rating'],
-      hideHover: 'true'
-    }
+    var data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Average rating per year",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data: avgRating
+        },
+        {
+          label: "Average BGG rating per year",
+          fillColor: "rgba(220,220,220,0.2)",
+          strokeColor: "rgba(220,220,220,1)",
+          pointColor: "rgba(220,220,220,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: avgRatingBgg
+        }
+      ]
+    };
 
-    return options;
+    return data;
   }.property(),
   gamesPerPlayersOptions : function () {
     var gamesData = [];
     var gamesPerPlayersTemp = [];
+    var labels = [];
+    var playerCountTemp = [];
     var RIDICULE_THRESHOLD = 13;
     var ridiculeLabel = RIDICULE_THRESHOLD + '+ Players';
 
@@ -114,6 +130,10 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
         }
 
         for (var i = minPlayers; i <= maxPlayers; i++) {
+          if (playerCountTemp.indexOf(i) == -1) {
+            playerCountTemp.push(i);
+          }
+
           if (gamesPerPlayersTemp[i]) {
             gamesPerPlayersTemp[i].push(game);
           } else {
@@ -122,6 +142,16 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
         }
       }
     });
+
+    for (var i = 1; i <= RIDICULE_THRESHOLD; i++) {
+      if (playerCountTemp.indexOf(i) != -1) {
+        if (i != RIDICULE_THRESHOLD) {
+          labels.push(i);
+        } else {
+          labels.push(ridiculeLabel);
+        }
+      }
+    }
 
     $(gamesPerPlayersTemp).map(function(key, gameCount){
       if (gameCount) {
@@ -136,36 +166,24 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
           games: gameCount,
           gamesCount: gameCount.length
         };
-        gamesData.push(singlePlayer);
+        gamesData.push(gameCount.length);
       }
     });
 
-    var options = {
-      element: 'games-per-players-graph',
-      data: gamesData,
-      xkey: 'players',
-      ykeys: ['gamesCount'],
-      labels: ['gamesCount'],
-      hideHover: 'true',
-      hoverCallback: function (index, options, content, row) {
-        var hoverHtml = '
-          <div class="morris-hover-row-label">' + row.players + '</div>
-          <div class="morris-hover-point" style="color: #0b62a4">
-            Games:
-          </div>';
+    var data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Owned games per number of players",
+          fillColor: "rgba(151,187,205,0.5)",
+          strokeColor: "rgba(151,187,205,0.8)",
+          highlightFill: "rgba(151,187,205,0.75)",
+          highlightStroke: "rgba(151,187,205,1)",
+          data: gamesData
+        }
+      ]
+    };
 
-          for (var i = 0; i < row.gamesCount && i < 3; i++) {
-            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">' + row.games[i].get('name') + '<div>';
-          }
-
-          if (row.gamesCount > 3) {
-            hoverHtml += '<div class="morris-hover-point" style="color: #0b62a4">... and ' + (row.gamesCount - 3) + ' more<div>';
-          }
-
-        return hoverHtml;
-      }
-    }
-
-    return options;
+    return data;
   }.property()
 });
