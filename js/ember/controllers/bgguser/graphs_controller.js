@@ -185,5 +185,50 @@ BggBuddy.BgguserGraphsController = BaseGameController.extend({
     };
 
     return data;
+  }.property(),
+  gamesPerCategoryOptions : function () {
+    var gamesData = [];
+    var categoriesTemp = {};
+    var labels = [];
+
+    this.forEach(function(game) {
+      var families = game.get('families');
+
+      $(families).each(function(index, value){
+        if (labels.indexOf(value) == -1) {
+          labels.push(value);
+        }
+
+        if (categoriesTemp[value]) {
+          categoriesTemp[value].push(game);
+        } else {
+          categoriesTemp[value] = [game];
+        }
+      });
+    });
+
+    $.each(categoriesTemp, function(key, gameCount){
+      if (gameCount) {
+        gamesData.push(gameCount.length);
+      }
+    });
+
+    var data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Owned games per category",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data: gamesData
+        }
+      ]
+    };
+
+    return data;
   }.property()
 });

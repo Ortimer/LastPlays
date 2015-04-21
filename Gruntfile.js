@@ -6,7 +6,7 @@ module.exports = function(grunt) {
           patterns: [
             {
               match: 'version',
-              replacement: 'V 0.5b'
+              replacement: 'V 0.7b'
             }
           ]
         },
@@ -109,7 +109,7 @@ module.exports = function(grunt) {
     watch: {
       version: {
         files: ['Gruntfile.js'], // which files to watch
-        tasks: ['replace'],
+        tasks: ['replace', 'emberTemplates'],
         options: {
           nospawn: true
         }

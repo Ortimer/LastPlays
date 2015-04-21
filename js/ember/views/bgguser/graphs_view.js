@@ -35,5 +35,15 @@ BggBuddy.BgguserGraphsView = Ember.View.extend({
 
     //and append it to your page somewhere
     $('#games-per-players-legend').append(legend);
+
+    tempChart = new Chart($("#games-per-category-graph").get(0).getContext("2d")).Radar(controller.get('gamesPerCategoryOptions'), {
+      legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+    });
+
+    //then you just need to generate the legend
+    legend = tempChart.generateLegend();
+
+    //and append it to your page somewhere
+    $('#games-per-category-legend').append(legend);
   }
 });

@@ -9,5 +9,6 @@ BggBuddy.Game = DS.Model.extend({
   playingtime: DS.attr('number'),
   numowned: DS.attr('number'),
   rating: DS.attr('number'),
-  ratingBgg: DS.attr('number')
+  ratingBgg: DS.attr('number'),
+  families: DS.attr()
 });
