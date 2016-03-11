@@ -10,7 +10,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("span");
         dom.setAttribute(el1,"class","navbar-brand");
-        var el2 = dom.createTextNode("BGGBuddy V 1.0");
+        var el2 = dom.createTextNode("BGGBuddy V 1.0.1");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         return el0;
@@ -548,7 +548,7 @@ Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
         dom.setAttribute(el1,"id","welcome-message");
-        dom.setAttribute(el1,"class","container padding-top-05");
+        dom.setAttribute(el1,"class","container-fluid padding-top-05");
         var el2 = dom.createTextNode("\n      ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
