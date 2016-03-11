@@ -6,7 +6,7 @@ module.exports = function(grunt) {
           patterns: [
             {
               match: 'version',
-              replacement: 'V 0.7b'
+              replacement: 'V 1.0'
             }
           ]
         },
