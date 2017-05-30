@@ -50,11 +50,11 @@ router.get('/', function(req, res) {
             game.id = item.$.objectid;
             game.bggUrl = 'http://www.boardgamegeek.com/boardgame/' + item.$.objectid;
             game.name = item.name[0]._;
-			if (item.thumbnail) {
-				game.image = 'http:' + item.thumbnail[0];
-			} else {
-				game.image = 'https://cf.geekdo-images.com/images/pic1657689_mt.jpg'
-			}
+            if (item.thumbnail) {
+              game.image = item.thumbnail[0];
+            } else {
+              game.image = 'https://cf.geekdo-images.com/images/pic1657689_mt.jpg'
+            }
             game.totalPlays = item.numplays[0];
             if (item.yearpublished) {
               game.yearpublished = item.yearpublished[0];

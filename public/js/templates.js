@@ -2,7 +2,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -44,7 +44,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         var child0 = (function() {
           return {
             isHTMLBars: true,
-            revision: "Ember@1.11.0",
+            revision: "Ember@1.11.4",
             blockParams: 0,
             cachedFragment: null,
             hasRendered: false,
@@ -84,7 +84,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
         }());
         return {
           isHTMLBars: true,
-          revision: "Ember@1.11.0",
+          revision: "Ember@1.11.4",
           blockParams: 0,
           cachedFragment: null,
           hasRendered: false,
@@ -132,7 +132,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }());
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -210,7 +210,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       var child0 = (function() {
         return {
           isHTMLBars: true,
-          revision: "Ember@1.11.0",
+          revision: "Ember@1.11.4",
           blockParams: 0,
           cachedFragment: null,
           hasRendered: false,
@@ -256,7 +256,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
       }());
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -304,7 +304,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -344,7 +344,7 @@ Ember.TEMPLATES["application"] = Ember.HTMLBars.template((function() {
   }());
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -495,7 +495,7 @@ Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
   var child0 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -538,7 +538,7 @@ Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
   var child1 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -626,7 +626,7 @@ Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
   }());
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -668,7 +668,7 @@ Ember.TEMPLATES["bgguser"] = Ember.HTMLBars.template((function() {
 Ember.TEMPLATES["bgguser/graphs"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -909,7 +909,7 @@ Ember.TEMPLATES["bgguser/hindex"] = Ember.HTMLBars.template((function() {
     var child0 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -958,7 +958,7 @@ Ember.TEMPLATES["bgguser/hindex"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -1095,7 +1095,7 @@ Ember.TEMPLATES["bgguser/hindex"] = Ember.HTMLBars.template((function() {
   }());
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -1440,7 +1440,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child0 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1482,7 +1482,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child1 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1523,7 +1523,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -1566,7 +1566,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
       var child0 = (function() {
         return {
           isHTMLBars: true,
-          revision: "Ember@1.11.0",
+          revision: "Ember@1.11.4",
           blockParams: 0,
           cachedFragment: null,
           hasRendered: false,
@@ -1608,7 +1608,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
       var child1 = (function() {
         return {
           isHTMLBars: true,
-          revision: "Ember@1.11.0",
+          revision: "Ember@1.11.4",
           blockParams: 0,
           cachedFragment: null,
           hasRendered: false,
@@ -1649,7 +1649,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
       }());
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1689,7 +1689,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -1742,7 +1742,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
   var child2 = (function() {
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -1791,7 +1791,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child0 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1833,7 +1833,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child1 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1874,7 +1874,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -1916,7 +1916,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child0 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -1975,7 +1975,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child1 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -2022,7 +2022,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child2 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -2081,7 +2081,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     var child3 = (function() {
       return {
         isHTMLBars: true,
-        revision: "Ember@1.11.0",
+        revision: "Ember@1.11.4",
         blockParams: 0,
         cachedFragment: null,
         hasRendered: false,
@@ -2127,7 +2127,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
     }());
     return {
       isHTMLBars: true,
-      revision: "Ember@1.11.0",
+      revision: "Ember@1.11.4",
       blockParams: 0,
       cachedFragment: null,
       hasRendered: false,
@@ -2369,7 +2369,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
   }());
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
@@ -2493,7 +2493,7 @@ Ember.TEMPLATES["bgguser/lastplays"] = Ember.HTMLBars.template((function() {
 Ember.TEMPLATES["bgguser/loading"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
-    revision: "Ember@1.11.0",
+    revision: "Ember@1.11.4",
     blockParams: 0,
     cachedFragment: null,
     hasRendered: false,
