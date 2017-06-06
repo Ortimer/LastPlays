@@ -1,37 +1,26 @@
-var express = require('express'),
-	url = require('url'),
-	http = require('http'),
-	fs      = require('fs');
-	bgg = require('bgg');
+var express = require('express');
 var app = express();
 
 //Static resourses
-app.use(express.static(__dirname + "/public", { maxAge: 86400000 }));
-
-//app.use(express.static('./public'));
+app.use(express.static(__dirname + '/public', {
+  'maxAge': 86400000
+}));
 
 // Funcion home
-var home = function (req, res) {
-	res.sendfile('index.html');
+var home = function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 };
-
-var getXML = function(req, res){
-	try {
-		var url_params = url.parse(req.url, true);
-
-		bgg(req.params.parameters, url_params.query).then(function(results){
-			res.writeHead(200, { 'Content-Type': 'application/json'});
-			res.write(JSON.stringify(results));
-			res.send();
-		});
-	} catch (ex) {
-		console.log(ex);
-	}
-}
 
 // Routes
 app.get('/', home);
-app.get('/plays/:bggUser', home);
-app.get('/bggData/:parameters', getXML);
+
+// Menu routes
+app.use('/menus', require('./node/routes/menus'));
+
+// BGG routes
+app.use('/bggUsers', require('./node/routes/bggUsers'));
+app.use('/games', require('./node/routes/bggGames'));
+app.use('/lastplaygames', require('./node/routes/bggGames'));
+app.use('/plays', require('./node/routes/bggPlays'));
 
 app.listen(process.env.PORT || 3000); //the port you want to use

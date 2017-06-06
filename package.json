@@ -1,13 +1,32 @@
 {
   "name": "Last_plays_by_BGG_user",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/LastPlays.git"
+  },
   "devDependencies": {
-    "grunt": "~*",
-    "grunt-bb-generate": "~*",
-    "grunt-contrib-uglify": "~*"
+    "ember-template-compiler": "^1.9.0-alpha",
+    "express": "^4.12.3",
+    "grunt": "^0.4.5",
+    "grunt-bower-concat": "^0.4.0",
+    "grunt-bowercopy": "^1.2.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ember-templates": "^0.5.0",
+    "grunt-replace": "^0.8.0",
+    "handlebars": "^2.0.0",
+    "limiter": "^1.0.5",
+    "restler": "^3.2.2",
+    "restling": "^0.9.1",
+    "xml2js": "^0.4.6"
   },
   "dependencies": {
-    "express": "~*",
-    "bgg": "~*"
+    "express": "^4.12.3",
+    "limiter": "^1.0.5",
+    "restler": "^3.2.2",
+    "restling": "^0.9.1",
+    "xml2js": "^0.4.6"
   }
 }

@@ -1,0 +1,101 @@
+<div class="row padding-top-05">
+    <!-- Collection -->
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 0}}>
+        <div class="panel panel-success-clickable">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-stack-overflow fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{length}}</div>
+                        <div>Base games</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- H-Index -->
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 1}}>
+        <div class="panel panel-info-clickable">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-trophy fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{hindexvalue}}</div>
+                        <abbr title="You have played {{hindexvalue}} games {{hindexvalue}} times">H-Index</abbr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logged plays -->
+    <div class="col-lg-3 col-sm-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-calendar fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{sumPlays}}</div>
+                        <div>Logged plays</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unplayed games -->
+    <div class="col-lg-3 col-sm-6" {{action 'setFilter' 2}}>
+        <div class="panel panel-danger-clickable">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-warning fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{unplayedGames}}</div>
+                        <div>Unplayed games!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Games List -->
+    <div id="h-index-list" class="container-fluid list-article">
+      <div class="row">
+        {{#each gameEntry in filteredContent}}
+          <!--Small-Medium layout-->
+          <div class="article-wrapper bloc col-sm-6 col-lg-3 {{gameEntry.customClass}}">
+            <article>
+              <a href="{{gameEntry.bggUrl}}" target="_blank" class="gotoBgg">Go to BGG</a>
+              <table class="img-wrapper">
+                <tr>
+                  <td>
+                    <div class="game-image">
+                      <img src="{{gameEntry.image}}" alt="{{gameEntry.name}}" />
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <h1>{{gameEntry.name}}</h1>
+              <div class="row">
+                <p class='col-xs-12'>
+                  Total plays: {{gameEntry.totalPlays}}
+                  {{#if gameEntry.hindexDiff}}
+                    <span class="hindexDiff">(+{{gameEntry.hindexDiff}})</span>
+                  {{/if}}
+                </p>
+              </div>
+            </article>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+</div>
