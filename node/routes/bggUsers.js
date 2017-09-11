@@ -20,7 +20,7 @@ router.get('/:username', function(req, res) {
         bggUser.id = bggUserData.user.$.name;
         bggUser.firstName = bggUserData.user.firstname[0].$.value;
         bggUser.lastName = bggUserData.user.lastname[0].$.value;
-        bggUser.avatarLink = 'http:' + bggUserData.user.avatarlink[0].$.value;
+        bggUser.avatarLink = bggUserData.user.avatarlink[0].$.value;
 
         bggUser = {
           'bggUser': bggUser

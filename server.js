@@ -22,5 +22,6 @@ app.use('/bggUsers', require('./node/routes/bggUsers'));
 app.use('/games', require('./node/routes/bggGames'));
 app.use('/lastplaygames', require('./node/routes/bggGames'));
 app.use('/plays', require('./node/routes/bggPlays'));
+app.use('/pageplays', require('./node/routes/bggPagePlays'));
 
 app.listen(process.env.PORT || 3000); //the port you want to use
