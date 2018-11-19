@@ -16,7 +16,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-ember-templates": "^0.5.0",
     "grunt-replace": "^0.8.0",
-    "handlebars": "^2.0.0",
+    "handlebars": "^4.0.12",
     "limiter": "^1.0.5",
     "restler": "^3.2.2",
     "restling": "^0.9.1",
